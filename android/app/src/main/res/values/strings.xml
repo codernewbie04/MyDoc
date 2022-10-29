@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyDoc</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="forget_password"><u>Lupa kata sandi?</u></string>
 </resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.register.RegisterAct"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <include layout="@layout/tool_bar" android:id="@+id/include_tb"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingLeft="@dimen/default_main_layout"
+        android:paddingRight="@dimen/default_main_layout">
+        <LinearLayout
+            android:id="@+id/header_daftar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daftar menjadi user MyDoc"
+                style="@style/main_txt"/>
+            <LinearLayout
+                android:id="@+id/field_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Nama Lengkap"
+                    style="@style/et_main"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:textSize="@dimen/font_size_et" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="E-mail"
+                    style="@style/et_main"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textSize="@dimen/font_size_et"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Tanggal Lahir"
+                    style="@style/et_main"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="@dimen/font_size_et"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:hint="Alamat"
+                    style="@style/et_main"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="text"
+                        android:textSize="@dimen/font_size_et"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleDrawable="@drawable/show_password_selector"
+                    android:layout_marginTop="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Kata Sandi"
+                    style="@style/et_main"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="@dimen/font_size_et"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleDrawable="@drawable/show_password_selector"
+                    android:layout_marginTop="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Konfirmasi Kata Sandi"
+                    style="@style/et_main">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="@dimen/font_size_et"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/footer_daftar"
+            android:layout_marginTop="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_lanjutkan"
+                style="@style/main_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_size"
+                android:text="Daftar" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

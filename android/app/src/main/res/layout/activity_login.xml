@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/tool_bar" android:id="@+id/include_tb"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="@dimen/default_main_layout"
+        android:layout_marginLeft="@dimen/default_main_layout">
+        <LinearLayout
+            android:id="@+id/header_masuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selemat datang di MyDoc"
+                style="@style/main_txt"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="E-mail"
+                style="@style/et_main">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textSize="@dimen/font_size_et"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/show_password_selector"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="Kata Sandi"
+                style="@style/et_main">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/font_size_et"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/lupa_sandi"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forget_password"
+                android:layout_gravity="right"
+                android:layout_marginTop="14dp"
+                android:textColor="@color/black"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/footer_masuk"
+            android:layout_marginTop="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_masuk"
+                android:clickable="true"
+                android:layout_marginTop="16dp"
+                style="@style/main_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_size"
+                android:text="Masuk"
+                android:focusable="true" />
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="atau"
+                android:layout_gravity="center"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="36dp"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
