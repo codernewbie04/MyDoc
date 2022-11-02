@@ -26,14 +26,15 @@
                 style="@style/main_txt"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_email"
                 android:layout_marginTop="24dp"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:hint="E-mail"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/red_400"
                 style="@style/et_main">
-
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -43,16 +44,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_password"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleDrawable="@drawable/show_password_selector"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/red_400"
                 android:hint="Kata Sandi"
                 style="@style/et_main">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -68,7 +71,7 @@
                 android:text="@string/forget_password"
                 android:layout_gravity="right"
                 android:layout_marginTop="14dp"
-                android:textColor="@color/black"
+                android:textColor="@color/blue_main"
 
                 />
         </LinearLayout>

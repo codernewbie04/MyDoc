@@ -40,7 +40,7 @@ class JWTAuthenticationFilter implements FilterInterface
             return Services::response()
                 ->setJSON(
                     [
-                        'message' => "Missing or invalid JWT in request",
+                        'message' => $e->getMessage(),
                         'data' => null,
                         'form_error' => null
                     ]

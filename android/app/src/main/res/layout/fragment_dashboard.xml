@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/swipe_to_refresh_layout"
+    android:background="@color/gray_background">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/content_top"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:background="@drawable/test"
+                android:orientation="vertical"
+                android:paddingRight="@dimen/default_main_layout"
+                android:paddingLeft="@dimen/default_main_layout"
+                android:paddingTop="14dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/logo2" />
+
+                    <ImageView
+                        android:id="@+id/btn_notification"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_notifications_black_24dp"
+                        android:layout_alignParentRight="true"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/txt_heading"
+                    android:layout_marginTop="35dp"
+                    android:lineSpacingExtra="6sp"
+                    android:textStyle="bold"
+                    style="@style/main_txt_regular"
+                    android:textSize="24dp"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hi {{user}}, Selamat Datang di MyDoc!"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_marginRight="@dimen/default_main_layout"
+                android:layout_marginLeft="@dimen/default_main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                android:translationY="-135dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/default_main_layout"
+                    android:paddingRight="@dimen/default_main_layout"
+                    android:paddingTop="21dp"
+                    android:paddingBottom="21dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_coins" />
+                            <TextView
+                                android:layout_marginLeft="7dp"
+                                android:textStyle="bold"
+                                style="@style/main_txt_regular"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Saldo Saya"/>
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/txt_saldo"
+                            android:textStyle="bold"
+                            style="@style/main_txt_regular"
+                            android:textSize="24sp"
+                            android:textColor="@color/blue_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0,-"/>
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/btn_penghasilan"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_forward"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:translationY="-110dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/default_main_layout">
+
+                <TextView
+                    style="@style/main_txt_regular"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riwayat Pendaftaran"/>
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/nodata_history"
+                    android:layout_marginTop="15dp"
+                    style="@style/main_txt"
+                    android:layout_gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tidak ada data!"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_history"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ProgressBar
+                    android:id="@+id/pb_history"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/green_main"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:translationY="-110dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/default_main_layout">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/main_txt_regular"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ulasan Saya"/>
+                        <TextView
+                            android:id="@+id/rating_count"
+                            style="@style/main_txt_regular"
+                            android:textSize="10sp"
+                            android:textColor="@color/gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lexend_light"
+                            android:text="(1 ulasan diberikan)"/>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_lihat_semua"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Lihat Semua"
+                        android:textColor="@color/black"
+                        style="@style/OutlineButton.Icon"
+                        android:textSize="10sp"
+                        app:strokeColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        tools:ignore="SmallSp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/nodata_review"
+                    android:layout_marginTop="15dp"
+                    style="@style/main_txt"
+                    android:layout_gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data belum tersedia !"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_review"
+                    android:layout_marginTop="16dp"
+                    tools:itemCount="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ProgressBar
+                    android:id="@+id/pb_rating"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/green_main"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout >

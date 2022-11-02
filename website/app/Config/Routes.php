@@ -45,6 +45,10 @@ $routes->post('/api/v1/auth/register', 'api\v1\auth\Register::index');
 //routes for profile
 $routes->get('/api/v1/profile/pasien', 'api\v1\profile\Pasien::index');
 
+//routes for master
+$routes->get('/api/v1/master/dashboard', 'api\v1\master\Dashboard::index');
+$routes->get('/api/v1/master/dokter', 'api\v1\master\Dokter::index');
+
 
 $routes->post('/api/v1/test', 'api\v1\Test::index');
 //$routes->resource('api/v1/auth/login');

@@ -10,7 +10,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.databinding.ItemOnBoardingBinding;
-import com.kelompok1.mydoc.model.OnBoardingUIModel;
+import com.kelompok1.mydoc.data.local.model.OnBoardingUIModel;
 
 import java.util.List;
 

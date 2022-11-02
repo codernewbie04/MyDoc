@@ -15,18 +15,19 @@ class Login extends BaseResponse
         helper(['form']);
         $rules = [
             'email' => 'required|valid_email',
-            'password' => 'required'
+            'password' => 'required',
+            'fcm_token' => 'required'
         ];
         if(!$this->validate($rules))
             return $this->response("Form invalid!", null, 422, $this->validator->getErrors());
         $model = new UserModel();
+        $authModel = new AuthModel();
         $user = $model->where("email", $this->request->getVar('email'))->first();
         if($user){
             $verify = password_verify($this->request->getVar("password"), $user['password_hash']);
             if($verify){
-                $authModel = new AuthModel();
                 $jti = substr(md5(time()), 3, 16);
-                $login = $authModel->login($user, $jti);
+                $login = $authModel->login($user, $jti, $this->request->getVar("fcm_token"));
                 if (!$login)
                     return $this->response("Gagal menyimpan token kedatabase", null, 500);
                 $payload = [
@@ -38,11 +39,12 @@ class Login extends BaseResponse
                     'email' => $user['email']
                 ];
                 $jwt = JWT::encode($payload, getenv("JWT_SECRET"), 'HS256');
-                
-                return $this->response("Berhasil login!", ['token'=>$jwt, 'user' => $model->getUser($user["id"])], 200); 
+                $rUser = $model->getUser($user["id"]);
+                //$rUser['id'] = (int) $rUser['id'];
+                return $this->response("Berhasil login!", ['token'=>$jwt, 'user' => $rUser], 200); 
             }
         }
-        $model->setLoginLog($this->request->getVar('email'), null, 0);
+        $authModel->setLoginLog($this->request->getVar('email'), null, 0);
         return $this->response("Email atau password salah!", null, 404);
     }
 
@@ -58,8 +60,16 @@ class Login extends BaseResponse
 
     public function refresh(){
         helper('jwt');
+        JWT::$leeway = 604800; //1 week
         $authModel = new AuthModel();
-        $jwt = validateJWTFromRequest(getJWTFromRequest($this->request->getServer('HTTP_AUTHORIZATION')));
+        try{
+            $jwt = validateJWTFromRequest(getJWTFromRequest($this->request->getServer('HTTP_AUTHORIZATION')));
+        } catch(\Exception $e){
+            return $this->response($e->getMessage(), null, 403);
+       }
+        
+        if($authModel->isTokenBlacklist($jwt->jti))
+            return $this->response("Token Blacklist!", null, 403);
         $jti = substr(md5(time()), 3, 16);
         $user = getUserFromToken($this->request->getServer('HTTP_AUTHORIZATION'));
         $payload = [

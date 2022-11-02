@@ -2,16 +2,17 @@ package com.kelompok1.mydoc.ui.base;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kelompok1.mydoc.MvpApp;
+import com.kelompok1.mydoc.utils.CommonUtils;
 
 public abstract class BaseActivity<Presenter extends BasePresenter> extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
@@ -39,6 +40,9 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
         Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
     }
 
+
+
+
     public void hideKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
@@ -47,5 +51,24 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         }
+    }
+
+    public void showLoading() {
+        hideLoading();
+        hideKeyboard();
+        mProgressDialog = CommonUtils.showLoadingDialog(this);
+    }
+
+    public void hideLoading() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.cancel();
+        }
+    }
+
+    public void setColorStatusBar(int color, int iconStatusBar){
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(color));
+        window.getDecorView().setSystemUiVisibility(iconStatusBar);
     }
 }

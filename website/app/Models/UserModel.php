@@ -16,7 +16,7 @@ class UserModel extends Model
     protected $protectFields    = true;
     protected $allowedFields  = [
         'email', 'username', 'fullname', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
-        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
+        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at', 'password_hash'
     ];
 
     // Dates
@@ -66,10 +66,19 @@ class UserModel extends Model
         $this->db->transComplete();
         return $uid;
     }
-
+    // $user = $this->where("users.id", $id)
+    // ->join("balance",'users.id=balance.uid')
+    // ->select('id', 'users.id')
+    // ->select('id', 'users.id')
+    // ->first();
+    // foreach($this->exceptFields as $key){
+    //     unset($user[$key]);
+    // }
+    // return $user;
     public function getUser($id){
         $user = $this->where("users.id", $id)
         ->join("balance",'users.id=balance.uid')
+        ->select('*, users.id AS id', false)
         ->first();
         foreach($this->exceptFields as $key){
             unset($user[$key]);

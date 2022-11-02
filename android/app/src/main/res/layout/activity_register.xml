@@ -34,9 +34,12 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_fullname"
                     android:layout_marginTop="24dp"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red_400"
                     android:hint="Nama Lengkap"
                     style="@style/et_main"
                     tools:ignore="HardcodedText">
@@ -51,9 +54,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_email"
                     android:layout_marginTop="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red_400"
                     android:hint="E-mail"
                     style="@style/et_main"
                     tools:ignore="HardcodedText">
@@ -68,9 +74,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_birthday"
                     android:layout_marginTop="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red_400"
                     android:hint="Tanggal Lahir"
                     style="@style/et_main"
                     tools:ignore="HardcodedText">
@@ -85,16 +94,19 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_address"
                     android:layout_marginTop="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="82dp"
+                    android:layout_height="wrap_content"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red_400"
                     android:hint="Alamat"
                     style="@style/et_main"
                     tools:ignore="HardcodedText">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="82dp"
                         android:inputType="text"
                         android:textSize="@dimen/font_size_et"
                         />
@@ -103,11 +115,14 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_password1"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleDrawable="@drawable/show_password_selector"
                     android:layout_marginTop="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red_400"
                     android:hint="Kata Sandi"
                     style="@style/et_main"
                     tools:ignore="HardcodedText">
@@ -122,11 +137,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_password2"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleDrawable="@drawable/show_password_selector"
                     android:layout_marginTop="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/red_400"
                     android:hint="Konfirmasi Kata Sandi"
                     style="@style/et_main">
 
@@ -148,7 +166,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <Button
-                android:id="@+id/btn_lanjutkan"
+                android:id="@+id/btn_register"
                 style="@style/main_button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_size"

@@ -1,7 +1,6 @@
 package com.kelompok1.mydoc.ui.onboarding;
 
-import com.kelompok1.mydoc.adapter.OnBoardingAdapter;
-import com.kelompok1.mydoc.model.OnBoardingUIModel;
+import com.kelompok1.mydoc.data.local.model.OnBoardingUIModel;
 import com.kelompok1.mydoc.ui.base.BasePresenter;
 
 import java.util.ArrayList;

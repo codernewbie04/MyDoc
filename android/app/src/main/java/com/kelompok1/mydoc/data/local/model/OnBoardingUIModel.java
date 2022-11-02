@@ -1,4 +1,4 @@
-package com.kelompok1.mydoc.model;
+package com.kelompok1.mydoc.data.local.model;
 
 public class OnBoardingUIModel {
     private int image;

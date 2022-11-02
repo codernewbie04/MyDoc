@@ -10,6 +10,13 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="main_txt_regular" parent="Widget.AppCompat.TextView">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/lexend_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="et_main" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_height">56dp</item>
         <item name="android:layout_width">match_parent</item>

@@ -69,13 +69,26 @@ class AuthModel extends Model
         $this->db->table('auth_logins')->insert($data);
     }
 
+    private function getFcmToken($fcm, $id){
+        return $this->db->table("fcm_token")->where(["token" => $fcm, "user_id" => $id])->countAllResults();
+    }
+
     public function isTokenBlacklist($jti){
         return $this->db->table('auth_jwt')->where('jti', $jti)->where('blacklist', 1)->countAllResults();
     }
 
-    public function login($user=null, $jti){
-        if($user)
+    public function login($user=null, $jti, $fcm){
+        if($user){
             $this->setLoginLog($user['email'], $user['id'], 1);
+            $fcm_data = [
+                'user_id' => $user['id'],
+                'token' => $fcm
+            ];
+            if($fcm != null)
+                if($this->getFcmToken($fcm, $user['id']) == 0)
+                    $this->db->table('fcm_token')->insert($fcm_data);
+        }
+            
         $data = [
             'jti' => $jti,
             'blacklist' => 0
@@ -93,7 +106,7 @@ class AuthModel extends Model
     public function renewToken($jti, $newjti){
         $this->db->transStart();
         $this->logout($jti);
-        $this->login(null, $newjti);
+        $this->login(null, $newjti, null);
         return $this->db->transComplete();
     }
 }
