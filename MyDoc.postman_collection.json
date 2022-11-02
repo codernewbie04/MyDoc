@@ -12,11 +12,21 @@
 				{
 					"name": "Test JWT",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"jwt\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2ZDRmYTE5OGIyNzI2NjcwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwiaWF0IjoxNjY2MTI0NjA1LCJleHAiOjE2NjYxMjQ2NjUsInVpZCI6IjciLCJlbWFpbCI6ImFrbWFsbWYwMDdAZ21haWwuY29tIn0.zOsqEgKcRbh1khabi7kLlUmS8lFzvdQPpFGIbBbYDW4\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,12 +34,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/test",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/test",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -60,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"akmalmf007@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"raw": "{\r\n    \"email\":\"akmalmf007@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"fcm_token\":\"$2y$10$1FeJvB6Ov9Hc3408ZChmoOxgsw9q67YvO0WrRJzidG39dugjIg7bK\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -68,12 +76,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/login",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/auth/login",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -114,12 +120,10 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/refresh",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/auth/refresh",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -133,24 +137,23 @@
 				{
 					"name": "Logout",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"fullname\" : \"Akmal Muhamad Firdaus\",\r\n    \"email\":\"akmalmf007@gmail.com\",\r\n    \"birthdate\": \"24-06-2002\",\r\n    \"address\": \"Jl. Guntur Sari\",\r\n    \"password1\": \"12345678\",\r\n    \"password2\": \"12345678\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/logout",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/auth/logout",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -168,7 +171,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fullname\" : \"Akmal Muhamad Firdaus\",\r\n    \"email\":\"akmalmf007@gmail.com\",\r\n    \"birthdate\": \"24-06-2002\",\r\n    \"address\": \"Jl. Guntur Sari\",\r\n    \"password1\": \"12345678\",\r\n    \"password2\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"fullname\" : \"Akmal Muhamad Firdaus\",\r\n    \"email\":\"coder.newbie04@gmail.com\",\r\n    \"birthdate\": \"24-06-2002\",\r\n    \"address\": \"Jl. Guntur Sari\",\r\n    \"password1\": \"12345678\",\r\n    \"password2\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -176,12 +179,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/register",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/auth/register",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -213,12 +214,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/profile/pasien",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/profile/pasien",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -230,12 +229,101 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Master",
+			"item": [
+				{
+					"name": "Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/master/dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"master",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListDokter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/master/dokter",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"master",
+								"dokter"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [
 		{
 			"key": "token",
 			"value": ""
+		},
+		{
+			"key": "base_url",
+			"value": "http://192.168.1.25/mydoc/public"
 		}
 	]
 }
