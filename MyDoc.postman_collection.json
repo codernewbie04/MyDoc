@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "64809767-aeed-4a37-a304-51c8daf52df7",
+		"_postman_id": "eb5f65fe-a287-4153-b087-3bd98d68e979",
 		"name": "MyDoc",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18794220"
@@ -88,7 +88,67 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"akmalmf007@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"fcm_token\":\"$2y$10$1FeJvB6Ov9Hc3408ZChmoOxgsw9q67YvO0WrRJzidG39dugjIg7bK\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:35:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil login!\",\n    \"data\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkYjVhODIyN2IxNWQyOGI1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwiaWF0IjoxNjY3NjEyMTI4LCJleHAiOjE2Njc2MTU3MjgsInVpZCI6IjciLCJlbWFpbCI6ImFrbWFsbWYwMDdAZ21haWwuY29tIn0.FdLlpR3rJD0uXxbEKuYonZt1J8J9K0GDw7gX_NKBC-Y\",\n        \"user\": {\n            \"id\": \"7\",\n            \"email\": \"akmalmf007@gmail.com\",\n            \"username\": \"akmalmf007936\",\n            \"fullname\": \"Akmal MF\",\n            \"address\": \"Guntur Sari\",\n            \"image\": \"user.jpg\",\n            \"status\": \"1\",\n            \"active\": \"0\",\n            \"birthday\": \"2002-06-24\",\n            \"created_at\": \"2022-10-18 21:13:51\",\n            \"updated_at\": \"2022-10-18 21:13:51\",\n            \"balance\": \"200000\"\n        }\n    },\n    \"form_error\": null\n}"
+						}
+					]
 				},
 				{
 					"name": "Refresh Token",
@@ -132,7 +192,58 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/auth/refresh",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:35:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Token berhasil diperbaharui!\",\n    \"data\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NmI2MzVlODIwZTFmZTNkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwiaWF0IjoxNjY3NjEyMTUzLCJleHAiOjE2Njc2MTU3NTMsInVpZCI6IjciLCJlbWFpbCI6ImFrbWFsbWYwMDdAZ21haWwuY29tIn0.bjqk1kVDHQSu89x7xTbb6Lurm6LsrzSRAI5oisP1EXw\",\n    \"form_error\": null\n}"
+						}
+					]
 				},
 				{
 					"name": "Logout",
@@ -171,7 +282,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fullname\" : \"Akmal Muhamad Firdaus\",\r\n    \"email\":\"coder.newbie04@gmail.com\",\r\n    \"birthdate\": \"24-06-2002\",\r\n    \"address\": \"Jl. Guntur Sari\",\r\n    \"password1\": \"12345678\",\r\n    \"password2\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"fullname\" : \"Ujang\",\r\n    \"email\":\"ujang@gmail.com\",\r\n    \"birthday\": \"2002-06-24\",\r\n    \"address\": \"Jl. Guntur Sari\",\r\n    \"password1\": \"12345678\",\r\n    \"password2\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -226,7 +337,258 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "GetUser",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/profile/pasien",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"pasien"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:36:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil login!\",\n    \"data\": {\n        \"id\": \"7\",\n        \"email\": \"akmalmf007@gmail.com\",\n        \"username\": \"akmalmf007936\",\n        \"fullname\": \"Akmal MF\",\n        \"address\": \"Guntur Sari\",\n        \"image\": \"user.jpg\",\n        \"status\": \"1\",\n        \"active\": \"0\",\n        \"birthday\": \"2002-06-24\",\n        \"created_at\": \"2022-10-18 21:13:51\",\n        \"updated_at\": \"2022-10-18 21:13:51\",\n        \"balance\": \"200000\"\n    },\n    \"form_error\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update General Information",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\" : \"Akmal MF\",\r\n    \"address\" : \"Guntur Sari\",\r\n    \"birthday\" : \"2002-06-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/profile/pasien",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								"pasien"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update General Information",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\" : \"Akmal MF\",\r\n    \"address\" : \"Guntur Sari\",\r\n    \"birthday\" : \"2002-06-24\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/profile/pasien",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"pasien"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:13:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Expired token\",\n    \"data\": null,\n    \"form_error\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\" : \"12345678\",\r\n    \"new_password1\": \"12345678\",\r\n    \"new_password2\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/profile/pasien/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								"pasien",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"old_password\" : \"12345678\",\r\n    \"new_password1\": \"12345678\",\r\n    \"new_password2\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/profile/pasien/password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"pasien",
+										"password"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:13:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Expired token\",\n    \"data\": null,\n    \"form_error\": null\n}"
+						}
+					]
 				}
 			]
 		},
@@ -261,7 +623,58 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Dashboard",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/master/dashboard",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"master",
+										"dashboard"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:36:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil login!\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"7\",\n            \"email\": \"akmalmf007@gmail.com\",\n            \"username\": \"akmalmf007936\",\n            \"fullname\": \"Akmal MF\",\n            \"address\": \"Guntur Sari\",\n            \"image\": \"user.jpg\",\n            \"status\": \"1\",\n            \"active\": \"0\",\n            \"birthday\": \"2002-06-24\",\n            \"created_at\": \"2022-10-18 21:13:51\",\n            \"updated_at\": \"2022-10-18 21:13:51\",\n            \"balance\": \"200000\"\n        },\n        \"history\": [\n            {\n                \"id\": \"1\",\n                \"no_invoice\": \"MD-0111-001\",\n                \"user_id\": \"7\",\n                \"dokter_id\": \"1\",\n                \"price\": \"25000\",\n                \"discount\": \"0\",\n                \"total_price\": \"25000\",\n                \"status\": \"0\",\n                \"registration_code\": \"OjTNG7aPYU\",\n                \"created_at\": \"2022-11-01 12:43:40\",\n                \"payment\": {\n                    \"id\": \"1\",\n                    \"invoice_id\": \"1\",\n                    \"reference\": \"D6195KK7NFYUPFP3GI1A\",\n                    \"url\": \"https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=BCCMC8YIKQZ7ODFOE\",\n                    \"qr_code\": null,\n                    \"vaNumber\": \"7007014004000306\",\n                    \"payment_method\": \"BC\",\n                    \"payment_name\": \"BCA VA\",\n                    \"amount\": \"25000\",\n                    \"status\": \"0\",\n                    \"created_at\": \"2022-11-01 11:40:26\"\n                },\n                \"dokter\": {\n                    \"id\": \"1\",\n                    \"instansi_id\": \"2\",\n                    \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n                    \"profession\": \"Dokter Cinta\",\n                    \"image\": \"dokter.png\",\n                    \"price\": \"25000\",\n                    \"created_at\": \"2022-11-01 12:42:24\"\n                }\n            },\n            {\n                \"id\": \"2\",\n                \"no_invoice\": \"MD-0111-002\",\n                \"user_id\": \"7\",\n                \"dokter_id\": \"1\",\n                \"price\": \"25000\",\n                \"discount\": \"4000\",\n                \"total_price\": \"21000\",\n                \"status\": \"0\",\n                \"registration_code\": \"OjTNG7a23s\",\n                \"created_at\": \"2022-11-01 19:11:46\",\n                \"payment\": null,\n                \"dokter\": {\n                    \"id\": \"1\",\n                    \"instansi_id\": \"2\",\n                    \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n                    \"profession\": \"Dokter Cinta\",\n                    \"image\": \"dokter.png\",\n                    \"price\": \"25000\",\n                    \"created_at\": \"2022-11-01 12:42:24\"\n                }\n            }\n        ],\n        \"my_review\": [\n            {\n                \"id\": \"1\",\n                \"invoice_id\": \"1\",\n                \"reviewed_by\": \"7\",\n                \"star\": \"5\",\n                \"description\": \"Jospar jos genk!\",\n                \"created_at\": \"2022-11-05 06:30:26\",\n                \"dokter\": {\n                    \"id\": \"1\",\n                    \"instansi_id\": \"2\",\n                    \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n                    \"profession\": \"Dokter Cinta\",\n                    \"image\": \"dokter.png\",\n                    \"price\": \"25000\",\n                    \"created_at\": \"2022-11-01 12:42:24\"\n                }\n            }\n        ]\n    },\n    \"form_error\": null\n}"
+						}
+					]
 				},
 				{
 					"name": "ListDokter",
@@ -288,6 +701,337 @@
 								"v1",
 								"master",
 								"dokter"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ListDokter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/master/dokter",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"master",
+										"dokter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:36:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil mendapatkan data!\",\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"instansi_id\": \"2\",\n            \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n            \"profession\": \"Dokter Cinta\",\n            \"image\": \"dokter.png\",\n            \"price\": \"25000\",\n            \"created_at\": \"2022-11-01 12:42:24\",\n            \"instansi\": \"Rs. Instansi Kesehatan\",\n            \"review\": {\n                \"rating_average\": 3,\n                \"rating_count\": \"2\",\n                \"ratings\": [\n                    {\n                        \"id\": \"1\",\n                        \"reviewed_by\": {\n                            \"id\": \"7\",\n                            \"fullname\": \"Akmal MF\",\n                            \"image\": \"user.jpg\",\n                            \"created_at\": \"2022-10-18 21:13:51\"\n                        },\n                        \"star\": \"5\",\n                        \"description\": \"Jospar jos genk!\",\n                        \"created_at\": \"2022-11-05 06:30:26\"\n                    },\n                    {\n                        \"id\": \"2\",\n                        \"reviewed_by\": {\n                            \"id\": \"8\",\n                            \"fullname\": \"Akmal Muhamad Firdaus\",\n                            \"image\": \"user.jpg\",\n                            \"created_at\": \"2022-11-01 03:21:52\"\n                        },\n                        \"star\": \"1\",\n                        \"description\": \"Test\",\n                        \"created_at\": \"2022-11-05 06:37:34\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"form_error\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Detail Dokter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/master/dokter/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"master",
+								"dokter",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detail Dokter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/master/dokter/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"master",
+										"dokter",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:36:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil mendapatkan data!\",\n    \"data\": {\n        \"id\": \"1\",\n        \"instansi_id\": \"2\",\n        \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n        \"profession\": \"Dokter Cinta\",\n        \"image\": \"dokter.png\",\n        \"price\": \"25000\",\n        \"created_at\": \"2022-11-01 12:42:24\",\n        \"instansi\": \"Rs. Instansi Kesehatan\",\n        \"review\": {\n            \"rating_average\": 3,\n            \"rating_count\": \"2\",\n            \"ratings\": [\n                {\n                    \"id\": \"1\",\n                    \"reviewed_by\": {\n                        \"id\": \"7\",\n                        \"fullname\": \"Akmal MF\",\n                        \"image\": \"user.jpg\",\n                        \"created_at\": \"2022-10-18 21:13:51\"\n                    },\n                    \"star\": \"5\",\n                    \"description\": \"Jospar jos genk!\",\n                    \"created_at\": \"2022-11-05 06:30:26\"\n                },\n                {\n                    \"id\": \"2\",\n                    \"reviewed_by\": {\n                        \"id\": \"8\",\n                        \"fullname\": \"Akmal Muhamad Firdaus\",\n                        \"image\": \"user.jpg\",\n                        \"created_at\": \"2022-11-01 03:21:52\"\n                    },\n                    \"star\": \"1\",\n                    \"description\": \"Test\",\n                    \"created_at\": \"2022-11-05 06:37:34\"\n                }\n            ]\n        },\n        \"schedule\": {\n            \"list_schedule\": [\n                {\n                    \"id\": \"1\",\n                    \"dokter_id\": \"1\",\n                    \"day\": \"Senin\",\n                    \"time_start\": \"09:00\",\n                    \"time_end\": \"15:00\",\n                    \"created_at\": \"2022-11-05 05:56:24\"\n                },\n                {\n                    \"id\": \"2\",\n                    \"dokter_id\": \"1\",\n                    \"day\": \"Selasa\",\n                    \"time_start\": \"12:00\",\n                    \"time_end\": \"16:00\",\n                    \"created_at\": \"2022-11-05 07:09:54\"\n                }\n            ],\n            \"no_schedule_at\": [\n                \"Rabu\",\n                \"Kamis\",\n                \"Jumat\",\n                \"Sabtu\",\n                \"Minggu\"\n            ]\n        }\n    },\n    \"form_error\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Payments Method",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/transaction/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"payments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Payments Method",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/transaction/payments",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"payments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:37:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil Mendapatkan data!\",\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"code\": \"VA\",\n            \"paymentName\": \"MAYBANK VA\",\n            \"paymentImage\": \"https://images.duitku.com/hotlink-ok/VA.PNG\",\n            \"created_at\": \"2022-11-05 07:43:36\"\n        }\n    ],\n    \"form_error\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "InvoiceList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/transaction/invoice",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"invoice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "InvoiceList",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/transaction/invoice",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"invoice"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Nov 2022 01:37:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-control",
+									"value": "no-store, max-age=0, no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil Mendapatkan data!\",\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"no_invoice\": \"MD-0111-001\",\n            \"user_id\": \"7\",\n            \"dokter_id\": \"1\",\n            \"price\": \"25000\",\n            \"discount\": \"0\",\n            \"total_price\": \"25000\",\n            \"status\": \"0\",\n            \"registration_code\": \"OjTNG7aPYU\",\n            \"created_at\": \"2022-11-01 12:43:40\",\n            \"payment\": {\n                \"id\": \"1\",\n                \"invoice_id\": \"1\",\n                \"reference\": \"D6195KK7NFYUPFP3GI1A\",\n                \"url\": \"https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=BCCMC8YIKQZ7ODFOE\",\n                \"qr_code\": null,\n                \"vaNumber\": \"7007014004000306\",\n                \"payment_method\": \"BC\",\n                \"payment_name\": \"BCA VA\",\n                \"amount\": \"25000\",\n                \"status\": \"0\",\n                \"created_at\": \"2022-11-01 11:40:26\"\n            },\n            \"dokter\": {\n                \"id\": \"1\",\n                \"instansi_id\": \"2\",\n                \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n                \"profession\": \"Dokter Cinta\",\n                \"image\": \"dokter.png\",\n                \"price\": \"25000\",\n                \"created_at\": \"2022-11-01 12:42:24\"\n            }\n        },\n        {\n            \"id\": \"2\",\n            \"no_invoice\": \"MD-0111-002\",\n            \"user_id\": \"7\",\n            \"dokter_id\": \"1\",\n            \"price\": \"25000\",\n            \"discount\": \"4000\",\n            \"total_price\": \"21000\",\n            \"status\": \"0\",\n            \"registration_code\": \"OjTNG7a23s\",\n            \"created_at\": \"2022-11-01 19:11:46\",\n            \"payment\": null,\n            \"dokter\": {\n                \"id\": \"1\",\n                \"instansi_id\": \"2\",\n                \"nama\": \"Dr. Akmal Muhamad Firdaus\",\n                \"profession\": \"Dokter Cinta\",\n                \"image\": \"dokter.png\",\n                \"price\": \"25000\",\n                \"created_at\": \"2022-11-01 12:42:24\"\n            }\n        }\n    ],\n    \"form_error\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/transaction/checkout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"checkout"
 							]
 						}
 					},
@@ -323,7 +1067,7 @@
 		},
 		{
 			"key": "base_url",
-			"value": "http://192.168.1.25/mydoc/public"
+			"value": "http://localhost:8080"
 		}
 	]
 }
