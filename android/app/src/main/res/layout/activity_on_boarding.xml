@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:dotsColor="@color/white"
-            app:dotsStrokeColor="@color/gray"
+            app:dotsStrokeColor="@color/gray_400"
             app:dotsCornerRadius="8dp"
             app:dotsSize="10dp"
             app:dotsSpacing="4dp"

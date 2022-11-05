@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="15dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/image_placeholder" />
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/user_image">
+        <TextView
+            android:id="@+id/txt_name"
+            style="@style/main_txt_regular"
+            android:fontFamily="@font/lexend_light"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="carolinedias"
+            android:textColor="@color/gray_600" />
+        <RatingBar
+            android:id="@+id/ratingView"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:progressTint="#FFCC01"
+            android:numStars="5"
+            android:stepSize="0.01"
+            android:isIndicator="true"/>
+
+        <TextView
+            android:id="@+id/txt_review"
+            style="@style/main_txt_regular"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus non quis imperdiet eget vitae pharetra velit egestas. Vestibulum ullamcorper platea mauris"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+</RelativeLayout>

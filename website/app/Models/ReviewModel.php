@@ -5,6 +5,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 use App\Models\InvoiceModel;
 use App\Models\DokterModel;
+use App\Models\UserModel;;
 
 class ReviewModel extends Model
 {
@@ -50,9 +51,21 @@ class ReviewModel extends Model
         foreach ($reviews as $rev) {
             $dId = (new InvoiceModel())->select("dokter_id", false)->where('id', $rev['invoice_id'])->first()['dokter_id'];
             $rev["dokter"] = (new DokterModel())->where('id', $dId)->first();
+            $uid = $rev["reviewed_by"];
+            $dataUser = (new UserModel())->getUser($uid);
+            unset($dataUser["email"]);
+            unset($dataUser["username"]);
+            unset($dataUser["address"]);
+            unset($dataUser["status"]);
+            unset($dataUser["active"]);
+            unset($dataUser["birthday"]);
+            unset($dataUser["updated_at"]);
+            unset($dataUser["balance"]);
+            $rev["reviewed_by"] = $dataUser;
             array_push($clearReview, $rev);
         }
         
         return $clearReview;
     }
+
 }

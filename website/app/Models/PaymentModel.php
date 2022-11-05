@@ -45,4 +45,21 @@ class PaymentModel extends Model
     {
         return $this->db->table("payment_methods")->get()->getResultArray();
     }
+
+    public function getPaymentId($code)
+    {
+        return $this->db->table("payment_methods")->where(['code' => $code])->get()->getRowArray()['id'];
+    }
+
+    public function savePayment($payment)
+    {
+        if(!$this->db->table("payment_methods")->where(['code' => $payment['paymentMethod']])->countAllResults()){
+            $data = [
+                'code' => $payment['paymentMethod'],
+                'paymentName' => $payment['paymentName'],
+                'paymentImage' => $payment['paymentImage']
+            ];
+            $this->db->table("payment_methods")->insert($data);
+        }
+    }
 }

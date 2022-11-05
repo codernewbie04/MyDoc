@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/swipe_to_refresh_layout"
-    android:background="@color/gray_background">
+    android:background="@color/gray_50">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -127,7 +127,7 @@
                     style="@style/main_txt_regular"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/gray_600"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Riwayat Pendaftaran"/>
@@ -146,7 +146,9 @@
                     android:id="@+id/rv_history"
                     android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_history"
+                    tools:itemCount="2"/>
                 <ProgressBar
                     android:id="@+id/pb_history"
                     android:layout_gravity="center"
@@ -179,7 +181,7 @@
                             style="@style/main_txt_regular"
                             android:textStyle="bold"
                             android:textSize="14sp"
-                            android:textColor="@color/gray"
+                            android:textColor="@color/gray_600"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ulasan Saya"/>
@@ -187,7 +189,7 @@
                             android:id="@+id/rating_count"
                             style="@style/main_txt_regular"
                             android:textSize="10sp"
-                            android:textColor="@color/gray"
+                            android:textColor="@color/gray_600"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lexend_light"
@@ -197,16 +199,16 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_lihat_semua"
-                        android:gravity="center"
+                        style="@style/OutlineButton.Icon"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:text="Lihat Semua"
-                        android:textColor="@color/black"
-                        style="@style/OutlineButton.Icon"
-                        android:textSize="10sp"
-                        app:strokeColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="Lihat Semua"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:strokeColor="@color/black"
                         tools:ignore="SmallSp" />
                 </RelativeLayout>
 
@@ -227,7 +229,8 @@
                     android:layout_marginTop="16dp"
                     tools:itemCount="3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_my_review"/>
                 <ProgressBar
                     android:id="@+id/pb_rating"
                     android:layout_gravity="center"

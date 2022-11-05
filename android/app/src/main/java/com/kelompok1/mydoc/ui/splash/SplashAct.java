@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.kelompok1.mydoc.MvpApp;
-import com.kelompok1.mydoc.ui.dashboard.MainAct;
+import com.kelompok1.mydoc.ui.main.MainAct;
 import com.kelompok1.mydoc.ui.onboarding.OnBoardingAct;
 import com.kelompok1.mydoc.R;
 

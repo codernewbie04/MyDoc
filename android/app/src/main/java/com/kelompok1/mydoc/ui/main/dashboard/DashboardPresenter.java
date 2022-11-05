@@ -1,4 +1,4 @@
-package com.kelompok1.mydoc.ui.dashboard.ui.dashboard;
+package com.kelompok1.mydoc.ui.main.dashboard;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,9 +8,7 @@ import androidx.annotation.Nullable;
 import com.kelompok1.mydoc.MvpApp;
 import com.kelompok1.mydoc.data.remote.entities.BaseApiResponse;
 import com.kelompok1.mydoc.data.remote.entities.DashboardResponse;
-import com.kelompok1.mydoc.data.remote.entities.ResponseKosong;
 import com.kelompok1.mydoc.ui.base.BasePresenter;
-import com.kelompok1.mydoc.ui.base.BaseView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

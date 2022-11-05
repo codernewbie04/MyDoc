@@ -109,4 +109,43 @@ class InvoiceModel extends Model
         ->join("reviews",'invoice.id=reviews.invoice_id')
         ->where(['invoice.dokter_id' => $id])->first()["avg_review"];
     }
+
+    public function getLastOrderId()
+    {
+        return count($this->findAll());
+    }
+
+    public function createInvoice($paymentData, $invData, $paymentId)
+    {
+        $invData['no_invoice'] = $this->createNoInvoice();
+        $this->db->transStart();
+        $this->protect(false)->insert($invData);
+        $invId = $this->insertID();
+        $payment = [
+            "invoice_id" => $invId,
+            'amount' => $invData["total_price"],
+            'payment_method' => $paymentId
+        ];
+        if(array_key_exists("reference", $paymentData))
+            $payment['reference'] = $paymentData["reference"];
+
+        if(array_key_exists("url", $paymentData))
+            $payment['url'] = $paymentData["url"];
+        
+        if(array_key_exists("qrString", $paymentData))
+            $payment['qr_code'] = $paymentData["qrString"];
+
+        if(array_key_exists("vaNumber", $paymentData))
+            $payment['vaNumber'] = $paymentData["vaNumber"];
+
+        $this->db->table('payment')->insert($payment);
+        $this->db->transComplete();
+        return $invId;
+    }
+
+    private function createNoInvoice()
+    {
+        $last = count($this->where("DATE(created_at) = CURDATE()")->findAll());
+        return "MD-".date("dm")."-".sprintf('%03d', ($last + 1));
+    }
 }

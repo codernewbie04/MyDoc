@@ -692,7 +692,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/v1/master/dokter",
+							"raw": "{{base_url}}/api/v1/master/dokter?search=asd",
 							"host": [
 								"{{base_url}}"
 							],
@@ -701,6 +701,12 @@
 								"v1",
 								"master",
 								"dokter"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "asd"
+								}
 							]
 						}
 					},
@@ -1022,6 +1028,15 @@
 						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dokter_id\" : 1,\r\n    \"time\" : \"12:30\",\r\n    \"payment_method\" : \"VA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{base_url}}/api/v1/transaction/checkout",
 							"host": [
@@ -1032,6 +1047,45 @@
 								"v1",
 								"transaction",
 								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Give Rating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"invoice_id\": 4,\r\n    \"description\" : \"Boljug\",\r\n    \"star\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/transaction/give_rating",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"give_rating"
 							]
 						}
 					},

@@ -6,4 +6,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="list_dokter">List Dokter</string>
+    <string name="semua_dokter">Semua Dokter</string>
+    <string name="image_description">image</string>
 </resources>

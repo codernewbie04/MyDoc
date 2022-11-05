@@ -1,4 +1,4 @@
-package com.kelompok1.mydoc.ui.dashboard;
+package com.kelompok1.mydoc.ui.main;
 
 import android.os.Bundle;
 
@@ -20,6 +20,7 @@ public class MainAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_MyDoc);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         BottomNavigationView navView = findViewById(R.id.nav_view);

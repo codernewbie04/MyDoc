@@ -75,9 +75,9 @@ class Filters extends BaseConfig
             'before' => [
                 'api/v1/test',
                 'api/v1/auth/logout',
-                'api/v1/auth/refresh',
                 'api/v1/profile/*',
-                'api/v1/master/*'
+                'api/v1/master/*',
+                'api/v1/transaction/*'
           ],
         ]
     ];

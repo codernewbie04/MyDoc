@@ -12,6 +12,7 @@ import com.kelompok1.mydoc.data.remote.entities.UserResponse;
 import com.kelompok1.mydoc.data.remote.network.AuthorizationInterceptor;
 import com.kelompok1.mydoc.data.remote.service.AuthService;
 import com.kelompok1.mydoc.data.remote.service.MasterService;
+import com.kelompok1.mydoc.data.remote.service.TransactionService;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -28,6 +29,7 @@ public class MvpApp extends Application {
     private PrefManager pref;
     private AuthService authService;
     private MasterService masterService;
+    private TransactionService transactionService;
     private AuthenticationListener authenticationListener;
 
     @Override
@@ -164,6 +166,13 @@ public class MvpApp extends Application {
         });
         okhttpClientBuilder.addInterceptor(addLogger());
         return okhttpClientBuilder.build();
+    }
+
+    public TransactionService getTransactionService(){
+        if (transactionService == null) {
+            transactionService = provideRetrofit(BuildConfig.BASE_URL).create(TransactionService.class);
+        }
+        return transactionService;
     }
 
     public MasterService getMasterService(){

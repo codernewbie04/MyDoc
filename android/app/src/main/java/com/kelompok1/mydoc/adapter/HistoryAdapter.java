@@ -49,6 +49,7 @@ public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHol
             this.itemView = itemView;
         }
 
+        @SuppressLint({"SetTextI18n", "UseCompatLoadingForColorStateLists"})
         public void bind(HistoryResponse data){
             itemView.txtTanggal.setText(data.created_at);
             if (data.dokter != null){
@@ -70,10 +71,11 @@ public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHol
                     itemView.status.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.green_success));
                     itemView.status.setText("Selesai");
                     break;
-                case -3:
-                case -4:
-                case -5:
+                case 4:
+                case 5:
+                case 6:
                     itemView.status.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.red_400));
+                    itemView.status.setText("Failed");
                     break;
 
             }

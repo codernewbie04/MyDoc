@@ -100,7 +100,7 @@ public final class CommonUtils {
         try {
             if (uang >= 1000) {
                 DecimalFormat formatter = new DecimalFormat("#,###");
-                return "Rp"+formatter.format(uang)+",-";
+                return "Rp"+formatter.format(uang).replace(",",".")+",-";
             } else {
                 return "Rp"+uang+",-";
             }

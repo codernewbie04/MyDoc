@@ -1,4 +1,4 @@
-package com.kelompok1.mydoc.ui.dashboard.ui.dashboard;
+package com.kelompok1.mydoc.ui.main.dashboard;
 
 import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
 import com.kelompok1.mydoc.data.remote.entities.MyReviewResponse;

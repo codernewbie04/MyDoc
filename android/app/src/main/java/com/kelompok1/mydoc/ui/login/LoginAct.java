@@ -10,7 +10,7 @@ import com.kelompok1.mydoc.data.remote.entities.LoginErrorResponse;
 import com.kelompok1.mydoc.databinding.ActivityLoginBinding;
 import com.kelompok1.mydoc.ui.base.BaseActivity;
 import com.kelompok1.mydoc.utils.FieldValidator;
-import com.kelompok1.mydoc.ui.dashboard.MainAct;
+import com.kelompok1.mydoc.ui.main.MainAct;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class LoginAct extends BaseActivity<LoginPresenter> implements LoginView {

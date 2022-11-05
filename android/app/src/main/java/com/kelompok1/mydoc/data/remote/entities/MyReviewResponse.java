@@ -14,7 +14,7 @@ public class MyReviewResponse {
 
     @SerializedName("reviewed_by")
     @Expose
-    public int reviewed_by;
+    public UserResponse reviewed_by;
 
     @SerializedName("star")
     @Expose

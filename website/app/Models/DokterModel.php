@@ -49,8 +49,21 @@ class DokterModel extends Model
         $inv_model = new InvoiceModel();
         foreach($doctor as $dct){
             $dct["review"] = $inv_model->getReview($dct['id']);
+            $schedule =$this->getSchedule($dct['id']);
+            $dct["schedule"] = ["list_schedule" => $schedule];
+
+            $day = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+            $listHari = array();
+            foreach($schedule as $s){
+                if(in_array($s['day'], $day)){
+                    $key = array_search($s['day'], $day);
+                    unset($day[$key]);
+                }
+            }
+            $dct["schedule"]["no_schedule_at"] = array_values($day);   
             array_push($dr, $dct);
         }
+        
 
         return $dr;
     }
@@ -62,6 +75,8 @@ class DokterModel extends Model
         ->select('dokter.*, users.fullname AS instansi', false)
         ->where(["dokter.id" => $id])
         ->first();
+        if($doctor<=0)
+            return null;
         $inv_model = new InvoiceModel();
         $doctor["review"] = $inv_model->getReview($doctor['id']);
         $schedule = $this->getSchedule($doctor['id']);

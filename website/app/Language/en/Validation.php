@@ -9,4 +9,5 @@ return [
     "alpha_space" => "{field} hanya boleh terdapat huruf dan spasi!",
     "min_length" => "{field} minimal harus {param} huruf!",
     "matches" => "{field} harus sama dengan {param}",
+    "is_not_unique" => "{field} tidak tersedia!",
 ];

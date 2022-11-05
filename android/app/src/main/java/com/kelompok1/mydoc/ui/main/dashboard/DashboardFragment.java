@@ -1,4 +1,4 @@
-package com.kelompok1.mydoc.ui.dashboard.ui.dashboard;
+package com.kelompok1.mydoc.ui.main.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,14 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.kelompok1.mydoc.MvpApp;
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.adapter.HistoryAdapter;
+import com.kelompok1.mydoc.adapter.MyReviewAdapter;
+import com.kelompok1.mydoc.adapter.sheet.ListReviewsSheet;
 import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
 import com.kelompok1.mydoc.data.remote.entities.MyReviewResponse;
 import com.kelompok1.mydoc.data.remote.entities.UserResponse;
@@ -21,6 +23,7 @@ import com.kelompok1.mydoc.databinding.FragmentDashboardBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
 import com.kelompok1.mydoc.utils.CommonUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -59,8 +62,6 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
     @Override
     public void onUserLoggedOut() {
 
-
-
     }
 
     @Override
@@ -69,6 +70,12 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
         String name = CommonUtils.getFirstName(userData.fullname);
         binding.txtHeading.setText(binding.txtHeading.getText().toString().replace("{{user}}", name));
         binding.txtSaldo.setText(CommonUtils.convertToRp(userData.balance));
+        binding.swipeToRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.getDasbhoard();
+            }
+        });
     }
 
     @Override
@@ -84,7 +91,6 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
 
     @Override
     public void setHistory(List<HistoryResponse> history) {
-        Toast.makeText(getContext(), String.valueOf(history.size()), Toast.LENGTH_SHORT).show();
         binding.rvHistory.setHasFixedSize(true);
         binding.rvHistory.setNestedScrollingEnabled(false);
         binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -97,6 +103,31 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
 
     @Override
     public void setMyReview(List<MyReviewResponse> my_review) {
+        List<MyReviewResponse> max5Review = new ArrayList<>();
+        if(my_review.size() > 5){
+            for(int i =0; i < 5; i ++){
+                max5Review.add(my_review.get(i));
+            }
+        } else {
+            max5Review.addAll(my_review);
+        }
 
+
+        binding.rvReview.setHasFixedSize(true);
+        binding.rvReview.setNestedScrollingEnabled(false);
+        binding.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        binding.rvReview.setAdapter(new MyReviewAdapter(max5Review));
+        binding.pbRating.setVisibility(View.GONE);
+        binding.ratingCount.setText("("+ my_review.size() +" ulasan diberikan)");
+        binding.btnLihatSemua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new ListReviewsSheet(my_review).show(getActivity().getSupportFragmentManager(),"MyReview");
+            }
+        });
+        if(my_review.size() <= 0){
+            binding.nodataReview.setVisibility(View.VISIBLE);
+        }
+        binding.swipeToRefreshLayout.setRefreshing(false);
     }
 }

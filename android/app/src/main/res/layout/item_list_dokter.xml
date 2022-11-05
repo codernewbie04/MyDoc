@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="18dp"
+    android:layout_marginEnd="18dp"
+    android:layout_marginBottom="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardImageMentor"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="1dp"
+            android:elevation="0dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageMentor"
+                android:layout_width="108dp"
+                android:layout_height="125dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars"
+                android:src="@drawable/image_placeholder"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/txt_nama_dokter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/lexend_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardImageMentor"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="dr. Akmal MF" />
+
+        <TextView
+            android:id="@+id/txt_profession"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/lexend_light"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardImageMentor"
+            app:layout_constraintTop_toBottomOf="@+id/txt_nama_dokter"
+            tools:ignore="SmallSp"
+            tools:text="Dokter Test" />
+        <TextView
+            android:id="@+id/txt_instansi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/lexend_light"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardImageMentor"
+            app:layout_constraintTop_toBottomOf="@+id/txt_profession"
+            tools:ignore="SmallSp"
+            tools:text="Dokter Test" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFCC01"
+            android:layout_marginTop="5dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1"
+            app:layout_constraintStart_toStartOf="@+id/txt_profession"
+            app:layout_constraintTop_toBottomOf="@+id/txt_instansi" />
+
+        <TextView
+            android:id="@+id/txt_avg_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/lexend_light"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rating"
+            app:layout_constraintStart_toEndOf="@+id/rating"
+            app:layout_constraintTop_toTopOf="@+id/rating"
+            tools:ignore="SmallSp"
+            tools:text="4.5" />
+
+        <TextView
+            android:id="@+id/txt_count_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/lexend_light"
+            android:includeFontPadding="false"
+            android:textColor="@color/gray_600"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rating"
+            app:layout_constraintStart_toEndOf="@+id/txt_avg_rating"
+            app:layout_constraintTop_toTopOf="@+id/rating"
+            tools:ignore="SmallSp"
+            tools:text="(81 ulasan)" />
+
+
+        <TextView
+            android:id="@+id/txt_label_tarif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lexend_light"
+            android:includeFontPadding="false"
+            android:text="Tarif berobat &amp; konsultasi "
+            android:textColor="@color/gray_600"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/cardImageMentor"
+            app:layout_constraintTop_toBottomOf="@+id/rating"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/lexend_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/blue_main"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/cardImageMentor"
+            app:layout_constraintTop_toBottomOf="@+id/txt_label_tarif"
+            tools:text="Rp25.000/Sesi"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_booking"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="6dp"
+            android:fontFamily="@font/lexend_light"
+            android:text="Booking"
+            android:textSize="12sp"
+            android:backgroundTint="@color/blue_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_count_rating" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

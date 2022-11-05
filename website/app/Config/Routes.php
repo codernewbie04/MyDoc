@@ -56,7 +56,9 @@ $routes->get('/api/v1/master/dokter/(:num)', 'api\v1\master\Dokter::detail/$1');
 //routes for transaction
 $routes->get('/api/v1/transaction/invoice', 'api\v1\transaction\Invoice::index');
 $routes->get('/api/v1/transaction/payments', 'api\v1\transaction\Payments::index');
-$routes->post('/api/v1/transaction/checkout', 'api\v1\transaction\Checkout::index');
+$routes->post('/api/v1/transaction/checkout', 'api\v1\transaction\Invoice::check_out');
+$routes->post('/api/v1/transaction/give_rating', 'api\v1\transaction\Invoice::give_rating');
+
 
 $routes->post('/api/v1/test', 'api\v1\Test::index');
 //$routes->resource('api/v1/auth/login');
