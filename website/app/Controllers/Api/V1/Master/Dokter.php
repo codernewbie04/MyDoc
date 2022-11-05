@@ -1,23 +1,22 @@
 <?php
 
 namespace App\Controllers\Api\V1\Master;
-
-use App\Models\InvoiceModel;
-use App\Models\ReviewModel;
 use App\Controllers\Api\V1\BaseResponse;
+use App\Models\DokterModel;
 
 class Dokter extends BaseResponse
 {
-    public function index()
-    {
-        helper('jwt');
-        $user = getUserFromToken($this->request->getServer('HTTP_AUTHORIZATION'));
-        if(!$user)
-            return $this->response("Kesalahan pada database!", null, 500); 
+    public function index(){
+        $model = new DokterModel();
+        return $this->response("Berhasil mendapatkan data!", $model->getDokterAndInstansi(), 200); 
+    }
+
+    public function detail($id = 0){
+        $model = new DokterModel();
+        $dokter = $model->getDetailDokter($id);
+        if(!$dokter)
+            return $this->response("Dokter tidak tersedia!", null, 404);
         
-        helper('jwt');
-        $user = getUserFromToken($this->request->getServer('HTTP_AUTHORIZATION'));
-        $invoiceModel = new InvoiceModel();
-        return $this->response("Berhasil login!", $invoiceModel->getInvoiceUser($user['id'], 0), 200); 
+        return $this->response("Berhasil mendapatkan data!", $dokter, 200); 
     }
 }

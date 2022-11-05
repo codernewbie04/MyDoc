@@ -15,8 +15,7 @@ class UserModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields  = [
-        'email', 'username', 'fullname', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
-        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at', 'password_hash'
+        "address", 'birthday', 'fullname', 'image'
     ];
 
     // Dates
@@ -51,7 +50,7 @@ class UserModel extends Model
     
     public function createAccount($data){
         $this->db->transStart();
-		$this->insert($data);
+		$this->protect(false)->insert($data);
 
         $uid = $this->insertID();
         $balance = [
@@ -83,6 +82,14 @@ class UserModel extends Model
         foreach($this->exceptFields as $key){
             unset($user[$key]);
         }
+        return $user;
+    }
+
+    public function getUserWithoutFilter($id){
+        $user = $this->where("users.id", $id)
+        ->join("balance",'users.id=balance.uid')
+        ->select('*, users.id AS id', false)
+        ->first();
         return $user;
     }
 }

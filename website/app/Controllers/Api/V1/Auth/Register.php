@@ -12,7 +12,7 @@ class Register extends BaseResponse
         $rules = [
             'fullname' => 'required|alpha_space',
             'email' => 'required|valid_email|is_unique[users.email]',
-            'birthdate' => 'required',
+            'birthday' => 'required|date_valid',
             'address' => 'required',
             'password1' => 'required|min_length[6]',
             'password2' => 'required|matches[password1]'
@@ -26,13 +26,12 @@ class Register extends BaseResponse
             'fullname' => $this->request->getVar("fullname"),
             'email' => $this->request->getVar("email"),
             'username' => $uname,
-            'birthdate' => $this->request->getVar("birthdate"),
+            'birthday' => $this->request->getVar("birthday"),
             'address' => $this->request->getVar("address"),
             'password_hash' => password_hash($this->request->getVar("password1"), PASSWORD_BCRYPT),
         ];
         $model = new UserModel();
-        $sv = $model->createAccount($data);
-        if(!$sv)
+        if(!$model->createAccount($data))
             return $this->response("Gagal menyimpan kedatabase!", null, 500);
         
         return $this->response("Berhasil register!", null, 201);

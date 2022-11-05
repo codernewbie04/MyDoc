@@ -39,4 +39,10 @@ class PaymentModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getPaymentMethods()
+    {
+        return $this->db->table("payment_methods")->get()->getResultArray();
+    }
 }

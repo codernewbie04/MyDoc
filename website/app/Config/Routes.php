@@ -44,11 +44,19 @@ $routes->post('/api/v1/auth/register', 'api\v1\auth\Register::index');
 
 //routes for profile
 $routes->get('/api/v1/profile/pasien', 'api\v1\profile\Pasien::index');
+$routes->put('/api/v1/profile/pasien', 'api\v1\profile\Pasien::update');
+$routes->put('/api/v1/profile/pasien/password', 'api\v1\profile\Pasien::change_password');
 
 //routes for master
 $routes->get('/api/v1/master/dashboard', 'api\v1\master\Dashboard::index');
 $routes->get('/api/v1/master/dokter', 'api\v1\master\Dokter::index');
+$routes->get('/api/v1/master/dokter/(:num)', 'api\v1\master\Dokter::detail/$1');
 
+
+//routes for transaction
+$routes->get('/api/v1/transaction/invoice', 'api\v1\transaction\Invoice::index');
+$routes->get('/api/v1/transaction/payments', 'api\v1\transaction\Payments::index');
+$routes->post('/api/v1/transaction/checkout', 'api\v1\transaction\Checkout::index');
 
 $routes->post('/api/v1/test', 'api\v1\Test::index');
 //$routes->resource('api/v1/auth/login');

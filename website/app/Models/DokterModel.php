@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\InvoiceModel;
 
 class DokterModel extends Model
 {
@@ -39,4 +40,53 @@ class DokterModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getDokterAndInstansi(){
+        $doctor = $this->join("users",'users.id=dokter.instansi_id')
+        ->select('dokter.*, users.fullname AS instansi', false)
+        ->findAll();
+        $dr=array();
+        $inv_model = new InvoiceModel();
+        foreach($doctor as $dct){
+            $dct["review"] = $inv_model->getReview($dct['id']);
+            array_push($dr, $dct);
+        }
+
+        return $dr;
+    }
+
+    public function getDetailDokter($id = 0){
+        if($id == 0)
+            return null;
+        $doctor = $this->join("users",'users.id=dokter.instansi_id')
+        ->select('dokter.*, users.fullname AS instansi', false)
+        ->where(["dokter.id" => $id])
+        ->first();
+        $inv_model = new InvoiceModel();
+        $doctor["review"] = $inv_model->getReview($doctor['id']);
+        $schedule = $this->getSchedule($doctor['id']);
+        $doctor["schedule"] = ["list_schedule" => $schedule];
+
+        $day = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+        $listHari = array();
+        foreach($schedule as $s){
+            if(in_array($s['day'], $day)){
+                $key = array_search($s['day'], $day);
+                unset($day[$key]);
+            }
+        }
+        $doctor["schedule"]["no_schedule_at"] = array_values($day);   
+        
+
+        return $doctor;
+    }
+
+    private function getSchedule($id = 0){
+        if($id == 0)
+            return null;
+        
+        return $this->db->table("schedule")->where(["dokter_id" => $id])->get()->getResultArray();
+    }
+
+    
 }
