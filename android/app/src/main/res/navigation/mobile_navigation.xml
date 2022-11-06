@@ -22,4 +22,10 @@
         android:name="com.kelompok1.mydoc.ui.main.history_berobat.HistoryBerobatFragment"
         android:label="History Berobat"
         tools:layout="@layout/fragment_history_berobat" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.kelompok1.mydoc.ui.main.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

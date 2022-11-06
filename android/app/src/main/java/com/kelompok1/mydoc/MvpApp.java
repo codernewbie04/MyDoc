@@ -12,6 +12,7 @@ import com.kelompok1.mydoc.data.remote.entities.UserResponse;
 import com.kelompok1.mydoc.data.remote.network.AuthorizationInterceptor;
 import com.kelompok1.mydoc.data.remote.service.AuthService;
 import com.kelompok1.mydoc.data.remote.service.MasterService;
+import com.kelompok1.mydoc.data.remote.service.ProfileService;
 import com.kelompok1.mydoc.data.remote.service.TransactionService;
 
 import java.io.IOException;
@@ -29,8 +30,10 @@ public class MvpApp extends Application {
     private PrefManager pref;
     private AuthService authService;
     private MasterService masterService;
+    private ProfileService profileService;
     private TransactionService transactionService;
     private AuthenticationListener authenticationListener;
+
 
     @Override
     public void onCreate() {
@@ -41,6 +44,11 @@ public class MvpApp extends Application {
     public Session getSession() {
         if (session == null) {
             session = new Session() {
+                @Override
+                public void goLogout() {
+                    pref.logOut();
+                }
+
                 @Override
                 public boolean isLoggedIn() {
                     return !getToken().isEmpty();
@@ -62,8 +70,8 @@ public class MvpApp extends Application {
                 public UserResponse getUserData() {
                     SharedPreferences sf = pref.getSF();
                     return new UserResponse(sf.getInt(SharePrefKey.UD_ID, -1), sf.getString(SharePrefKey.UD_Email, null),
-                            sf.getString(SharePrefKey.UD_Fullname, null), sf.getString(SharePrefKey.UD_Image, null),
-                            sf.getInt(SharePrefKey.UD_Balance, 0));
+                            sf.getString(SharePrefKey.UD_Fullname, null), sf.getString(SharePrefKey.UD_Address, null), sf.getString(SharePrefKey.UD_Image, null),
+                            sf.getInt(SharePrefKey.UD_Balance, 0), sf.getString(SharePrefKey.UD_Birthday, null));
                 }
 
 
@@ -93,6 +101,8 @@ public class MvpApp extends Application {
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }
+
+
 
     private OkHttpClient provideOkHttpClient() {
         OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder();
@@ -127,17 +137,6 @@ public class MvpApp extends Application {
         this.authenticationListener = listener;
     }
 
-    public AuthService getAuthService() {
-        if (authService == null) {
-            authService = provideRetrofit(BuildConfig.BASE_URL).create(AuthService.class);
-        }
-        return authService;
-    }
-
-    public AuthService getAuthServiceForRefresh(){
-        return provideRetrofitForRefresh(BuildConfig.BASE_URL).create(AuthService.class);
-    }
-
     private Retrofit provideRetrofitForRefresh(String url) {
         return new Retrofit.Builder()
                 .baseUrl(url)
@@ -168,6 +167,17 @@ public class MvpApp extends Application {
         return okhttpClientBuilder.build();
     }
 
+    public AuthService getAuthService() {
+        if (authService == null) {
+            authService = provideRetrofit(BuildConfig.BASE_URL).create(AuthService.class);
+        }
+        return authService;
+    }
+
+    public AuthService getAuthServiceForRefresh(){
+        return provideRetrofitForRefresh(BuildConfig.BASE_URL).create(AuthService.class);
+    }
+
     public TransactionService getTransactionService(){
         if (transactionService == null) {
             transactionService = provideRetrofit(BuildConfig.BASE_URL).create(TransactionService.class);
@@ -180,6 +190,13 @@ public class MvpApp extends Application {
             masterService = provideRetrofit(BuildConfig.BASE_URL).create(MasterService.class);
         }
         return masterService;
+    }
+
+    public ProfileService getProfileService() {
+        if (profileService == null) {
+            profileService = provideRetrofit(BuildConfig.BASE_URL).create(ProfileService.class);
+        }
+        return profileService;
     }
 
     public static HttpLoggingInterceptor addLogger(){

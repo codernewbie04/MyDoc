@@ -36,6 +36,11 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
         presenter.onDetach();
     }
 
+    public void showSuccessMessage(String msg)
+    {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
     public void showErrorMessage(String msg){
         Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
     }

@@ -20,6 +20,10 @@ public class UserResponse {
     @Expose
     public String fullname;
 
+    @SerializedName("address")
+    @Expose
+    public String address;
+
     @SerializedName("image")
     @Expose
     public String image;
@@ -31,6 +35,10 @@ public class UserResponse {
     @SerializedName("active")
     @Expose
     public int active;
+
+    @SerializedName("birthday")
+    @Expose
+    public String birthday;
 
     @SerializedName("created_at")
     @Expose
@@ -46,11 +54,13 @@ public class UserResponse {
 
     public UserResponse(){}
 
-    public UserResponse(int id, String email, String fullname, String image, int balance) {
+    public UserResponse(int id, String email, String fullname, String address, String image, int balance, String birthday) {
         this.id = id;
         this.email = email;
         this.fullname = fullname;
+        this.address = address;
         this.image = image;
         this.balance = balance;
+        this.birthday = birthday;
     }
 }

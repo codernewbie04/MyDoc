@@ -25,8 +25,10 @@ public class PrefManager {
         editor.putInt(SharePrefKey.UD_ID, user.id);
         editor.putString(SharePrefKey.UD_Email, user.email);
         editor.putString(SharePrefKey.UD_Fullname, user.fullname);
+        editor.putString(SharePrefKey.UD_Address, user.address);
         editor.putInt(SharePrefKey.UD_Balance, user.balance);
         editor.putString(SharePrefKey.UD_Image, user.image);
+        editor.putString(SharePrefKey.UD_Birthday, user.birthday);
         editor.apply();
     }
 

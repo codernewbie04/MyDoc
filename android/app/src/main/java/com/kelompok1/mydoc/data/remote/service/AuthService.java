@@ -12,6 +12,7 @@ import com.kelompok1.mydoc.data.remote.request.RegisterRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
@@ -24,5 +25,8 @@ public interface AuthService {
 
     @POST("v1/auth/refresh")
     Call<BaseApiResponse<String, Nullable>> refreshToken();
+
+    @DELETE("v1/auth/logout")
+    Call<BaseApiResponse<Nullable, Nullable>> logout();
 
 }
