@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 
 import com.kelompok1.mydoc.MvpApp;
 import com.kelompok1.mydoc.data.prefs.PrefManager;
+import com.kelompok1.mydoc.ui.onboarding.OnBoardingAct;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public abstract class BaseFragment<Presenter extends BasePresenter> extends Fragment implements MvpApp.AuthenticationListener {
     private ProgressDialog mProgressDialog;
@@ -36,7 +39,20 @@ public abstract class BaseFragment<Presenter extends BasePresenter> extends Frag
     {
         Context mContext = getContext();
         new PrefManager(mContext).logOut();
-        getActivity().finish();
+
+        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Oops...")
+                .setContentText("Sesi kamu telah habis!")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        startActivity(new Intent(getContext(), OnBoardingAct.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        getActivity().finish();
+                    }
+                })
+                .show();
+
 //        new iOSDialogBuilder(getActivity())
 //                .setTitle("Ooops...")
 //                .setSubtitle("Sesi telah habis, silakan login ulang.")

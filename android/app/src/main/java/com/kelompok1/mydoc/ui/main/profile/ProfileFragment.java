@@ -10,16 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kelompok1.mydoc.MvpApp;
+import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.data.remote.entities.UserResponse;
 import com.kelompok1.mydoc.databinding.FragmentProfileBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
+import com.kelompok1.mydoc.ui.edit_password.EditPasswordAct;
 import com.kelompok1.mydoc.ui.edit_profile.EditProfileAct;
 import com.kelompok1.mydoc.ui.onboarding.OnBoardingAct;
 import com.kelompok1.mydoc.utils.CommonUtils;
+import com.onurkagan.ksnack_lib.Animations.Slide;
+import com.onurkagan.ksnack_lib.KSnack.KSnack;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class ProfileFragment extends BaseFragment<ProfilePresenter> implements ProfileView{
     FragmentProfileBinding binding;
+    private int max_retry = 3;
 
     @NonNull
     @Override
@@ -73,13 +78,19 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements P
             }
         });
 
+        binding.btnEditPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), EditPasswordAct.class));
+            }
+        });
+
         binding.llKeluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 presenter.logout();
             }
         });
-
     }
 
     @Override
@@ -104,5 +115,29 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements P
         FancyToast.makeText(getContext(), "Berhasil logout", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
         getActivity().finishAffinity();
         startActivity(new Intent(getContext(), OnBoardingAct.class));
+    }
+
+    @Override
+    public void showErrorMessage(String msg) {
+
+        KSnack kSnack = new KSnack(getActivity());
+        kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
+                    @Override
+                    public void onClick(View v) {
+                        kSnack.dismiss();
+                        if(max_retry <= 0){
+                            FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                        } else {
+                            max_retry--;
+                            presenter.getUser();
+                        }
+                    }
+                })
+                .setMessage("Error : "+msg) // message
+                .setTextColor(R.color.white) // message text color
+                .setBackColor(R.color.red_400) // background color
+                .setButtonTextColor(R.color.white) // action button text color
+                .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
+                .show();
     }
 }

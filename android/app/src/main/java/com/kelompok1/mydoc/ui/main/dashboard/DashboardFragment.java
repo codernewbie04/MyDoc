@@ -1,6 +1,9 @@
 package com.kelompok1.mydoc.ui.main.dashboard;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,9 @@ import com.kelompok1.mydoc.data.remote.entities.UserResponse;
 import com.kelompok1.mydoc.databinding.FragmentDashboardBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
 import com.kelompok1.mydoc.utils.CommonUtils;
+import com.onurkagan.ksnack_lib.Animations.Slide;
+import com.onurkagan.ksnack_lib.KSnack.KSnack;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +36,8 @@ import java.util.List;
 public class DashboardFragment extends BaseFragment<DashboardPresenter> implements DashboardView {
 
     private FragmentDashboardBinding binding;
-
+    private Handler mHandler;
+    private int max_retry = 3;
 
     @NonNull
     @Override
@@ -61,11 +68,12 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
 
     @Override
     public void onUserLoggedOut() {
-
+        mHandler.obtainMessage(1, "logout").sendToTarget();
     }
 
     @Override
     public void initView() {
+        ((MvpApp) getContext().getApplicationContext()).setAuthenticationListener(this);
         UserResponse userData = ((MvpApp) getContext().getApplicationContext()).getSession().getUserData();
         String name = CommonUtils.getFirstName(userData.fullname);
         binding.txtHeading.setText(binding.txtHeading.getText().toString().replace("{{user}}", name));
@@ -76,6 +84,13 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
                 presenter.getDasbhoard();
             }
         });
+
+        mHandler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message message) {
+                logout();
+            }
+        };
     }
 
     @Override
@@ -129,5 +144,29 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
             binding.nodataReview.setVisibility(View.VISIBLE);
         }
         binding.swipeToRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void showErrorMessage(String msg) {
+
+        KSnack kSnack = new KSnack(getActivity());
+        kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
+                    @Override
+                    public void onClick(View v) {
+                        kSnack.dismiss();
+                        if(max_retry <= 0){
+                            FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                        } else {
+                            max_retry--;
+                            presenter.getDasbhoard();
+                        }
+                    }
+                })
+                .setMessage("Error : "+msg) // message
+                .setTextColor(R.color.white) // message text color
+                .setBackColor(R.color.red_400) // background color
+                .setButtonTextColor(R.color.white) // action button text color
+                .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
+                .show();
     }
 }

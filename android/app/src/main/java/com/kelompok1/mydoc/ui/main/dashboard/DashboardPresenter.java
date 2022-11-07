@@ -5,10 +5,15 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.google.gson.reflect.TypeToken;
 import com.kelompok1.mydoc.MvpApp;
 import com.kelompok1.mydoc.data.remote.entities.BaseApiResponse;
 import com.kelompok1.mydoc.data.remote.entities.DashboardResponse;
+import com.kelompok1.mydoc.data.remote.entities.LoginErrorResponse;
+import com.kelompok1.mydoc.data.remote.entities.LoginResponse;
 import com.kelompok1.mydoc.ui.base.BasePresenter;
+import com.kelompok1.mydoc.utils.CommonUtils;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,12 +35,15 @@ public class DashboardPresenter extends BasePresenter<DashboardView> {
                     view.setUser(data.user);
                     view.setHistory(data.history);
                     view.setMyReview(data.my_review);
+                } else {
+                    BaseApiResponse<DashboardResponse, Nullable> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<DashboardResponse, Nullable>>() {}.getType());
+                    view.showErrorMessage(errResponse.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<DashboardResponse, Nullable>> call, Throwable t) {
-                Log.d("Test_1", t.getMessage());
+                view.showErrorMessage(t.getMessage());
             }
         });
     }

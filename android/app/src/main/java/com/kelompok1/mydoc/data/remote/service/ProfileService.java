@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 
 import com.kelompok1.mydoc.data.remote.entities.BaseApiResponse;
 import com.kelompok1.mydoc.data.remote.entities.UserResponse;
+import com.kelompok1.mydoc.data.remote.request.EditPasswordRequest;
 import com.kelompok1.mydoc.data.remote.request.EditProfileRequest;
 
 import retrofit2.Call;
@@ -18,4 +19,7 @@ public interface ProfileService {
 
     @PUT("v1/profile/pasien")
     Call<BaseApiResponse<UserResponse, EditProfileRequest>> editProfile(@Body EditProfileRequest edit);
+
+    @PUT("v1/profile/pasien/password")
+    Call<BaseApiResponse<Nullable, EditPasswordRequest>> editPassword(@Body EditPasswordRequest edit);
 }

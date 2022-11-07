@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ListDokterView extends BaseView {
     void dokterLoaded(List<DetailDokterResponse> dokter);
+    void showErrorMessage(String msg);
 }

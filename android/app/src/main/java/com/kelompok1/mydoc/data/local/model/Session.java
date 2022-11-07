@@ -11,6 +11,5 @@ public interface Session {
     void saveUserData(UserResponse user);
     UserResponse getUserData();
     String getToken();
-
     void invalidate();
 }

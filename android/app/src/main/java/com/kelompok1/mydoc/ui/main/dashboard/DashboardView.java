@@ -11,4 +11,5 @@ public interface DashboardView extends BaseView {
     void setUser(UserResponse user);
     void setHistory(List<HistoryResponse> history);
     void setMyReview(List<MyReviewResponse> my_review);
+    void showErrorMessage(String msg);
 }

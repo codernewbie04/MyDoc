@@ -24,6 +24,9 @@ import com.kelompok1.mydoc.databinding.FragmentListDokterBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
 import com.kelompok1.mydoc.ui.main.dashboard.DashboardPresenter;
 import com.kelompok1.mydoc.ui.main.dashboard.DashboardView;
+import com.onurkagan.ksnack_lib.Animations.Slide;
+import com.onurkagan.ksnack_lib.KSnack.KSnack;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
 
@@ -31,7 +34,7 @@ import java.util.List;
 public class ListDokterFragment extends BaseFragment<ListDokterPresenter> implements ListDokterView {
 
     private FragmentListDokterBinding binding;
-
+    private int max_retry = 3;
 
     @NonNull
     @Override
@@ -82,5 +85,29 @@ public class ListDokterFragment extends BaseFragment<ListDokterPresenter> implem
         if(dokter.size() <= 0){
             binding.emptyState.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void showErrorMessage(String msg) {
+
+        KSnack kSnack = new KSnack(getActivity());
+        kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
+                    @Override
+                    public void onClick(View v) {
+                        kSnack.dismiss();
+                        if(max_retry <= 0){
+                            FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                        } else {
+                            max_retry--;
+                            presenter.getListDokter();
+                        }
+                    }
+                })
+                .setMessage("Error : "+msg) // message
+                .setTextColor(R.color.white) // message text color
+                .setBackColor(R.color.red_400) // background color
+                .setButtonTextColor(R.color.white) // action button text color
+                .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
+                .show();
     }
 }

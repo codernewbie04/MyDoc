@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface HistoryBerobatView extends BaseView {
     void loadHistoryBerobat(List<HistoryResponse> data);
+    void showErrorMessage(String msg);
 }
