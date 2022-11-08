@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/container"
+    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal1">
+
+    <ImageView
+        android:id="@+id/imageStar"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_star"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/textLabelMentorReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/lexend_regular"
+        android:text="Rating Dokter"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageStar"
+        app:layout_constraintTop_toTopOf="@+id/imageStar" />
+
+    <RatingBar
+        android:id="@+id/allRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressTint="#FFCC01"
+        android:rating="4.5"
+        android:stepSize="0.1"
+        app:layout_constraintStart_toStartOf="@+id/imageStar"
+        app:layout_constraintTop_toBottomOf="@+id/imageStar" />
+
+    <TextView
+        android:id="@+id/textAllRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/lexend_light"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/allRating"
+        app:layout_constraintStart_toEndOf="@+id/allRating"
+        app:layout_constraintTop_toTopOf="@+id/allRating"
+        tools:ignore="SmallSp"
+        tools:text="4.5" />
+
+    <TextView
+        android:id="@+id/textAllCountReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/lexend_light"
+        android:includeFontPadding="false"
+        android:textColor="@color/gray_600"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textAllRating"
+        app:layout_constraintStart_toEndOf="@+id/textAllRating"
+        app:layout_constraintTop_toTopOf="@+id/textAllRating"
+        tools:ignore="SmallSp"
+        tools:text="(81 ulasan)" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSeeAllReview"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/lexend_light"
+        android:includeFontPadding="false"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Lihat Ulasan"
+        android:textAllCaps="false"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_round_arrow_right"
+        app:iconGravity="textEnd"
+        app:iconSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/allRating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageStar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginBottom="24dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allRating"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_my_review" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

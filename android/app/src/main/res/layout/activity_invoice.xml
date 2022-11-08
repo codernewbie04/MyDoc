@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.invoice.InvoiceAct">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/tool_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/textLabelPaymentMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Pembayaran via"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textPaymentMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentMethod"
+                    tools:text="Virtual account bank BCA" />
+
+                <ImageView
+                    android:id="@+id/imagePaymentMethode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/logo"
+                    app:layout_constraintBottom_toBottomOf="@+id/textPaymentMethod"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textPaymentMethod" />
+
+                <TextView
+                    android:id="@+id/textLabelNoInvoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="No. Invoice"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textPaymentMethod"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textNoInvoice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelNoInvoice"
+                    tools:text="HM-256-028" />
+
+                <TextView
+                    android:id="@+id/textLabelPaymentDeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Batas waktu pembayaran"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textNoInvoice"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textPaymentDeadline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentDeadline"
+                    tools:text="Minggu, 24 Juli 2021, 14:30 WIB" />
+
+                <TextView
+                    android:id="@+id/textLabelPaymentStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Status pembayaran"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textPaymentDeadline"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textPaymentStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_rectangle_radius_50"
+                    android:backgroundTint="@color/red_400"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:paddingStart="14dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="6dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentStatus"
+                    tools:ignore="SmallSp,TextContrastCheck,TextContrastCheck"
+                    tools:text="Belum bayar" />
+
+                <TextView
+                    android:id="@+id/textLabelAmountPaid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Total yang harus di bayar"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textPaymentStatus"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textAmountPaid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelAmountPaid"
+                    tools:text="Rp25.000" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCopyAmountPaid"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Salin"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_main"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textAmountPaid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textLabelAmountPaid"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/textLabelTransferNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Nomor Virtual Account"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textAmountPaid"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textTransferNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelTransferNumber"
+                    tools:text="8578102777802613" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCopyTransferNumber"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Salin"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_main"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textTransferNumber"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textLabelTransferNumber"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupTransferNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="textLabelTransferNumber,textTransferNumber,buttonCopyTransferNumber" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupFreeConsult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="textLabelPaymentMethod,buttonCopyTransferNumber,textPaymentDeadline,buttonCopyAmountPaid,imagePaymentMethode,textTransferNumber,textLabelAmountPaid,textLabelPaymentDeadline,textLabelTransferNumber,textPaymentMethod,textAmountPaid" />
+
+
+                <View
+                    android:id="@+id/viewLineHorizontal1"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/gray_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTransferNumber"
+                    app:layout_goneMarginTop="24dp" />
+
+                <LinearLayout
+                    android:id="@+id/containerPaymentInstruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal1">
+<!--                    petunjuk pembayaran-->
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/viewLineHorizontalAdditionalInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@color/gray_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/containerPaymentInstruction" />
+
+                <TextView
+                    android:id="@+id/textLabelAdditionalInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Informasi tambahan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontalAdditionalInfo" />
+
+                <TextView
+                    android:id="@+id/textAdditionalInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Pesananmu sedang kami proses, silahkan menunggu konfirmasi dari mentor"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelAdditionalInfo" />
+
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupAdditionalInfo"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="textAdditionalInfo,textLabelAdditionalInfo,viewLineHorizontalAdditionalInfo" />
+
+                <View
+                    android:id="@+id/viewLineHorizontal2"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/gray_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textAdditionalInfo" />
+
+                <TextView
+                    android:id="@+id/textLabelOrderInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Informasi Pesanan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal2" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/containerImageMentor"
+                    android:layout_width="108dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="19dp"
+                    app:cardCornerRadius="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelOrderInformation">
+
+                    <ImageView
+                        android:id="@+id/imageProfileMentor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/image_description"
+                        android:scaleType="centerCrop"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textLabelMentor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/lexend_light"
+                    android:text="Dokter"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
+                    app:layout_constraintTop_toTopOf="@+id/containerImageMentor"
+                    tools:ignore="SmallSp" />
+
+
+                <TextView
+                    android:id="@+id/textMentorName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelMentor"
+                    tools:text="Budiman Rahardja (Fotografer &amp; Videografer)" />
+
+                <TextView
+                    android:id="@+id/textLabelDateOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/lexend_light"
+                    android:text="Tanggal Pemesanan"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
+                    app:layout_constraintTop_toBottomOf="@+id/textMentorName"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/textDateOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelDateOrder"
+                    tools:text="23 Juli 2021 Pukul 12:07" />
+
+                <TextView
+                    android:id="@+id/textLabelScheduleConsultation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/lexend_light"
+                    android:text="Jadwal Berobat"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
+                    app:layout_constraintTop_toBottomOf="@+id/textDateOrder"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/textScheduleConsultation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelScheduleConsultation"
+                    tools:text="23 Juli 2021 setelah pembayaran dikonfirmasi (Chat sekarang)" />
+
+                <View
+                    android:id="@+id/viewLineHorizontal3"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/gray_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textScheduleConsultation" />
+
+
+                <TextView
+                    android:id="@+id/textLabelPricingDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Informasi Pesanan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal3" />
+
+
+                <TextView
+                    android:id="@+id/textLabelTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Sesi yang di pesan"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelPricingDetails" />
+
+                <TextView
+                    android:id="@+id/textInformationPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="6dp"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="ASD"
+                    android:textColor="@color/gray_600"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelTotalPrice"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/textTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textLabelTotalPrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textLabelTotalPrice"
+                    tools:text="Rp25.000.000,-" />
+
+
+                <TextView
+                    android:id="@+id/textLabelServiceFee"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Service Fee"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInformationPrice" />
+
+                <TextView
+                    android:id="@+id/textServiceFee"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/textLabelServiceFee"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textLabelServiceFee"
+                    app:layout_constraintTop_toTopOf="@+id/textLabelServiceFee"
+                    tools:text="Rp1.000,-" />
+
+
+                <TextView
+                    android:id="@+id/textLabelDiscount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Diskon"
+                    android:textColor="@color/red_400"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelServiceFee" />
+
+                <TextView
+                    android:id="@+id/textTotalDiscount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/red_400"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textLabelDiscount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textLabelDiscount"
+                    app:layout_constraintTop_toTopOf="@+id/textLabelDiscount"
+                    tools:text="Rp0,-" />
+
+                <TextView
+                    android:id="@+id/textLabelGrandTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="88dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Jumlah yang dibayar"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelDiscount"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textGrandTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textLabelGrandTotal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textLabelGrandTotal"
+                    app:layout_constraintTop_toTopOf="@+id/textLabelGrandTotal"
+                    tools:text="Rp26.000,-" />
+
+                <View
+                    android:id="@+id/viewLineHorizontal4"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/gray_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLabelGrandTotal" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupButtonCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="viewLineHorizontal4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_regular"
+            android:includeFontPadding="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Selesai"
+            android:textAllCaps="false"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/green_main"
+        android:visibility="invisible" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

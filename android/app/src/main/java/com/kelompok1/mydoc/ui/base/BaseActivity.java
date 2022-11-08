@@ -42,7 +42,7 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
     }
 
     public void showErrorMessage(String msg){
-        Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 
