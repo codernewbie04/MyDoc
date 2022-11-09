@@ -1,7 +1,8 @@
-package com.kelompok1.mydoc.ui.detail_dokter;
+package com.kelompok1.mydoc.ui.booking_order;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.os.Bundle;
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.ui.base.BaseActivity;
 
-public class DetailDokterAct extends BaseActivity<DetailDokterPresenter> implements DetailDokterView {
+public class BookingOrderAct extends BaseActivity<DetailDokterPresenter> implements DetailDokterView {
     Context mContext;
     @NonNull
     @Override
@@ -21,6 +22,9 @@ public class DetailDokterAct extends BaseActivity<DetailDokterPresenter> impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_dokter);
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController();
     }
 
     @Override
@@ -31,5 +35,10 @@ public class DetailDokterAct extends BaseActivity<DetailDokterPresenter> impleme
     @Override
     public Context getContext() {
         return mContext;
+    }
+
+    @Override
+    public void onError(String msg) {
+
     }
 }

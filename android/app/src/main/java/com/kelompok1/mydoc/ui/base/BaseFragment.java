@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.kelompok1.mydoc.MvpApp;
 import com.kelompok1.mydoc.data.prefs.PrefManager;
 import com.kelompok1.mydoc.ui.onboarding.OnBoardingAct;
+import com.kelompok1.mydoc.utils.CommonUtils;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -34,6 +36,26 @@ public abstract class BaseFragment<Presenter extends BasePresenter> extends Frag
         ((MvpApp) getContext().getApplicationContext()).setAuthenticationListener(this);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
+    public void showErrorMessage(String msg){
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showSuccessMessage(String msg){
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showLoading() {
+        hideLoading();
+        mProgressDialog = CommonUtils.showLoadingDialog(getActivity());
+    }
+
+    public void hideLoading() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.cancel();
+        }
+    }
+
 
     public void logout()
     {

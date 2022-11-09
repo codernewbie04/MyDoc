@@ -29,14 +29,14 @@ public class EditPasswordPresenter extends BasePresenter<EditPasswordView> {
                     view.successUpdate(response.body().getMessage());
                 } else {
                     BaseApiResponse<Nullable, EditPasswordRequest> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<Nullable, EditPasswordRequest>>() {}.getType());
-                    view.failedUpdate(errResponse.getMessage());
+                    view.onError(errResponse.getMessage());
                     view.formError(errResponse.getForm_error());
                 }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<Nullable, EditPasswordRequest>> call, Throwable t) {
-                view.failedUpdate(t.getMessage());
+                view.onError(t.getMessage());
             }
         });
     }

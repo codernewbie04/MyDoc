@@ -8,22 +8,14 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import com.kelompok1.mydoc.R;
-import com.kelompok1.mydoc.adapter.HistoryAdapter;
 import com.kelompok1.mydoc.adapter.ListDokterAdapter;
-import com.kelompok1.mydoc.data.remote.entities.DetailDokterResponse;
-import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
-import com.kelompok1.mydoc.data.remote.entities.MyReviewResponse;
-import com.kelompok1.mydoc.data.remote.entities.UserResponse;
+import com.kelompok1.mydoc.data.remote.entities.ListDokterResponse;
 import com.kelompok1.mydoc.databinding.FragmentListDokterBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
-import com.kelompok1.mydoc.ui.main.dashboard.DashboardPresenter;
-import com.kelompok1.mydoc.ui.main.dashboard.DashboardView;
 import com.onurkagan.ksnack_lib.Animations.Slide;
 import com.onurkagan.ksnack_lib.KSnack.KSnack;
 import com.shashank.sony.fancytoastlib.FancyToast;
@@ -64,32 +56,7 @@ public class ListDokterFragment extends BaseFragment<ListDokterPresenter> implem
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-    @Override
-    public void onUserLoggedOut() {
-
-    }
-
-
-    @Override
-    public void dokterLoaded(List<DetailDokterResponse> dokter) {
-        binding.rvListdokter.setHasFixedSize(true);
-        binding.rvListdokter.setNestedScrollingEnabled(false);
-        binding.rvListdokter.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        binding.rvListdokter.setAdapter(new ListDokterAdapter(dokter, getContext()));
-        binding.pbListDokter.setVisibility(View.GONE);
-        if(dokter.size() <= 0){
-            binding.emptyState.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void showErrorMessage(String msg) {
-
+    public void onError(String msg) {
         KSnack kSnack = new KSnack(getActivity());
         kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
                     @Override
@@ -109,5 +76,29 @@ public class ListDokterFragment extends BaseFragment<ListDokterPresenter> implem
                 .setButtonTextColor(R.color.white) // action button text color
                 .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
                 .show();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    @Override
+    public void onUserLoggedOut() {
+
+    }
+
+
+    @Override
+    public void dokterLoaded(List<ListDokterResponse> dokter) {
+        binding.rvListdokter.setHasFixedSize(true);
+        binding.rvListdokter.setNestedScrollingEnabled(false);
+        binding.rvListdokter.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        binding.rvListdokter.setAdapter(new ListDokterAdapter(dokter, getContext()));
+        binding.pbListDokter.setVisibility(View.GONE);
+        if(dokter.size() <= 0){
+            binding.emptyState.setVisibility(View.VISIBLE);
+        }
     }
 }

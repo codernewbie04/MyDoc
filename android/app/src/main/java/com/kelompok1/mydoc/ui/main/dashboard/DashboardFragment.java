@@ -20,7 +20,7 @@ import com.kelompok1.mydoc.adapter.HistoryAdapter;
 import com.kelompok1.mydoc.adapter.MyReviewAdapter;
 import com.kelompok1.mydoc.adapter.sheet.ListReviewsSheet;
 import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
-import com.kelompok1.mydoc.data.remote.entities.MyReviewResponse;
+import com.kelompok1.mydoc.data.remote.entities.RatingsResponse;
 import com.kelompok1.mydoc.data.remote.entities.UserResponse;
 import com.kelompok1.mydoc.databinding.FragmentDashboardBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
@@ -94,6 +94,29 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
     }
 
     @Override
+    public void onError(String msg) {
+        KSnack kSnack = new KSnack(getActivity());
+        kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
+                    @Override
+                    public void onClick(View v) {
+                        kSnack.dismiss();
+                        if(max_retry <= 0){
+                            FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                        } else {
+                            max_retry--;
+                            presenter.getDasbhoard();
+                        }
+                    }
+                })
+                .setMessage("Error : "+msg) // message
+                .setTextColor(R.color.white) // message text color
+                .setBackColor(R.color.red_400) // background color
+                .setButtonTextColor(R.color.white) // action button text color
+                .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
+                .show();
+    }
+
+    @Override
     public void setUser(UserResponse user) {
         if(user != null){
             String name = user.fullname.split(" ", -2)[0];
@@ -117,8 +140,8 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
     }
 
     @Override
-    public void setMyReview(List<MyReviewResponse> my_review) {
-        List<MyReviewResponse> max5Review = new ArrayList<>();
+    public void setMyReview(List<RatingsResponse> my_review) {
+        List<RatingsResponse> max5Review = new ArrayList<>();
         if(my_review.size() > 5){
             for(int i =0; i < 5; i ++){
                 max5Review.add(my_review.get(i));
@@ -144,29 +167,5 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
             binding.nodataReview.setVisibility(View.VISIBLE);
         }
         binding.swipeToRefreshLayout.setRefreshing(false);
-    }
-
-    @Override
-    public void showErrorMessage(String msg) {
-
-        KSnack kSnack = new KSnack(getActivity());
-        kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
-                    @Override
-                    public void onClick(View v) {
-                        kSnack.dismiss();
-                        if(max_retry <= 0){
-                            FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                        } else {
-                            max_retry--;
-                            presenter.getDasbhoard();
-                        }
-                    }
-                })
-                .setMessage("Error : "+msg) // message
-                .setTextColor(R.color.white) // message text color
-                .setBackColor(R.color.red_400) // background color
-                .setButtonTextColor(R.color.white) // action button text color
-                .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
-                .show();
     }
 }

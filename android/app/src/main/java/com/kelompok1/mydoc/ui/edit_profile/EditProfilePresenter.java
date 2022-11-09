@@ -31,7 +31,7 @@ public class EditProfilePresenter extends BasePresenter<EditProfileView> {
                 } else {
                     BaseApiResponse<UserResponse, EditProfileRequest> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<UserResponse, EditProfileRequest>>() {}.getType());
                     if(errResponse.getForm_error() == null){
-                        view.failedUpdate(errResponse.getMessage());
+                        view.onError(errResponse.getMessage());
                     } else {
                         view.formError(errResponse.getForm_error());
                     }
@@ -40,7 +40,7 @@ public class EditProfilePresenter extends BasePresenter<EditProfileView> {
 
             @Override
             public void onFailure(Call<BaseApiResponse<UserResponse, EditProfileRequest>> call, Throwable t) {
-                view.failedUpdate(t.getMessage());
+                view.onError(t.getMessage());
             }
         });
     }

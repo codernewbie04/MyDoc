@@ -6,19 +6,19 @@
     app:startDestination="@id/detail_mentor">
     <fragment
         android:id="@+id/detail_mentor"
-        android:name="com.kelompok1.mydoc.ui.detail_dokter.detail.DetailMentorFragment"
+        android:name="com.kelompok1.mydoc.ui.booking_order.detail.DetailDokterFragment"
         android:label="Detail Mentor"
-        tools:layout="@layout/fragment_detail_mentor">
+        tools:layout="@layout/fragment_detail_dokter">
         <action
-            android:id="@+id/action_detail_schedule"
-            app:destination="@id/detail_schedule" />
+            android:id="@+id/action_booking_dokter"
+            app:destination="@id/booking_dokter" />
     </fragment>
 
     <fragment
-        android:id="@+id/detail_schedule"
-        android:name="com.kelompok1.mydoc.ui.detail_dokter.detail_schedule.DetailScheduleFragment"
-        android:label="Detail Schedule"
-        tools:layout="@layout/fragment_detail_schedule">
+        android:id="@+id/booking_dokter"
+        android:name="com.kelompok1.mydoc.ui.booking_order.booking_dokter.BookingDokterFragment"
+        android:label="Booking Dokter"
+        tools:layout="@layout/fragment_booking_dokter">
         <action
             android:id="@+id/action_payment_method"
             app:destination="@id/payment_method" />
@@ -26,7 +26,7 @@
 
     <dialog
         android:id="@+id/payment_method"
-        android:name="com.kelompok1.mydoc.ui.detail_dokter.payment_method.PaymentMethod"
+        android:name="com.kelompok1.mydoc.ui.booking_order.payment_method.PaymentMethodFragment"
         android:label="bottom_sheet_fragment_payment_methode"
         tools:layout="@layout/sheet_payment_method" />
 

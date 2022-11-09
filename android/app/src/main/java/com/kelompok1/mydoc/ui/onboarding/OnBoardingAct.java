@@ -69,6 +69,11 @@ public class OnBoardingAct extends BaseActivity<OnBoardingPresenter> implements 
         return mContext;
     }
 
+    @Override
+    public void onError(String msg) {
+
+    }
+
     private void setAutoSlide(List<OnBoardingUIModel> models){
         final Handler handler = new Handler();
         final Runnable Update = new Runnable() {

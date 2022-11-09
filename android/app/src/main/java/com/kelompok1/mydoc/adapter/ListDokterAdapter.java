@@ -5,23 +5,22 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kelompok1.mydoc.data.remote.entities.DetailDokterResponse;
+import com.kelompok1.mydoc.data.remote.entities.ListDokterResponse;
 import com.kelompok1.mydoc.databinding.ItemListDokterBinding;
-import com.kelompok1.mydoc.ui.detail_dokter.DetailDokterAct;
+import com.kelompok1.mydoc.ui.booking_order.BookingOrderAct;
 import com.kelompok1.mydoc.utils.CommonUtils;
 
 import java.util.List;
 
 public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.ViewHolder>{
-    List<DetailDokterResponse> dataList;
+    List<ListDokterResponse> dataList;
     Context mContext;
 
-    public ListDokterAdapter(List<DetailDokterResponse> dataList, Context mContext) {
+    public ListDokterAdapter(List<ListDokterResponse> dataList, Context mContext) {
         this.dataList = dataList;
         this.mContext = mContext;
     }
@@ -51,7 +50,7 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Vi
             this.itemView = itemView;
         }
 
-        public void bind(DetailDokterResponse data) {
+        public void bind(ListDokterResponse data) {
             itemView.txtNamaDokter.setText(data.nama);
             itemView.txtProfession.setText(data.profession);
             itemView.txtInstansi.setText(data.instansi);
@@ -62,7 +61,7 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Vi
             itemView.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mContext.startActivity(new Intent(mContext, DetailDokterAct.class));
+                    mContext.startActivity(new Intent(mContext, BookingOrderAct.class));
                 }
             });
         }

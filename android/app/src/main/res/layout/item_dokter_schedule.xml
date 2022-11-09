@@ -7,6 +7,7 @@
 
     <TextView
         android:id="@+id/txt_title"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -14,7 +15,7 @@
         android:includeFontPadding="false"
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/lexend_regular"
-        android:textColor="@color/black"
+        android:textColor="@color/blue_main"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,14 +24,15 @@
 
 
     <TextView
-        android:id="@+id/textTimeSchedule"
+        android:id="@+id/txt_time"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/lexend_regular"
-        android:textColor="@color/black"
+        android:textColor="@color/blue_main"
         android:includeFontPadding="false"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,7 +8,7 @@
     app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal1">
 
     <ImageView
-        android:id="@+id/imageStar"
+        android:id="@+id/img_star"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="24dp"
@@ -20,7 +20,7 @@
         app:tint="@color/black" />
 
     <TextView
-        android:id="@+id/textLabelMentorReview"
+        android:id="@+id/txt_label_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -28,11 +28,11 @@
         android:text="Rating Dokter"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/imageStar"
-        app:layout_constraintTop_toTopOf="@+id/imageStar" />
+        app:layout_constraintStart_toEndOf="@+id/img_star"
+        app:layout_constraintTop_toTopOf="@+id/img_star" />
 
     <RatingBar
-        android:id="@+id/allRating"
+        android:id="@+id/rating"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,11 +42,11 @@
         android:progressTint="#FFCC01"
         android:rating="4.5"
         android:stepSize="0.1"
-        app:layout_constraintStart_toStartOf="@+id/imageStar"
-        app:layout_constraintTop_toBottomOf="@+id/imageStar" />
+        app:layout_constraintStart_toStartOf="@+id/img_star"
+        app:layout_constraintTop_toBottomOf="@+id/img_star" />
 
     <TextView
-        android:id="@+id/textAllRating"
+        android:id="@+id/txt_avg_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -54,14 +54,14 @@
         android:includeFontPadding="false"
         android:textColor="@color/black"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/allRating"
-        app:layout_constraintStart_toEndOf="@+id/allRating"
-        app:layout_constraintTop_toTopOf="@+id/allRating"
+        app:layout_constraintBottom_toBottomOf="@+id/rating"
+        app:layout_constraintStart_toEndOf="@+id/rating"
+        app:layout_constraintTop_toTopOf="@+id/rating"
         tools:ignore="SmallSp"
         tools:text="4.5" />
 
     <TextView
-        android:id="@+id/textAllCountReview"
+        android:id="@+id/txt_count_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -69,14 +69,14 @@
         android:includeFontPadding="false"
         android:textColor="@color/gray_600"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textAllRating"
-        app:layout_constraintStart_toEndOf="@+id/textAllRating"
-        app:layout_constraintTop_toTopOf="@+id/textAllRating"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_avg_rating"
+        app:layout_constraintStart_toEndOf="@+id/txt_avg_rating"
+        app:layout_constraintTop_toTopOf="@+id/txt_avg_rating"
         tools:ignore="SmallSp"
         tools:text="(81 ulasan)" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonSeeAllReview"
+        android:id="@+id/btn_show_all_review"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,12 +93,12 @@
         app:icon="@drawable/ic_round_arrow_right"
         app:iconGravity="textEnd"
         app:iconSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/allRating"
+        app:layout_constraintBottom_toBottomOf="@+id/rating"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageStar" />
+        app:layout_constraintTop_toTopOf="@+id/img_star" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvReview"
+        android:id="@+id/rv_review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -110,7 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allRating"
+        app:layout_constraintTop_toBottomOf="@+id/rating"
         tools:itemCount="2"
         tools:listitem="@layout/item_my_review" />
 

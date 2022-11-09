@@ -37,13 +37,13 @@ public class DashboardPresenter extends BasePresenter<DashboardView> {
                     view.setMyReview(data.my_review);
                 } else {
                     BaseApiResponse<DashboardResponse, Nullable> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<DashboardResponse, Nullable>>() {}.getType());
-                    view.showErrorMessage(errResponse.getMessage());
+                    view.onError(errResponse.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<DashboardResponse, Nullable>> call, Throwable t) {
-                view.showErrorMessage(t.getMessage());
+                view.onError(t.getMessage());
             }
         });
     }

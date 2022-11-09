@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.kelompok1.mydoc.adapter.MyReviewAdapter;
-import com.kelompok1.mydoc.data.remote.entities.MyReviewResponse;
+import com.kelompok1.mydoc.data.remote.entities.RatingsResponse;
 import com.kelompok1.mydoc.databinding.SheetListReviewsBinding;
 
 import java.util.List;
 
 public class ListReviewsSheet extends BottomSheetDialogFragment {
-    List<MyReviewResponse> dataList;
+    List<RatingsResponse> dataList;
     SheetListReviewsBinding binding;
 
 
-    public ListReviewsSheet(List<MyReviewResponse> data ){
+    public ListReviewsSheet(List<RatingsResponse> data ){
         this.dataList = data;
     }
 

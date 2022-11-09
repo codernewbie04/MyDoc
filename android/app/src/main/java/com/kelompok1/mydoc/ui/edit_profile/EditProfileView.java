@@ -5,6 +5,5 @@ import com.kelompok1.mydoc.ui.base.BaseView;
 
 public interface EditProfileView extends BaseView {
     void successUpdate(String msg);
-    void failedUpdate(String msg);
     void formError(EditProfileRequest error);
 }

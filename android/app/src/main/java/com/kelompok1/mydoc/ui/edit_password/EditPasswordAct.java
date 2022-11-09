@@ -52,7 +52,7 @@ public class EditPasswordAct extends BaseActivity<EditPasswordPresenter> impleme
     }
 
     @Override
-    public void failedUpdate(String msg) {
+    public void onError(String msg) {
         hideLoading();
         showErrorMessage(msg);
     }

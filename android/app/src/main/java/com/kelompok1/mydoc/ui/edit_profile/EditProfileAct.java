@@ -92,7 +92,7 @@ public class EditProfileAct extends BaseActivity<EditProfilePresenter> implement
     }
 
     @Override
-    public void failedUpdate(String msg) {
+    public void onError(String msg) {
         hideLoading();
         showErrorMessage(msg);
     }

@@ -64,8 +64,7 @@ public class HistoryBerobatFragment extends BaseFragment<HistoryBerobatPresenter
     }
 
     @Override
-    public void showErrorMessage(String msg) {
-
+    public void onError(String msg) {
         KSnack kSnack = new KSnack(getActivity());
         kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
                     @Override

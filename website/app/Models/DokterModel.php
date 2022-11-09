@@ -49,18 +49,6 @@ class DokterModel extends Model
         $inv_model = new InvoiceModel();
         foreach($doctor as $dct){
             $dct["review"] = $inv_model->getReview($dct['id']);
-            $schedule =$this->getSchedule($dct['id']);
-            $dct["schedule"] = ["list_schedule" => $schedule];
-
-            $day = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
-            $listHari = array();
-            foreach($schedule as $s){
-                if(in_array($s['day'], $day)){
-                    $key = array_search($s['day'], $day);
-                    unset($day[$key]);
-                }
-            }
-            $dct["schedule"]["no_schedule_at"] = array_values($day);   
             array_push($dr, $dct);
         }
         
@@ -79,21 +67,67 @@ class DokterModel extends Model
             return null;
         $inv_model = new InvoiceModel();
         $doctor["review"] = $inv_model->getReview($doctor['id']);
-        $schedule = $this->getSchedule($doctor['id']);
-        $doctor["schedule"] = ["list_schedule" => $schedule];
+        $jadwal = $this->getSchedule($doctor['id']);
+        
 
         $day = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
         $listHari = array();
-        foreach($schedule as $s){
+        foreach($jadwal as $s){
             if(in_array($s['day'], $day)){
                 $key = array_search($s['day'], $day);
                 unset($day[$key]);
             }
         }
-        $doctor["schedule"]["no_schedule_at"] = array_values($day);   
+        foreach($day as $d){
+            array_push($jadwal, [
+                'id' => -1,
+                'dokter_id' => -1,
+                'day' => $d,
+                'time_start' => null,
+                "time_end" => null,
+                'created_at' => null
+            ]);
+        }
+
+        $prio = [
+            "Senin"     => 7, 
+            "Selasa"    => 6, 
+            "Rabu"      => 5, 
+            "Kamis"     => 4,
+            "Jumat"     => 3,
+            "Sabtu"     => 2, 
+            "Minggu"    => 1
+        ];
+        $jadwal = array_values($this->sorting_day($jadwal, "day", $prio));
+        $doctor["schedule"] = $jadwal;
         
 
         return $doctor;
+    }
+
+    private function sorting_day(array &$array, $offset, array $priorities)
+    {
+        uasort($array, function ($a, $b) use ($offset, $priorities) {
+            if (!isset($a[$offset])) {
+                return !isset($b[$offset])
+                    ? 0
+                    : 1; // down
+            } elseif (!isset($b[$offset])) {
+                return -1; // up
+            }
+            if (isset($priorities[$a[$offset]])) {
+                if (!isset($priorities[$b[$offset]])) {
+                    return -1; // up
+                }
+                return $priorities[$a[$offset]] > $priorities[$b[$offset]]
+                    ? -1 // up
+                    : 1; // down
+            }
+            return isset($priorities[$b[$offset]])
+                ? 1 // down
+                : 0;
+        });
+        return $array;
     }
 
     private function getSchedule($id = 0){

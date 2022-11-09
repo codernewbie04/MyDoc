@@ -17,5 +17,5 @@ public class DashboardResponse {
 
     @SerializedName("my_review")
     @Expose
-    public List<MyReviewResponse> my_review = new ArrayList<>();
+    public List<RatingsResponse> my_review = new ArrayList<>();
 }

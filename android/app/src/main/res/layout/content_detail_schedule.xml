@@ -8,31 +8,32 @@
     app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal0">
 
     <TextView
-        android:id="@+id/textLabelMentorSchedule"
+        android:id="@+id/txt_label_schedule"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lexend_regular"
-        android:text="Jadwal mentor"
+        android:text="Jadwal dokter"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageArrowDropDown"
+        android:id="@+id/img_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image_description"
         android:padding="8dp"
         android:src="@drawable/ic_arrow_up"
-        app:layout_constraintBottom_toBottomOf="@+id/textLabelMentorSchedule"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_label_schedule"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textLabelMentorSchedule" />
+        app:layout_constraintTop_toTopOf="@+id/txt_label_schedule" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMentorSchedule"
+        android:id="@+id/rv_schedule_dokter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -43,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLabelMentorSchedule"
+        app:layout_constraintTop_toBottomOf="@+id/txt_label_schedule"
         tools:itemCount="7"
         tools:listitem="@layout/item_dokter_schedule" />
 

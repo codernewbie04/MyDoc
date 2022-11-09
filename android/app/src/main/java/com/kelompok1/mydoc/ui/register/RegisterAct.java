@@ -50,6 +50,11 @@ public class RegisterAct extends BaseActivity<RegisterPresenter> implements Regi
     }
 
     @Override
+    public void onError(String msg) {
+
+    }
+
+    @Override
     public void toastMsg(String msg, int status) {
         hideLoading();
         FancyToast.makeText(mContext, msg, FancyToast.LENGTH_SHORT, status, false).show();

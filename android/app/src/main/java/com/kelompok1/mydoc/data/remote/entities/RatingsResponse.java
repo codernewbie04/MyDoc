@@ -8,6 +8,14 @@ public class RatingsResponse {
     @Expose
     public int id;
 
+    @SerializedName("invoice_id")
+    @Expose
+    public int invoice_id;
+
+    @SerializedName("reviewed_by")
+    @Expose
+    public UserResponse reviewed_by;
+
     @SerializedName("star")
     @Expose
     public int star;
@@ -20,10 +28,7 @@ public class RatingsResponse {
     @Expose
     public String created_at;
 
-    @SerializedName("reviewed_by")
+    @SerializedName("dokter")
     @Expose
-    public ReviewedByResponse reviewed_by;
-
-
-
+    public DokterResponse dokter;
 }

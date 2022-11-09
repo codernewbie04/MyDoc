@@ -1,21 +1,20 @@
 package com.kelompok1.mydoc.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kelompok1.mydoc.data.remote.entities.MyReviewResponse;
+import com.kelompok1.mydoc.data.remote.entities.RatingsResponse;
 import com.kelompok1.mydoc.databinding.ItemMyReviewBinding;
 
 import java.util.List;
 
 public class MyReviewAdapter extends RecyclerView.Adapter<MyReviewAdapter.ViewHolder>{
-    List<MyReviewResponse> dataList;
+    List<RatingsResponse> dataList;
 
-    public MyReviewAdapter(List<MyReviewResponse> dataList) {
+    public MyReviewAdapter(List<RatingsResponse> dataList) {
         this.dataList = dataList;
     }
 
@@ -44,7 +43,7 @@ public class MyReviewAdapter extends RecyclerView.Adapter<MyReviewAdapter.ViewHo
             this.itemView = itemView;
         }
 
-        public void bind(MyReviewResponse data){
+        public void bind(RatingsResponse data){
             if(data.dokter != null){
                 itemView.txtName.setText(data.dokter.nama);
             }

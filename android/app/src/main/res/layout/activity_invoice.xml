@@ -158,7 +158,7 @@
                     tools:text="Belum bayar" />
 
                 <TextView
-                    android:id="@+id/textLabelAmountPaid"
+                    android:id="@+id/txt_label_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -172,7 +172,7 @@
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textAmountPaid"
+                    android:id="@+id/txt_amount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -181,7 +181,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelAmountPaid"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_amount"
                     tools:text="Rp25.000" />
 
                 <com.google.android.material.button.MaterialButton
@@ -197,9 +197,9 @@
                     android:textAllCaps="false"
                     android:textColor="@color/blue_main"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textAmountPaid"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_amount"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textLabelAmountPaid"
+                    app:layout_constraintTop_toTopOf="@+id/txt_label_amount"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -213,7 +213,7 @@
                     android:textColor="@color/gray_600"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textAmountPaid"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_amount"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
@@ -259,7 +259,7 @@
                     android:id="@+id/groupFreeConsult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:constraint_referenced_ids="textLabelPaymentMethod,buttonCopyTransferNumber,textPaymentDeadline,buttonCopyAmountPaid,imagePaymentMethode,textTransferNumber,textLabelAmountPaid,textLabelPaymentDeadline,textLabelTransferNumber,textPaymentMethod,textAmountPaid" />
+                    app:constraint_referenced_ids="textLabelPaymentMethod,buttonCopyTransferNumber,textPaymentDeadline,buttonCopyAmountPaid,imagePaymentMethode,textTransferNumber,txt_label_amount,textLabelPaymentDeadline,textLabelTransferNumber,textPaymentMethod,txt_amount" />
 
 
                 <View
@@ -374,7 +374,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
-                    android:id="@+id/textLabelMentor"
+                    android:id="@+id/txt_label_dokter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -390,7 +390,7 @@
 
 
                 <TextView
-                    android:id="@+id/textMentorName"
+                    android:id="@+id/txt_dokter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -402,11 +402,11 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelMentor"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_dokter"
                     tools:text="Budiman Rahardja (Fotografer &amp; Videografer)" />
 
                 <TextView
-                    android:id="@+id/textLabelDateOrder"
+                    android:id="@+id/txt_label_profession"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -417,11 +417,11 @@
                     android:textColor="@color/black"
                     android:textSize="10sp"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
-                    app:layout_constraintTop_toBottomOf="@+id/textMentorName"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_dokter"
                     tools:ignore="SmallSp" />
 
                 <TextView
-                    android:id="@+id/textDateOrder"
+                    android:id="@+id/txt_profession"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -433,11 +433,11 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelDateOrder"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_profession"
                     tools:text="23 Juli 2021 Pukul 12:07" />
 
                 <TextView
-                    android:id="@+id/textLabelScheduleConsultation"
+                    android:id="@+id/txt_label_jadwal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -448,11 +448,11 @@
                     android:textColor="@color/black"
                     android:textSize="10sp"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
-                    app:layout_constraintTop_toBottomOf="@+id/textDateOrder"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_profession"
                     tools:ignore="SmallSp" />
 
                 <TextView
-                    android:id="@+id/textScheduleConsultation"
+                    android:id="@+id/txt_jadwal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -464,7 +464,7 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelScheduleConsultation"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_jadwal"
                     tools:text="23 Juli 2021 setelah pembayaran dikonfirmasi (Chat sekarang)" />
 
                 <View
@@ -475,7 +475,7 @@
                     android:background="@color/gray_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textScheduleConsultation" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_jadwal" />
 
 
                 <TextView
@@ -493,7 +493,7 @@
 
 
                 <TextView
-                    android:id="@+id/textLabelTotalPrice"
+                    android:id="@+id/txt_label_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -519,11 +519,11 @@
                     android:textColor="@color/gray_600"
                     android:textSize="10sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelTotalPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_price"
                     tools:ignore="SmallSp" />
 
                 <TextView
-                    android:id="@+id/textTotalPrice"
+                    android:id="@+id/txt_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
@@ -531,9 +531,9 @@
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textLabelTotalPrice"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_label_price"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textLabelTotalPrice"
+                    app:layout_constraintTop_toTopOf="@+id/txt_label_price"
                     tools:text="Rp25.000.000,-" />
 
 
@@ -571,7 +571,7 @@
 
 
                 <TextView
-                    android:id="@+id/textLabelDiscount"
+                    android:id="@+id/txt_label_diskon"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -584,7 +584,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textLabelServiceFee" />
 
                 <TextView
-                    android:id="@+id/textTotalDiscount"
+                    android:id="@+id/txt_diskon"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -594,10 +594,10 @@
                     android:textAlignment="textEnd"
                     android:textColor="@color/red_400"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textLabelDiscount"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_label_diskon"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textLabelDiscount"
-                    app:layout_constraintTop_toTopOf="@+id/textLabelDiscount"
+                    app:layout_constraintStart_toEndOf="@+id/txt_label_diskon"
+                    app:layout_constraintTop_toTopOf="@+id/txt_label_diskon"
                     tools:text="Rp0,-" />
 
                 <TextView
@@ -613,7 +613,7 @@
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelDiscount"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_diskon"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView

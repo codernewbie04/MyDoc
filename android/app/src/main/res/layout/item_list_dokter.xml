@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageMentor"
+                android:id="@+id/img_dokter"
                 android:layout_width="108dp"
                 android:layout_height="125dp"
                 android:adjustViewBounds="true"

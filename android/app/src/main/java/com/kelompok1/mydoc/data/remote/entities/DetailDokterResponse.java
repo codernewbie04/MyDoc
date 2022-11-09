@@ -3,6 +3,9 @@ package com.kelompok1.mydoc.data.remote.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetailDokterResponse {
     @SerializedName("id")
     @Expose
@@ -39,4 +42,9 @@ public class DetailDokterResponse {
     @SerializedName("review")
     @Expose
     public ReviewResponse review;
+
+    @SerializedName("schedule")
+    @Expose
+    public List<ScheduleResponse> schedule = new ArrayList<>();
+
 }

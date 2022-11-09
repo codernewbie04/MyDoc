@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal2">
+
+    <TextView
+        android:id="@+id/textLabelOrderInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textStyle="bold"
+        android:text="Rincian Harga"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/txt_label_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:text="Harga Berobat"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelOrderInformation" />
+
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_label_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txt_label_price"
+        app:layout_constraintTop_toTopOf="@+id/txt_label_price"
+        tools:text="Rp25.000,-" />
+
+
+    <TextView
+        android:id="@+id/textLabelServiceFee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/lexend_regular"
+        android:text="Service Fee"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_price" />
+
+    <TextView
+        android:id="@+id/textServiceFee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/textLabelServiceFee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textLabelServiceFee"
+        app:layout_constraintTop_toTopOf="@+id/textLabelServiceFee"
+        tools:text="Rp1.000,-" />
+
+
+    <TextView
+        android:id="@+id/txt_label_diskon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/lexend_regular"
+        android:text="Diskon"
+        android:textColor="@color/red_400"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelServiceFee" />
+
+    <TextView
+        android:id="@+id/txt_diskon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textAlignment="textEnd"
+        android:textColor="@color/red_400"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_label_diskon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_label_diskon"
+        app:layout_constraintTop_toTopOf="@+id/txt_label_diskon"
+        tools:text="Rp0,-" />
+
+    <TextView
+        android:id="@+id/txt_label_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textStyle="bold"
+        android:text="Jumlah yang dibayar"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_label_diskon" />
+
+    <TextView
+        android:id="@+id/txt_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textStyle="bold"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_label_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txt_label_amount"
+        app:layout_constraintTop_toTopOf="@+id/txt_label_amount"
+        tools:text="Rp25.000,-" />
+
+
+    <TextView
+        android:id="@+id/textLabelPromoCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/lexend_regular"
+        android:text="Punya kode promo? Masukan disini"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_label_amount" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_promo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Kode promo"
+        android:padding="0dp"
+        app:boxStrokeColor="@color/gray_600"
+        app:layout_constraintEnd_toStartOf="@+id/btn_use_promo_code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelPromoCode">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/lexend_regular"
+            android:textStyle="bold"
+            android:inputType="text"
+            android:padding="0dp"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textHelper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/lexend_medium"
+        android:textAllCaps="false"
+        android:textColor="@color/red_400"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_promo"
+        app:layout_constraintStart_toStartOf="@+id/et_promo"
+        app:layout_constraintTop_toBottomOf="@+id/et_promo"
+        tools:ignore="SmallSp"
+        tools:text="@string/app_name" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_use_promo_code"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/lexend_regular"
+        android:textStyle="bold"
+        android:text="Gunakan"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_promo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_promo"
+        app:layout_constraintVertical_bias="0.25"
+        app:strokeColor="@color/green_main" />
+
+    <ProgressBar
+        android:id="@+id/progressBarButtonPromoCode"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/green_main"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_use_promo_code"
+        app:layout_constraintEnd_toEndOf="@+id/btn_use_promo_code"
+        app:layout_constraintStart_toStartOf="@+id/btn_use_promo_code"
+        app:layout_constraintTop_toTopOf="@+id/btn_use_promo_code" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
