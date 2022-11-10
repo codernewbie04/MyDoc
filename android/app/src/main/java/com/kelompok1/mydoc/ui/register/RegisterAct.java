@@ -25,6 +25,13 @@ public class RegisterAct extends BaseActivity<RegisterPresenter> implements Regi
     public void initView() {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.includeTb.txtTitle.setText("Daftar");
+        binding.includeTb.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         mContext = this;
 
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {

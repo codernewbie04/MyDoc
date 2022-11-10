@@ -19,6 +19,7 @@
     <color name="green">#F0FCF4</color>
     <color name="green_success">#27AE60</color>
     <color name="orange">#F2994A</color>
+    <color name="orange_300">#F2C94C</color>
     <color name="blue_main">#0C82CC</color>
 
 </resources>

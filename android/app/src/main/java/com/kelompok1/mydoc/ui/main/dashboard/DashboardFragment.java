@@ -19,7 +19,7 @@ import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.adapter.HistoryAdapter;
 import com.kelompok1.mydoc.adapter.MyReviewAdapter;
 import com.kelompok1.mydoc.adapter.sheet.ListReviewsSheet;
-import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
+import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.data.remote.entities.RatingsResponse;
 import com.kelompok1.mydoc.data.remote.entities.UserResponse;
 import com.kelompok1.mydoc.databinding.FragmentDashboardBinding;
@@ -128,7 +128,7 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
     }
 
     @Override
-    public void setHistory(List<HistoryResponse> history) {
+    public void setHistory(List<InvoiceResponse> history) {
         binding.rvHistory.setHasFixedSize(true);
         binding.rvHistory.setNestedScrollingEnabled(false);
         binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

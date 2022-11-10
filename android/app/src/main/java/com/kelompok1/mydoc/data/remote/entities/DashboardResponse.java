@@ -13,7 +13,7 @@ public class DashboardResponse {
 
     @SerializedName("history")
     @Expose
-    public List<HistoryResponse> history = new ArrayList<>();
+    public List<InvoiceResponse> history = new ArrayList<>();
 
     @SerializedName("my_review")
     @Expose

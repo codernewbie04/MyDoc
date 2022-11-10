@@ -50,14 +50,36 @@ class InvoiceModel extends Model
         //->select("id, no_invoice, price, discount, total_price, status, registration_code, created_at", false)
         $invoices = $this->where("user_id", $id)->findAll($limit);
         $clearInvoice = array();
-
+        $paymentModel = new PaymentModel();
         foreach ($invoices as $inv) {
-            $inv["payment"] = (new PaymentModel())->where('id', $inv['id'])->first();
+            $inv["payment"] = $paymentModel->where('id', $inv['id'])->first();
+            if(isset($inv["payment"]))
+                if($inv["payment"]['payment_method']){
+                    $inv["payment"]['payment_method'] = $paymentModel->getPaymentById($inv["payment"]['payment_method']);
+                }
             $inv["dokter"] = (new DokterModel())->where('id', $inv['dokter_id'])->first();            
             array_push($clearInvoice, $inv);
         }
         
         return $clearInvoice;
+    }
+
+    public function getInvoice($id, $uid)
+    {
+        $invoice = $this->where(["user_id" => $uid, 'id' => $id])->first();
+        if($invoice){
+            $paymentModel = new PaymentModel();
+            $invoice["payment"] = $paymentModel->where('id', $invoice['id'])->first();
+            
+            if(isset($invoice["payment"]))
+                if($invoice["payment"]['payment_method']){
+                    $invoice["payment"]['payment_method'] = $paymentModel->getPaymentById($invoice["payment"]['payment_method']);
+                }
+
+            $invoice["dokter"] = (new DokterModel())->where('id', $invoice['dokter_id'])->first();  
+        }
+              
+        return $invoice;
     }
 
     public function getReview($id = 0){
@@ -129,8 +151,8 @@ class InvoiceModel extends Model
         if(array_key_exists("reference", $paymentData))
             $payment['reference'] = $paymentData["reference"];
 
-        if(array_key_exists("url", $paymentData))
-            $payment['url'] = $paymentData["url"];
+        if(array_key_exists("paymentUrl", $paymentData))
+            $payment['url'] = $paymentData["paymentUrl"];
         
         if(array_key_exists("qrString", $paymentData))
             $payment['qr_code'] = $paymentData["qrString"];

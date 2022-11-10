@@ -129,8 +129,8 @@ public class BookingDokterFragment extends BaseFragment<BookingDokterPresenter> 
                     binding.textPaymentMethode.setVisibility(View.VISIBLE);
                     binding.groupPaymentMethode.setVisibility(View.VISIBLE);
 
-                    PicassoTrustAll.getInstance(getContext()).load(paymentImage).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(binding.imagePaymentMethode);
-                    binding.imagePaymentMethode.setVisibility(View.VISIBLE);
+                    PicassoTrustAll.getInstance(getContext()).load(paymentImage).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(binding.imgPaymentMethod);
+                    binding.imgPaymentMethod.setVisibility(View.VISIBLE);
                     binding.btnOrder.setEnabled(true);
                 }
             }

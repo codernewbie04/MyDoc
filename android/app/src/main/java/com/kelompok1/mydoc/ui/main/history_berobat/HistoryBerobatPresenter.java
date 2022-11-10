@@ -1,12 +1,10 @@
 package com.kelompok1.mydoc.ui.main.history_berobat;
 
-import android.util.Log;
-
 import androidx.annotation.Nullable;
 
 import com.kelompok1.mydoc.MvpApp;
 import com.kelompok1.mydoc.data.remote.entities.BaseApiResponse;
-import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
+import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.ui.base.BasePresenter;
 
 import java.util.List;
@@ -21,16 +19,16 @@ public class HistoryBerobatPresenter extends BasePresenter<HistoryBerobatView> {
     }
     void getHistoryBerobat()
     {
-        ((MvpApp) view.getContext().getApplicationContext()).getTransactionService().getListDokter().enqueue(new Callback<BaseApiResponse<List<HistoryResponse>, Nullable>>() {
+        ((MvpApp) view.getContext().getApplicationContext()).getTransactionService().getInvoice().enqueue(new Callback<BaseApiResponse<List<InvoiceResponse>, Nullable>>() {
             @Override
-            public void onResponse(Call<BaseApiResponse<List<HistoryResponse>, Nullable>> call, Response<BaseApiResponse<List<HistoryResponse>, Nullable>> response) {
+            public void onResponse(Call<BaseApiResponse<List<InvoiceResponse>, Nullable>> call, Response<BaseApiResponse<List<InvoiceResponse>, Nullable>> response) {
                 if(response.isSuccessful()){
                     view.loadHistoryBerobat(response.body().getData());
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseApiResponse<List<HistoryResponse>, Nullable>> call, Throwable t) {
+            public void onFailure(Call<BaseApiResponse<List<InvoiceResponse>, Nullable>> call, Throwable t) {
             }
         });
     }

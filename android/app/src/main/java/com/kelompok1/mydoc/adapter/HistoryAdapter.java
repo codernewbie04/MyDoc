@@ -1,24 +1,28 @@
 package com.kelompok1.mydoc.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kelompok1.mydoc.R;
-import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
+import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.databinding.ItemHistoryBinding;
+import com.kelompok1.mydoc.ui.invoice.InvoiceAct;
 
 import java.util.List;
 
 public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHolder>{
-    private List<HistoryResponse> dataList;
+    private List<InvoiceResponse> dataList;
     private Context mContext;
 
-    public HistoryAdapter(List<HistoryResponse> dataList, Context mContext) {
+    public HistoryAdapter(List<InvoiceResponse> dataList, Context mContext) {
         this.dataList = dataList;
         this.mContext = mContext;
     }
@@ -33,7 +37,7 @@ public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHol
     @SuppressLint({"UseCompatLoadingForColorStateLists", "SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull HistoryAdapter.ViewHolder holder, int position) {
-        HistoryResponse data = dataList.get(position);
+        InvoiceResponse data = dataList.get(position);
         holder.bind(data);
     }
 
@@ -50,7 +54,7 @@ public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHol
         }
 
         @SuppressLint({"SetTextI18n", "UseCompatLoadingForColorStateLists"})
-        public void bind(HistoryResponse data){
+        public void bind(InvoiceResponse data){
             itemView.txtTanggal.setText(data.created_at);
             if (data.dokter != null){
                 itemView.txtFullname.setText(data.dokter.nama);
@@ -77,8 +81,17 @@ public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHol
                     itemView.status.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.red_400));
                     itemView.status.setText("Failed");
                     break;
-
             }
+
+            itemView.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Activity act = (Activity) mContext;
+                    Intent i = new Intent(mContext, InvoiceAct.class);
+                    i.putExtra("invoice_id", data.id);
+                    act.startActivity(i);
+                }
+            });
         }
     }
 }

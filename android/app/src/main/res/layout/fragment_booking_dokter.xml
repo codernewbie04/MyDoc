@@ -56,7 +56,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/includePricingDetails" />
 
                 <TextView
-                    android:id="@+id/textLabelPaymentMethod"
+                    android:id="@+id/txt_label_payment_method"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -83,7 +83,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentMethod"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_payment_method"
                     app:layout_constraintVertical_bias="0.0">
 
                     <TextView
@@ -103,7 +103,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/imagePaymentMethode"
+                        android:id="@+id/img_payment_method"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -127,7 +127,7 @@
                         android:textColor="@color/black"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imagePaymentMethode"
+                        app:layout_constraintStart_toEndOf="@+id/img_payment_method"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
@@ -154,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="visible"
-                    app:constraint_referenced_ids="viewLineHorizontal3,textLabelPaymentMethod,container_payment_gateway"
+                    app:constraint_referenced_ids="viewLineHorizontal3,txt_label_payment_method,container_payment_gateway"
                     tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

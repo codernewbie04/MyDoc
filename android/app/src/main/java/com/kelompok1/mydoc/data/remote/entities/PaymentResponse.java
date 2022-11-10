@@ -30,11 +30,7 @@ public class PaymentResponse {
 
     @SerializedName("payment_method")
     @Expose
-    public String payment_method;
-
-    @SerializedName("payment_name")
-    @Expose
-    public String payment_name;
+    public PaymentMethodResponse payment_method;
 
     @SerializedName("amount")
     @Expose

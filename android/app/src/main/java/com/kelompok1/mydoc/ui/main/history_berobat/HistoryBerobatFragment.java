@@ -4,14 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.adapter.HistoryAdapter;
-import com.kelompok1.mydoc.data.remote.entities.HistoryResponse;
+import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.databinding.FragmentHistoryBerobatBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
 import com.onurkagan.ksnack_lib.Animations.Slide;
@@ -52,7 +51,7 @@ public class HistoryBerobatFragment extends BaseFragment<HistoryBerobatPresenter
     }
 
     @Override
-    public void loadHistoryBerobat(List<HistoryResponse> data) {
+    public void loadHistoryBerobat(List<InvoiceResponse> data) {
         binding.rvHistory.setHasFixedSize(true);
         binding.rvHistory.setNestedScrollingEnabled(false);
         binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

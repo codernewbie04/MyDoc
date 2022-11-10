@@ -28,6 +28,17 @@ class Invoice extends BaseResponse
         return $this->response("Berhasil Mendapatkan data!", $invoiceModel->getInvoiceUser($this->user['id'], 0), 200); 
     }
 
+    public function detail($id = 0)
+    {
+        if(!$this->user)
+            return $this->response("Kesalahan pada database!", null, 500); 
+        $invoiceModel = new InvoiceModel();
+        $invoice = $invoiceModel->getInvoice($id, $this->user['id']);
+        if(!$invoice)
+            return $this->response("Dokter tidak tersedia!", null, 404);
+        return $this->response("Berhasil Mendapatkan data!", $invoice, 200); 
+    }
+
     public function check_out()
     {
         if(!$this->user)
@@ -59,7 +70,7 @@ class Invoice extends BaseResponse
                 [
                     'merchantCode' => getenv("MERCHANT_CODE"),
                     'paymentAmount' => $dokter['price'],
-                    'paymentMethod' => 'VA',
+                    'paymentMethod' => $this->request->getVar("payment_method"),
                     'merchantOrderId' => $orderId,
                     'productDetails' => 'Pembayaran untuk berobat dengan '.$dokter['nama'],
                     'customerVaName' => $this->user['fullname'],

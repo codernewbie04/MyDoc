@@ -55,8 +55,8 @@ public class PaymentMethodAdapter extends  RecyclerView.Adapter<PaymentMethodAda
 
         public void bind(PaymentMethodResponse data)
         {
-            itemView.textLabelPaymentMethod.setText(data.paymentName);
-            PicassoTrustAll.getInstance(mContext).load(data.paymentImage).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(itemView.imagePaymentMethode);
+            itemView.txtLabelPaymentMethod.setText(data.paymentName);
+            PicassoTrustAll.getInstance(mContext).load(data.paymentImage).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(itemView.imgPaymentMethod);
             itemView.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

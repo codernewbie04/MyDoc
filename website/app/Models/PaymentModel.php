@@ -51,6 +51,11 @@ class PaymentModel extends Model
         return $this->db->table("payment_methods")->where(['code' => $code])->get()->getRowArray()['id'];
     }
 
+    public function getPaymentById($id)
+    {
+        return $this->db->table("payment_methods")->where(['id' => $id])->get()->getRowArray();
+    }
+
     public function savePayment($payment)
     {
         if(!$this->db->table("payment_methods")->where(['code' => $payment['paymentMethod']])->countAllResults()){

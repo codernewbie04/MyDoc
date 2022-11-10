@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@+id/buttonDone"
+            app:layout_constraintBottom_toTopOf="@+id/btn_done"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
 
 
                 <TextView
-                    android:id="@+id/textLabelPaymentMethod"
+                    android:id="@+id/txt_label_payment_method"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -45,31 +45,32 @@
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textPaymentMethod"
+                    android:id="@+id/txt_payment_method"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentMethod"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_payment_method"
                     tools:text="Virtual account bank BCA" />
 
                 <ImageView
-                    android:id="@+id/imagePaymentMethode"
+                    android:id="@+id/img_payment_method"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:layout_marginEnd="24dp"
                     android:contentDescription="@string/image_description"
-                    android:src="@drawable/logo"
-                    app:layout_constraintBottom_toBottomOf="@+id/textPaymentMethod"
+                    android:src="@drawable/image_bank_bca"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_payment_method"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textPaymentMethod" />
+                    app:layout_constraintTop_toTopOf="@+id/txt_payment_method" />
 
                 <TextView
-                    android:id="@+id/textLabelNoInvoice"
+                    android:id="@+id/txt_label_invoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -79,24 +80,25 @@
                     android:textColor="@color/gray_600"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textPaymentMethod"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_payment_method"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textNoInvoice"
+                    android:id="@+id/txt_invoice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelNoInvoice"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_invoice"
                     tools:text="HM-256-028" />
 
                 <TextView
-                    android:id="@+id/textLabelPaymentDeadline"
+                    android:id="@+id/txt_label_payment_expired"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -106,24 +108,25 @@
                     android:textColor="@color/gray_600"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textNoInvoice"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_invoice"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textPaymentDeadline"
+                    android:id="@+id/txt_payment_expired"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentDeadline"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_payment_expired"
                     tools:text="Minggu, 24 Juli 2021, 14:30 WIB" />
 
                 <TextView
-                    android:id="@+id/textLabelPaymentStatus"
+                    android:id="@+id/txt_label_status_pembayaran"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -133,18 +136,19 @@
                     android:textColor="@color/gray_600"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textPaymentDeadline"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_payment_expired"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textPaymentStatus"
+                    android:id="@+id/txt_status_pembayaran"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/shape_rectangle_radius_50"
-                    android:backgroundTint="@color/red_400"
+                    android:backgroundTint="@color/orange"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:includeFontPadding="false"
                     android:paddingStart="14dp"
                     android:paddingTop="6dp"
@@ -153,9 +157,53 @@
                     android:textColor="@color/white"
                     android:textSize="10sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelPaymentStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_status_pembayaran"
                     tools:ignore="SmallSp,TextContrastCheck,TextContrastCheck"
-                    tools:text="Belum bayar" />
+                    tools:text="Menunggu Pembayaran" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_status_pembayaran"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="txt_label_status_pembayaran,txt_status_pembayaran" />
+
+                <TextView
+                    android:id="@+id/txt_label_status_pengobatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Status Pengobatan"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_status_pembayaran"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/txt_status_pengobatan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_rectangle_radius_50"
+                    android:backgroundTint="@color/orange"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
+                    android:includeFontPadding="false"
+                    android:paddingStart="14dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="6dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_status_pengobatan"
+                    tools:ignore="SmallSp,TextContrastCheck,TextContrastCheck"
+                    tools:text="Pending" />
 
                 <TextView
                     android:id="@+id/txt_label_amount"
@@ -168,7 +216,7 @@
                     android:textColor="@color/gray_600"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textPaymentStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_status_pengobatan"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
@@ -178,6 +226,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -203,7 +252,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
-                    android:id="@+id/textLabelTransferNumber"
+                    android:id="@+id/txt_label_va"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -217,21 +266,22 @@
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textTransferNumber"
+                    android:id="@+id/txt_va"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelTransferNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_va"
                     tools:text="8578102777802613" />
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/buttonCopyTransferNumber"
+                    android:id="@+id/btn_copy_va"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
@@ -243,23 +293,83 @@
                     android:textAllCaps="false"
                     android:textColor="@color/blue_main"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textTransferNumber"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_va"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textLabelTransferNumber"
+                    app:layout_constraintTop_toTopOf="@+id/txt_label_va"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/txt_label_registration_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:text="Kode Pendaftaran"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_copy_va"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/txt_registration_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_registration_code"
+                    tools:text="OjTNG7aPYU" />
+                <TextView
+                    android:id="@+id/txt_information_registration_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="6dp"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/lexend_light"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="Serahkan kode pendaftaran kepada resepsionis"
+                    android:textColor="@color/gray_600"
+                    android:textSize="10sp"
+                    app:drawableStartCompat="@drawable/ic_carbon_warning"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_registration_code"
+                    tools:ignore="SmallSp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_copy_registration_code"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/lexend_regular"
+                    android:includeFontPadding="false"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Salin"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_main"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_registration_code"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txt_label_registration_code"
                     tools:ignore="TouchTargetSizeCheck" />
 
 
                 <androidx.constraintlayout.widget.Group
-                    android:id="@+id/groupTransferNumber"
+                    android:id="@+id/group_va"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:constraint_referenced_ids="textLabelTransferNumber,textTransferNumber,buttonCopyTransferNumber" />
-
-                <androidx.constraintlayout.widget.Group
-                    android:id="@+id/groupFreeConsult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:constraint_referenced_ids="textLabelPaymentMethod,buttonCopyTransferNumber,textPaymentDeadline,buttonCopyAmountPaid,imagePaymentMethode,textTransferNumber,txt_label_amount,textLabelPaymentDeadline,textLabelTransferNumber,textPaymentMethod,txt_amount" />
+                    app:constraint_referenced_ids="txt_label_va,txt_va,btn_copy_va" />
 
 
                 <View
@@ -270,75 +380,116 @@
                     android:background="@color/gray_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textTransferNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_registration_code"
                     app:layout_goneMarginTop="24dp" />
 
                 <LinearLayout
-                    android:id="@+id/containerPaymentInstruction"
+                    android:id="@+id/container_qr_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal1">
-<!--                    petunjuk pembayaran-->
+                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal1"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/lexend_regular"
+                        android:textStyle="bold"
+                        android:text="Scan QR Code untuk melakukan pembayaran"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"/>
+                    <ImageView
+                        android:id="@+id/img_qr_code"
+                        android:layout_marginTop="24dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/image_description"
+                        android:scaleType="centerCrop"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/lexend_light"
+
+                        android:text="Scan dengan menggunakan aplikasi QR Kamu"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
 
 
                 <View
-                    android:id="@+id/viewLineHorizontalAdditionalInfo"
+                    android:id="@+id/view_qr"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
                     android:layout_marginTop="36dp"
                     android:background="@color/gray_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/containerPaymentInstruction" />
-
-                <TextView
-                    android:id="@+id/textLabelAdditionalInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/lexend_regular"
-                    android:text="Informasi tambahan"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontalAdditionalInfo" />
-
-                <TextView
-                    android:id="@+id/textAdditionalInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/lexend_regular"
-                    android:text="Pesananmu sedang kami proses, silahkan menunggu konfirmasi dari mentor"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelAdditionalInfo" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/container_qr_code" />
 
                 <androidx.constraintlayout.widget.Group
-                    android:id="@+id/groupAdditionalInfo"
+                    android:id="@+id/group_qr"
                     android:layout_width="wrap_content"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"
-                    app:constraint_referenced_ids="textAdditionalInfo,textLabelAdditionalInfo,viewLineHorizontalAdditionalInfo" />
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="view_qr,container_qr_code" />
+
+                <LinearLayout
+                    android:id="@+id/container_pembayaran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/view_qr"
+                    android:gravity="left"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/lexend_regular"
+                        android:text="Petunjuk Pembayaran"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/lexend_regular"
+                        android:text="https://akmalmf.id/lorem-ipsum-dolor-sit-amet"
+                        android:textColor="@color/blue_main"
+                        android:textSize="12dp"/>
+
+                </LinearLayout>
 
                 <View
-                    android:id="@+id/viewLineHorizontal2"
+                    android:id="@+id/view_pembayaran"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="36dp"
                     android:background="@color/gray_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textAdditionalInfo" />
+                    app:layout_constraintTop_toBottomOf="@+id/container_pembayaran" />
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_pembayaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="view_pembayaran,container_pembayaran" />
 
                 <TextView
                     android:id="@+id/textLabelOrderInformation"
@@ -347,11 +498,12 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:text="Informasi Pesanan"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewLineHorizontal2" />
+                    app:layout_constraintTop_toBottomOf="@+id/view_pembayaran" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/containerImageMentor"
@@ -364,10 +516,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/textLabelOrderInformation">
 
                     <ImageView
-                        android:id="@+id/imageProfileMentor"
+                        android:id="@+id/img_dokter"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
+                        android:src="@drawable/image_placeholder"
                         android:contentDescription="@string/image_description"
                         android:scaleType="centerCrop"
                         tools:srcCompat="@tools:sample/avatars" />
@@ -397,13 +550,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
                     app:layout_constraintTop_toBottomOf="@+id/txt_label_dokter"
-                    tools:text="Budiman Rahardja (Fotografer &amp; Videografer)" />
+                    tools:text="Dr. Akmal M.F" />
 
                 <TextView
                     android:id="@+id/txt_label_profession"
@@ -412,7 +566,7 @@
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="14dp"
                     android:fontFamily="@font/lexend_light"
-                    android:text="Tanggal Pemesanan"
+                    android:text="Profesi"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="10sp"
@@ -428,13 +582,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
                     app:layout_constraintTop_toBottomOf="@+id/txt_label_profession"
-                    tools:text="23 Juli 2021 Pukul 12:07" />
+                    tools:text="Dokter Penyakit Dalam" />
 
                 <TextView
                     android:id="@+id/txt_label_jadwal"
@@ -459,13 +614,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/containerImageMentor"
                     app:layout_constraintTop_toBottomOf="@+id/txt_label_jadwal"
-                    tools:text="23 Juli 2021 setelah pembayaran dikonfirmasi (Chat sekarang)" />
+                    tools:text="23 Juli 2021, 14:30 WIB" />
 
                 <View
                     android:id="@+id/viewLineHorizontal3"
@@ -485,6 +641,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:text="Informasi Pesanan"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -499,28 +656,13 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/lexend_regular"
-                    android:text="Sesi yang di pesan"
+                    android:text="Harga Berobat"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textLabelPricingDetails" />
 
-                <TextView
-                    android:id="@+id/textInformationPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="6dp"
-                    android:drawablePadding="5dp"
-                    android:fontFamily="@font/lexend_regular"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="ASD"
-                    android:textColor="@color/gray_600"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_label_price"
-                    tools:ignore="SmallSp" />
+
 
                 <TextView
                     android:id="@+id/txt_price"
@@ -528,6 +670,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
                     android:textSize="12sp"
@@ -536,38 +679,6 @@
                     app:layout_constraintTop_toTopOf="@+id/txt_label_price"
                     tools:text="Rp25.000.000,-" />
 
-
-                <TextView
-                    android:id="@+id/textLabelServiceFee"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/lexend_regular"
-                    android:text="Service Fee"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInformationPrice" />
-
-                <TextView
-                    android:id="@+id/textServiceFee"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/lexend_regular"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="@+id/textLabelServiceFee"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textLabelServiceFee"
-                    app:layout_constraintTop_toTopOf="@+id/textLabelServiceFee"
-                    tools:text="Rp1.000,-" />
 
 
                 <TextView
@@ -581,7 +692,7 @@
                     android:textColor="@color/red_400"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelServiceFee" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_price" />
 
                 <TextView
                     android:id="@+id/txt_diskon"
@@ -591,6 +702,7 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textAlignment="textEnd"
                     android:textColor="@color/red_400"
                     android:textSize="12sp"
@@ -601,13 +713,14 @@
                     tools:text="Rp0,-" />
 
                 <TextView
-                    android:id="@+id/textLabelGrandTotal"
+                    android:id="@+id/txt_label_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="14dp"
                     android:layout_marginBottom="88dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:text="Jumlah yang dibayar"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -617,20 +730,21 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/textGrandTotal"
+                    android:id="@+id/txt_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/lexend_regular"
+                    android:textStyle="bold"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textLabelGrandTotal"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_label_total"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textLabelGrandTotal"
-                    app:layout_constraintTop_toTopOf="@+id/textLabelGrandTotal"
+                    app:layout_constraintStart_toEndOf="@+id/txt_label_total"
+                    app:layout_constraintTop_toTopOf="@+id/txt_label_total"
                     tools:text="Rp26.000,-" />
 
                 <View
@@ -641,7 +755,7 @@
                     android:background="@color/gray_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textLabelGrandTotal" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_label_total" />
 
                 <androidx.constraintlayout.widget.Group
                     android:id="@+id/groupButtonCancel"
@@ -654,27 +768,19 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonDone"
+            android:id="@+id/btn_done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lexend_regular"
             android:includeFontPadding="false"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="Selesai"
+            android:text="Pembayaran Belum Dilakukan"
             android:textAllCaps="false"
+            android:enabled="false"
             app:cornerRadius="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="@color/green_main"
-        android:visibility="invisible" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

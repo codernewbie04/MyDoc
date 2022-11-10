@@ -26,6 +26,13 @@ public class LoginAct extends BaseActivity<LoginPresenter> implements LoginView 
     public void initView() {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.includeTb.txtTitle.setText("Daftar");
+        binding.includeTb.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         mContext = this;
         binding.btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
