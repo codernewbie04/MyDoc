@@ -96,6 +96,17 @@ class AuthModel extends Model
         return $this->db->table('auth_jwt')->insert($data);
     }
 
+    public function admin_login($user=null, $jti){
+        if($user){
+            $this->setLoginLog($user['email'], $user['id'], 1);
+        }
+        $data = [
+            'jti' => $jti,
+            'blacklist' => 0
+        ];
+        return $this->db->table('auth_jwt')->insert($data);
+    }
+
     public function logout($jti){
         return $this
         ->where('jti', $jti)
