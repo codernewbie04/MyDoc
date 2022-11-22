@@ -74,6 +74,13 @@ class UserModel extends Model
     //     unset($user[$key]);
     // }
     // return $user;
+
+    public function getRole($id) {
+        $role = $this->db->table('auth_groups_users')->where("user_id", $id)->get()->getRowArray();
+        if($role)
+            return $role['group_id'];
+        return 3;
+    }
     public function getUser($id){
         $user = $this->where("users.id", $id)
         ->join("balance",'users.id=balance.uid')

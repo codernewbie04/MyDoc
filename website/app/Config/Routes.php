@@ -35,7 +35,14 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+//Routes for WEB
+$routes->get('/admin/test', 'Home::index');
+$routes->get('auth/login', 'auth\Login::index');
+$routes->post('auth/login', 'auth\Login::execute');
+
+
+
+//Routes for API
 //routes for auth
 $routes->post('/api/v1/auth/login', 'api\v1\auth\Login::index');
 $routes->delete('/api/v1/auth/logout', 'api\v1\auth\Login::logout');

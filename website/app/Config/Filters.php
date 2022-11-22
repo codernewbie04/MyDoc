@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\JWTAuthenticationFilter;
+use App\Filters\JWTWebFilter;
 
 class Filters extends BaseConfig
 {
@@ -24,7 +25,10 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth'          => JWTAuthenticationFilter::class
+        'auth'          => JWTAuthenticationFilter::class,
+        'login'         => JWTWebFilter::class,
+        // 'role'          => \Myth\Auth\Filters\RoleFilter::class,
+        // 'permission'    => \Myth\Auth\Filters\PermissionFilter::class,
     ];
 
     /**
@@ -77,8 +81,13 @@ class Filters extends BaseConfig
                 'api/v1/auth/logout',
                 'api/v1/profile/*',
                 'api/v1/master/*',
-                'api/v1/transaction/*'
+                'api/v1/transaction/*',
           ],
-        ]
+        ],
+        'login' => [
+            'before' => [
+                'admin/*'
+          ],
+        ],
     ];
 }
