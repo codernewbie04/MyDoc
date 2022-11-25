@@ -99,4 +99,31 @@ class UserModel extends Model
         ->first();
         return $user;
     }
+
+    // For Admin
+    public function getAdmin($id) {
+        $user = $this->where("users.id", $id)
+        ->join("auth_groups_users",'users.id=auth_groups_users.user_id')
+        ->select('users.id, users.email, users.username, users.fullname, users.address, users.image, users.status, users.active, users.birthday, auth_groups_users.group_id as role', false)
+        ->first();
+        foreach($this->exceptFields as $key){
+            unset($user[$key]);
+        }
+        return $user;
+    }
+
+    public function getListInstansi() {
+        return $this->where("auth_groups_users.group_id", 2)
+        ->join("auth_groups_users",'users.id=auth_groups_users.user_id')
+        ->select('users.id, users.email, users.username, users.fullname, users.address, users.image, users.status, users.active, users.birthday, auth_groups_users.group_id as role', false)
+        ->findAll();
+    }
+
+    public function getListPasien() {
+        return $this->where("auth_groups_users.group_id", 3)
+        ->join("auth_groups_users",'users.id=auth_groups_users.user_id')
+        ->join("balance",'users.id=balance.uid')
+        ->select('users.id AS id, users.email, users.username, users.fullname, users.address, users.image, users.status, users.active, users.birthday, auth_groups_users.group_id as role, balance.balance', false)
+        ->findAll();
+    }
 }

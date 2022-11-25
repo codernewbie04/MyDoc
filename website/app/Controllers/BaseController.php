@@ -35,16 +35,15 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['form_error'];
+    protected $helpers = ['form_error', 'jwt'];
 
-    /**
-     * Constructor.
-     */
+    public $user = null;
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-
+        if(session()->get(getenv("JWT_WEB_NAME")))
+            $this->user = tokenToUser(session()->get(getenv("JWT_WEB_NAME")));
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
