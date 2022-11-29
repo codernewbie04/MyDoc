@@ -10,4 +10,8 @@ class DateValidation
         $day = (int) substr($date, 8, 9);
         return checkdate($month, $day, $year);
     }
+
+    public function time_valid($time) {
+        return strtotime($time);
+    }
 }

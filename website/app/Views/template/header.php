@@ -54,17 +54,15 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="<?= link_active($title, 'Dashboard'); ?>"><a href="<?= base_url('dashboard'); ?>"><i class="ti-dashboard"></i> <span>Dashboard</span></a></li>
+                            <li class="<?= link_active($title, 'Dashboard'); ?>"><a href="<?= base_url('admin/dashboard'); ?>"><i class="ti-dashboard"></i> <span>Dashboard</span></a></li>
                             <?php if($user['role'] == 1):?>
-                                <li class="<?=link_active($title, 'List Instansi');?>"><a href="<?=base_url('instansi') ;?>"><i class="fa fa-ambulance"></i> <span>List Instansi</span></a></li>
-                                <li class="<?=link_active($title, 'List Pasien');?>"><a href="<?=base_url('pasien') ;?>"><i class="fa fa-user"></i> <span>List Pasien</span></a></li>
-                                <li class="<?=link_active($title, 'Riwayat Berobat');?>"><a href="<?=base_url('admin/riwayat_berobat') ;?>"><i class="fa fa-heartbeat"></i> <span>Rekam Medis</span></a></li>
+                                <li class="<?=link_active($title, 'List Instansi');?>"><a href="<?=base_url('admin/instansi') ;?>"><i class="fa fa-ambulance"></i> <span>List Instansi</span></a></li>
+                                <li class="<?=link_active($title, 'List Pasien');?>"><a href="<?=base_url('admin/pasien') ;?>"><i class="fa fa-user"></i> <span>List Pasien</span></a></li>
                             <?php elseif($user['role'] == 2):?>
-                                <li class="<?=link_active($title, 'List Dokter');?>"><a href="<?=base_url('dokter') ;?>"><i class="fa fa-stethoscope"></i> <span>List Dokter</span></a></li>
-                                <li class="<?=link_active($title, 'Riwayat Berobat');?>"><a href="<?=base_url('instansi/riwayat_berobat') ;?>"><i class="fa fa-heartbeat"></i> <span>Rekam Medis</span></a></li>
-                                <li class="<?=link_active($title, 'Pendaftaran Berobat');?>"><a href="<?=base_url('instansi/pendaftaran_berobat') ;?>"><i class="fa fa-list"></i> <span>Daftar Berobat</span></a></li>
+                                <li class="<?=link_active($title, 'List Dokter');?>"><a href="<?=base_url('admin/dokter') ;?>"><i class="fa fa-stethoscope"></i> <span>List Dokter</span></a></li>
+                                <li class="<?=link_active($title, 'Pendaftaran Berobat');?>"><a href="<?=base_url('admin/pendaftaran_berobat') ;?>"><i class="fa fa-list"></i> <span>Verifikasi Antrian</span></a></li>
                             <?php endif;?>
-
+                            <li class="<?=link_active($title, 'Riwayat Berobat');?>"><a href="<?=base_url('admin/riwayat_berobat') ;?>"><i class="fa fa-heartbeat"></i> <span>Riwayat Berobat</span></a></li>
                         </ul>
                     </nav>
                 </div>

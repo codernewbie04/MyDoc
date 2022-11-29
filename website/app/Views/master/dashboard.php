@@ -9,8 +9,8 @@
                     <div class="seo-fact sbg1 pb-3">
                         <div class="p-4">
                             <div class="seofct-icon"><i class="fa fa-users"></i></div>
-                            <h2>122</h2>
-                            <span>Kunjungan/Bulan</span>
+                            <h2><?=str_pad($total_berobat,4,'0',STR_PAD_LEFT);?></h2>
+                            <span>Jumlah Berobat</span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                     <div class="seo-fact sbg2 pb-3">
                         <div class="p-4">
                             <div class="seofct-icon"><i class="fa fa-user-plus"></i></div>
-                            <h2>304</h2>
+                            <h2><?=str_pad($total_pasien,4,'0',STR_PAD_LEFT);?></h2>
                             <span>Jumlah Pasien</span>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <div class="seo-fact sbg3 pb-3">
                         <div class="p-4">
                             <div class="seofct-icon"><i class="fa fa-medkit "></i></div>
-                            <h2>14</h2>
+                            <h2><?=str_pad($total_instansi,4,'0',STR_PAD_LEFT);?></h2>
                             <span>Total Instansi</span>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="seo-fact sbg4 pb-3">
                         <div class="p-4">
                             <div class="seofct-icon"><i class="fa fa-stethoscope"></i></div>
-                            <h2>56</h2>
+                            <h2><?=str_pad($total_dokter,4,'0',STR_PAD_LEFT);?></h2>
                             <span>Total Dokter</span>
                         </div>
                     </div>

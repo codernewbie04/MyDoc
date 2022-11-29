@@ -42,9 +42,38 @@ $routes->get('auth/logout', 'auth\Login::logout');
 $routes->post('auth/login', 'auth\Login::execute');
 //Master
 $routes->get('/', 'master\Dashboard::index');
-$routes->get('/dashboard', 'master\Dashboard::index');
-$routes->get('/instansi', 'master\Instansi::index');
-$routes->get('/pasien', 'master\Pasien::index');
+$routes->get('/admin/dashboard', 'master\Dashboard::index');
+// start instansi
+$routes->get('/admin/instansi', 'master\Instansi::index');
+$routes->get('/admin/instansi/tambah', 'master\Instansi::tambah');
+$routes->post('/admin/instansi/add', 'master\Instansi::add');
+$routes->post('/admin/instansi/edit', 'master\Instansi::edit');
+$routes->get('/admin/instansi/delete/(:num)', 'master\Instansi::delete/$1');
+//end instansi
+
+//start pasien
+$routes->get('/admin/pasien', 'master\Pasien::index');
+$routes->get('/admin/pasien/tambah', 'master\Pasien::tambah');
+$routes->get('/admin/pasien/keuangan/(:num)', 'master\Pasien::keuangan/$1');
+$routes->post('/admin/pasien/topup', 'master\Pasien::topup');
+$routes->post('/admin/pasien/add', 'master\Pasien::add');
+$routes->post('/admin/pasien/edit', 'master\Pasien::edit');
+$routes->get('/admin/pasien/delete/(:num)', 'master\Pasien::delete/$1');
+//end pasien
+$routes->get('/admin/riwayat_berobat', 'master\RiwayatBerobat::index');
+
+//start dokter
+$routes->get('/admin/dokter', 'master\Dokter::index');
+$routes->get('/admin/dokter/tambah', 'master\Dokter::tambah');
+$routes->post('/admin/dokter/add', 'master\Dokter::add');
+$routes->post('/admin/dokter/edit', 'master\Dokter::edit');
+$routes->get('/admin/dokter/delete/(:num)', 'master\Dokter::delete/$1');
+$routes->get('/admin/dokter/detail_jadwal/(:num)', 'master\Dokter::detail_jadwal/$1');
+$routes->post('/admin/dokter/add_jadwal', 'master\Dokter::add_jadwal');
+$routes->post('/admin/dokter/edit_jadwal', 'master\Dokter::edit_jadwal');
+$routes->get('/admin/dokter/jadwal_delete/(:num)/(:num)', 'master\Dokter::jadwal_delete/$1/$2');
+//end dokter
+
 
 
 //Routes for API

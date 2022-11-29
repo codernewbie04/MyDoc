@@ -12,7 +12,7 @@
                     </div>
                     <div class="clearfix col-md-6">
                         <div class="pull-right">
-                            <a href="<?=base_url('petugas/tambah');?>" class="btn btn-success"><i class="fa fa-plus"></i>  Tambah Instansi</a>
+                            <a href="<?=base_url('admin/instansi/tambah');?>" class="btn btn-success"><i class="fa fa-plus"></i>  Tambah Instansi</a>
                         </div>
                     </div>
                 </div>
@@ -43,11 +43,11 @@
                                       <td><?= $instansi['fullname']; ?></td>
                                       <td><?= $instansi['email']; ?></td>
                                       <td><?= $instansi['username']; ?></td>
-                                      <td><?= $instansi['status']; ?></td>
-                                      <td><?= $instansi['active']; ?></td>
+                                      <td><?= $instansi['status'] == 1 ? '<span class="alert alert-success" role="alert">1</span>' : '' ?></td>
+                                      <td><?php echo $instansi['active'] == 0 ? '<span class="alert alert-warning" role="alert">Pending</span>':' <span class="alert alert-success" role="alert">Active</span>';?></td>
                                         <td class="text-center">
                                             <button class="btn btn-success btn-xs modal-edit-instansi" data-target="#modal-edit-instansi" data-toggle="modal" data-nama="<?=$instansi['fullname']; ?>" data-id="<?=$instansi['id']; ?>" data-username="<?=$instansi['username']; ?>" data-email="<?=$instansi['email']; ?>" data-active="<?=$instansi['active']; ?>" data-status="<?=$instansi['status']; ?>"><i class="fa fa-pencil"></i></button>
-                                            <button class="btn btn-danger btn-xs hapus-button" data-target="#hapus" data-toggle="modal" data-url="petugas/delete_instansi/<?=$instansi['id']; ?>"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger btn-xs hapus-button" data-target="#hapus" data-toggle="modal" data-url="/admin/instansi/delete/<?=$instansi['id']; ?>"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     <?php $i++; endforeach ?>
@@ -70,7 +70,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
-        <h5 class="modal-title mb-5" id="hapus-title" align="center">Yakin Hapus Petugas?</h5>
+        <h5 class="modal-title mb-5" id="hapus-title" align="center">Yakin Hapus Instansi Kesehatan?</h5>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
         <a href="" class="btn btn-danger" id="haps"><i class="fa fa-trash"></i> Hapus</a>
       </div>
@@ -81,9 +81,9 @@
 <div class="modal fade" id="modal-edit-instansi">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <form id="form-edit" action="<?php echo base_url('petugas/editProses') ;?>" method="post">
+            <form id="form-edit" action="<?php echo base_url('admin/instansi/edit') ;?>" method="post">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Petugas</h4>
+                <h4 class="modal-title">Edit Instansi</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -106,8 +106,13 @@
                     <input name="status" type="number" class="form-control" value="" id="status_instansi">
                 </div>
                 <div class="form-group">
-                    <label for="edit_floor" class="form-control-label">Konfirm Password</label>
+                    <label for="edit_floor" class="form-control-label">Active</label>
                     <input name="active" type="number" class="form-control" value="" id="active_instansi">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_floor" class="form-control-label">Password (Optional)</label>
+                    <input name="password" type="password" class="form-control" value="">
                 </div>
             </div>
             <div class="modal-footer">

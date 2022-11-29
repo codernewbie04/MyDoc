@@ -61,7 +61,7 @@ class Login extends BaseController
                 ];
                 $jwt = JWT::encode($payload, getenv("JWT_SECRET"), 'HS256');
                 session()->set([getenv("JWT_WEB_NAME") => $jwt]);
-                return redirect()->to('dashboard');
+                return redirect()->to('admin/dashboard');
             }
         }
         

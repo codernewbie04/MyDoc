@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Exception;
 
 /**
  * Class BaseController
@@ -42,8 +43,13 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-        if(session()->get(getenv("JWT_WEB_NAME")))
-            $this->user = tokenToUser(session()->get(getenv("JWT_WEB_NAME")));
+        if(session()->get(getenv("JWT_WEB_NAME"))){
+            try {
+                $this->user = tokenToUser(session()->get(getenv("JWT_WEB_NAME")));
+            } catch (Exception $e) {
+            }
+        }
+            
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
