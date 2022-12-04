@@ -12,7 +12,7 @@ class UserModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields  = [
         "address", 'birthday', 'fullname', 'image'
@@ -98,5 +98,61 @@ class UserModel extends Model
         ->select('*, users.id AS id', false)
         ->first();
         return $user;
+    }
+
+    // For Admin=============================================================================================================================================================================
+    public function getAdmin($id) {
+        $user = $this->where("users.id", $id)
+        ->join("auth_groups_users",'users.id=auth_groups_users.user_id')
+        ->select('users.id, users.email, users.username, users.fullname, users.address, users.image, users.status, users.active, users.birthday, auth_groups_users.group_id as role', false)
+        ->first();
+        foreach($this->exceptFields as $key){
+            unset($user[$key]);
+        }
+        return $user;
+    }
+
+    public function getListInstansi() {
+        return $this->where("auth_groups_users.group_id", 2)
+        ->join("auth_groups_users",'users.id=auth_groups_users.user_id')
+        ->select('users.id, users.email, users.username, users.fullname, users.address, users.image, users.status, users.active, users.birthday, auth_groups_users.group_id as role', false)
+        ->findAll();
+    }
+
+    public function getListPasien() {
+        return $this->where("auth_groups_users.group_id", 3)
+        ->join("auth_groups_users",'users.id=auth_groups_users.user_id')
+        ->join("balance",'users.id=balance.uid')
+        ->select('users.id AS id, users.email, users.username, users.fullname, users.address, users.image, users.status, users.active, users.birthday, auth_groups_users.group_id as role, balance.balance', false)
+        ->findAll();
+    }
+
+    public function createInstansi($data) {
+        $this->db->transStart();
+		$this->protect(false)->insert($data);
+        $uid = $this->insertID();
+        $role = ['group_id' => 2, 'user_id' => $uid];
+        $this->db->table('auth_groups_users')->insert($role);
+        $this->db->transComplete();
+        return $uid;        
+    }
+
+    public function getProyeksiKeuangan($uid) {
+        return $this->db->table('balance_tracker')->where("user_id", $uid)->get()->getResultArray();
+    }
+
+    public function topupPasien($id = -1, $balance = 0) {
+        $old_balance = $this->db->table('balance')->where(['uid' => $id])->get()->getRowArray()['balance'];
+        $this->db->transStart();
+        $this->db->table('balance')->where(['uid' => $id])->update(['balance' =>$old_balance + $balance]);
+        $this->db->table('balance_tracker')->insert([
+            'type' => 'in',
+            'user_id' => $id,
+            'amount' => $balance,
+            'description' => 'Topup by Admin'
+        ]);
+        $this->db->transComplete();
+
+        return $this->db->transStatus();
     }
 }

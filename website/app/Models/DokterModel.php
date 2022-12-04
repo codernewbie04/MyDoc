@@ -13,7 +13,7 @@ class DokterModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [];
 
@@ -137,5 +137,80 @@ class DokterModel extends Model
         return $this->db->table("schedule")->where(["dokter_id" => $id])->get()->getResultArray();
     }
 
+    // For Admin=============================================================================================================================================================================
+    public function getListDokter($instansi = -1) {
+        $doctor = $this->join("users",'users.id=dokter.instansi_id')
+        ->select('dokter.*, users.fullname AS instansi', false);
+        if($instansi != -1)
+            $doctor->where(['dokter.instansi_id' => $instansi]);
+        return $doctor->findAll();
+    }
     
+    public function getDetailDokterOwnInstansi($dokter_id = -1, $instansi_id = -1) 
+    {
+        if($dokter_id == -1 || $instansi_id == -1)
+            return null;
+        $doctor = $this->join("users",'users.id=dokter.instansi_id')
+        ->select('dokter.*, users.fullname AS instansi', false)
+        ->where(["dokter.id" => $dokter_id, 'users.id' => $instansi_id])
+        ->first();
+        if($doctor<=0)
+            return null;
+        $inv_model = new InvoiceModel();
+        $doctor["review"] = $inv_model->getReview($doctor['id']);
+        $jadwal = $this->getSchedule($doctor['id']);
+        
+
+        $day = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+        $listHari = array();
+        foreach($jadwal as $s){
+            if(in_array($s['day'], $day)){
+                $key = array_search($s['day'], $day);
+                unset($day[$key]);
+            }
+        }
+        foreach($day as $d){
+            array_push($jadwal, [
+                'id' => -1,
+                'dokter_id' => -1,
+                'day' => $d,
+                'time_start' => null,
+                "time_end" => null,
+                'created_at' => null
+            ]);
+        }
+        $prio = [
+            "Senin"     => 7, 
+            "Selasa"    => 6, 
+            "Rabu"      => 5, 
+            "Kamis"     => 4,
+            "Jumat"     => 3,
+            "Sabtu"     => 2, 
+            "Minggu"    => 1
+        ];
+        $jadwal = array_values($this->sorting_day($jadwal, "day", $prio));
+        $doctor["schedule"] = $jadwal;
+        
+
+        return $doctor;
+    }
+
+    public function addSchedule($did, $uid, $data) {
+        if(count($this->where(['id' => $did, 'instansi_id' => $uid])->findAll()) <= 0)
+            return false;
+        return $this->db->table("schedule")->insert($data);
+    }
+
+    public function editOwnSchedule($jid, $did, $uid, $data) {
+        if(count($this->where(['id' => $did, 'instansi_id' => $uid])->findAll()) <= 0)
+            return false;
+        return $this->db->table("schedule")->update($data, ['id' => $jid]);
+    }
+
+    public function deleteOwnSchedule($jid, $did, $uid) {
+        if(count($this->where(['id' => $did, 'instansi_id' => $uid])->findAll()) <= 0)
+            return false;
+            
+        return $this->db->table("schedule")->delete(['id' => $jid]);
+    }
 }

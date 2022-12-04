@@ -170,4 +170,40 @@ class InvoiceModel extends Model
         $last = count($this->where("DATE(created_at) = CURDATE()")->findAll());
         return "MD-".date("dm")."-".sprintf('%03d', ($last + 1));
     }
+
+
+    // For Admin=============================================================================================================================================================================
+
+    public function getTotalHistory($instansi = -1) {
+        $query = $this
+        ->select("count(invoice.id) as total", false)
+        ->join("dokter",'invoice.dokter_id=dokter.id');
+        if($instansi != -1)
+            $query->where(['dokter.instansi_id' => $instansi]);
+        return $query->first()["total"];
+    }
+
+    public function getInvoices($instansi = -1) {
+        $invoices = $this->protect(false)
+        ->join("users",'users.id=invoice.user_id')
+        ->join("dokter",'invoice.dokter_id=dokter.id')
+        ->select("invoice.*, users.fullname", false);
+        if($instansi != -1)
+            $invoices->where(['dokter.instansi_id' => $instansi]);
+        
+        $invoices = $invoices->findAll();
+        $clearInvoice = array();
+        $paymentModel = new PaymentModel();
+        foreach ($invoices as $inv) {
+            $inv["payment"] = $paymentModel->where('id', $inv['id'])->first();
+            if(isset($inv["payment"]))
+                if($inv["payment"]['payment_method']){
+                    $inv["payment"]['payment_method'] = $paymentModel->getPaymentById($inv["payment"]['payment_method']);
+                }
+            $inv["dokter"] = (new DokterModel())->where('id', $inv['dokter_id'])->first();            
+            array_push($clearInvoice, $inv);
+        }
+        
+        return $clearInvoice;
+    }
 }

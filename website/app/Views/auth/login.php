@@ -47,6 +47,7 @@
                     <div class="login-form-body">
                        <!-- Disini set flash data -->
                        <?=form_error(session('error'), '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+                       <?=form_error(session('success'), '<div class="alert alert-success" role="alert">', '</div>'); ?>
                        
                         <div class="form-gp <?= old('login') ? 'focused' : ''; ?>">
                             <label for="username">Email/Username</label>

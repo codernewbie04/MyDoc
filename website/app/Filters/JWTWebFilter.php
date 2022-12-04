@@ -25,7 +25,7 @@ class JWTWebFilter implements FilterInterface
                 
             return $request;
         } catch (Exception $e) {
-            return redirect()->to(site_url($route));
+            return redirect()->to(site_url($route))->with('error', 'Sesi habis, silakan login ulang!');
         }
         
     }

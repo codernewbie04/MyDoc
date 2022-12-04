@@ -86,6 +86,7 @@ class Filters extends BaseConfig
         ],
         'login' => [
             'before' => [
+                '/',
                 'admin/*'
           ],
         ],

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2022 at 06:54 AM
+-- Generation Time: Nov 29, 2022 at 06:38 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -20,20 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mydoc`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_activation_attempts`
---
-
-CREATE TABLE `auth_activation_attempts` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `ip_address` varchar(255) NOT NULL,
-  `user_agent` varchar(255) NOT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -59,26 +45,6 @@ INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_groups_permissions`
---
-
-CREATE TABLE `auth_groups_permissions` (
-  `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `auth_groups_permissions`
---
-
-INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 2);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `auth_groups_users`
 --
 
@@ -94,9 +60,14 @@ CREATE TABLE `auth_groups_users` (
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
 (2, 2),
+(2, 24),
+(2, 26),
 (3, 7),
 (3, 8),
-(3, 10);
+(3, 10),
+(3, 17),
+(3, 23),
+(3, 27);
 
 -- --------------------------------------------------------
 
@@ -238,8 +209,138 @@ INSERT INTO `auth_jwt` (`id`, `jti`, `blacklist`, `created_at`) VALUES
 (120, 'c3ad603bb2af533e', 0, '2022-11-02 04:14:51'),
 (121, 'f0c75ea9d2701c80', 0, '2022-11-02 04:16:16'),
 (122, '2888bde0f9506706', 1, '2022-11-02 04:16:34'),
-(123, '279d630f17014d08', 0, '2022-11-02 04:18:06'),
-(124, '8cc8ce2f7a0b0a88', 0, '2022-11-02 04:23:40');
+(123, '279d630f17014d08', 1, '2022-11-02 04:18:06'),
+(124, '8cc8ce2f7a0b0a88', 0, '2022-11-02 04:23:40'),
+(125, 'd40f292c0aa99aff', 0, '2022-11-02 13:23:20'),
+(126, 'd254ff6da1ba4f2b', 0, '2022-11-05 01:22:55'),
+(127, '3cd3cfe368539478', 1, '2022-11-05 02:16:17'),
+(128, '6d6b1d1d4a4eb954', 0, '2022-11-05 02:16:21'),
+(129, 'a2cdd140a5976ae6', 1, '2022-11-05 02:26:03'),
+(130, '788d0e75df7e860c', 1, '2022-11-05 02:26:08'),
+(131, '547abd7093801597', 0, '2022-11-05 02:26:23'),
+(132, 'c7d7c9b7dbab564c', 1, '2022-11-05 02:45:08'),
+(133, '6381313c3fb8c21c', 0, '2022-11-05 02:45:15'),
+(134, 'bc82e70f69a54980', 0, '2022-11-05 03:37:38'),
+(135, 'ecfdd7a598235da6', 0, '2022-11-05 05:06:52'),
+(136, '45959fed53a99842', 0, '2022-11-05 06:09:19'),
+(137, 'b5cf2665602a9592', 0, '2022-11-05 07:10:01'),
+(138, '03196d0f399a6646', 0, '2022-11-05 08:14:10'),
+(139, 'db5a8227b15d28b5', 1, '2022-11-05 08:35:28'),
+(140, '76b635e820e1fe3d', 0, '2022-11-05 08:35:53'),
+(141, '1e5c9ded83e0af51', 0, '2022-11-05 15:30:04'),
+(142, 'c771a7b7c2113e05', 0, '2022-11-05 16:45:15'),
+(143, 'db9f7274f4acae5a', 0, '2022-11-05 17:50:01'),
+(144, '5e36bb8126c6b1e3', 0, '2022-11-05 18:51:24'),
+(145, 'b09070a4b15d7c66', 0, '2022-11-05 21:10:30'),
+(146, '53065fbceae10596', 0, '2022-11-05 21:23:57'),
+(147, '89bd16d50de7f5cb', 0, '2022-11-05 22:28:52'),
+(148, '0afab76ad9af1d80', 0, '2022-11-05 22:35:42'),
+(149, '4f033f14e1df1b1e', 0, '2022-11-05 23:40:24'),
+(150, '63c1f408c69dd8c2', 0, '2022-11-06 00:35:36'),
+(151, '481a6e2f706a55e4', 0, '2022-11-06 01:49:31'),
+(152, 'b59d4391538cee07', 1, '2022-11-06 03:01:58'),
+(153, 'e5c91cf9c8be1e2f', 0, '2022-11-06 03:44:11'),
+(154, 'e4d41a0cfb2e577b', 1, '2022-11-06 04:05:19'),
+(155, '77fbda2153061bab', 1, '2022-11-06 04:07:22'),
+(156, '16b4e103bd25b038', 1, '2022-11-07 03:41:01'),
+(157, '1cafc4e112ed71d9', 0, '2022-11-07 04:25:55'),
+(158, '3fb151548ad4c25f', 1, '2022-11-07 04:34:59'),
+(159, '27b8ea48b998b45f', 1, '2022-11-07 04:41:02'),
+(160, 'a73c912eddbe2399', 0, '2022-11-07 05:48:25'),
+(161, '44a3769bf5441dfe', 0, '2022-11-07 05:57:51'),
+(162, '3bd048f95c0c2e8e', 1, '2022-11-07 06:00:08'),
+(163, '58b88bbffc83548f', 1, '2022-11-07 06:04:21'),
+(164, 'c2878f9db1d52ddd', 1, '2022-11-07 06:37:00'),
+(165, 'e6be072d8ea958cb', 1, '2022-11-07 06:45:55'),
+(166, '01ddd271cb0b3ed2', 1, '2022-11-07 06:46:55'),
+(167, '99d56f41156ccf87', 1, '2022-11-07 06:50:21'),
+(168, '67d2d3a9cec2ff20', 1, '2022-11-07 17:29:49'),
+(169, '79a5987df5661e3e', 1, '2022-11-07 17:43:44'),
+(170, '46939cf06ea4beb3', 1, '2022-11-07 17:44:39'),
+(171, '16ee868640b31233', 1, '2022-11-07 18:19:22'),
+(172, '22fd93dfd0399c79', 1, '2022-11-07 18:25:29'),
+(173, '39cd959d399edfe0', 0, '2022-11-07 18:46:07'),
+(174, 'e5d358a51a5443ea', 1, '2022-11-07 18:59:40'),
+(175, '319be15372f2596c', 1, '2022-11-08 20:47:01'),
+(176, '05e516f9178a607d', 1, '2022-11-08 20:49:39'),
+(177, '569c6281158ecce3', 1, '2022-11-08 20:55:58'),
+(178, 'e3e5b458fb2daf23', 1, '2022-11-08 22:42:42'),
+(179, '9aabf0c471d3752d', 0, '2022-11-09 15:50:00'),
+(180, 'ca6e64091f2bf5d0', 1, '2022-11-09 16:35:11'),
+(181, 'cdb61cf16ae1daf6', 0, '2022-11-09 16:55:05'),
+(182, '65483f7510b26f77', 1, '2022-11-09 17:43:41'),
+(183, 'e84d2143ed0e67ae', 1, '2022-11-10 01:38:25'),
+(184, 'caa3b5045ee1b2c3', 1, '2022-11-10 02:43:39'),
+(185, '15de103261bec1af', 0, '2022-11-10 03:02:45'),
+(186, '6303990f6030b618', 1, '2022-11-10 03:43:42'),
+(187, 'eb6e7e2e83ff97e2', 1, '2022-11-10 04:43:47'),
+(188, '8a87ab588b0ea970', 0, '2022-11-10 04:52:50'),
+(189, 'c487e4aee17265eb', 0, '2022-11-11 03:05:02'),
+(190, 'e79e3e4b15ccdebb', 1, '2022-11-11 04:29:50'),
+(191, 'b7521b6de9843138', 0, '2022-11-11 04:48:33'),
+(192, '17124597da8b1a46', 1, '2022-11-11 05:18:09'),
+(193, '20459ccad3152b67', 1, '2022-11-11 15:37:42'),
+(194, '79f985fb0889f002', 1, '2022-11-11 15:54:36'),
+(195, '3eb0155d76430df9', 1, '2022-11-11 15:59:45'),
+(196, '7fef8f56c6857857', 0, '2022-11-11 16:17:45'),
+(197, '442b790b27f6af64', 0, '2022-11-16 07:23:24'),
+(198, '312109c3217c73be', 0, '2022-11-22 19:16:29'),
+(199, '194dbfcd2fb1af75', 0, '2022-11-22 19:27:57'),
+(200, '0949cf47e85c9fab', 0, '2022-11-22 21:30:45'),
+(201, 'e8e3133490e8348a', 0, '2022-11-22 21:32:01'),
+(202, '67ef1542e9e6a4c7', 0, '2022-11-22 21:32:45'),
+(203, 'ace397b0a09f6ff0', 0, '2022-11-22 21:36:43'),
+(204, '54202bc6b1dfc846', 0, '2022-11-22 21:37:00'),
+(205, '71acffebe40ea45b', 0, '2022-11-22 21:46:41'),
+(206, '88a95ad43e471846', 0, '2022-11-23 03:01:06'),
+(207, '8d6513754d40aba4', 0, '2022-11-23 03:05:29'),
+(208, '50ef42c9279e4da3', 0, '2022-11-23 03:05:42'),
+(209, '56a1ea7c3efe5388', 0, '2022-11-23 03:08:21'),
+(210, '8d662d69a5323301', 0, '2022-11-23 03:08:43'),
+(211, '88ab676838057ec5', 0, '2022-11-25 01:57:55'),
+(212, '6af0cd74c6a9b0b6', 0, '2022-11-25 02:35:40'),
+(213, '7d8d4e45ef7d2784', 0, '2022-11-25 02:35:57'),
+(214, '654bb3ce0911c5ba', 0, '2022-11-25 02:36:12'),
+(215, 'a039f8f287f11725', 0, '2022-11-25 02:49:08'),
+(216, '06b26c7b51286fa2', 0, '2022-11-25 02:54:21'),
+(217, 'bc45bf9a0fe33674', 0, '2022-11-25 02:59:29'),
+(218, 'a63a01870e340d0c', 0, '2022-11-25 03:00:47'),
+(219, '0cb591a72bfd9f4c', 0, '2022-11-25 03:48:59'),
+(220, '1545d8734ddc39d4', 0, '2022-11-25 04:02:24'),
+(221, '2e9228a62243c0fd', 0, '2022-11-25 16:01:28'),
+(222, '8802703a0ab3e34e', 0, '2022-11-25 16:12:20'),
+(223, '9622a349eb5389a8', 0, '2022-11-25 16:37:34'),
+(224, '61f7670c820cc77e', 0, '2022-11-25 17:27:14'),
+(225, '6ed6396c3640fdc5', 0, '2022-11-25 17:27:35'),
+(226, '2091d4f8a6627fa2', 0, '2022-11-25 18:33:16'),
+(227, '0ea376ff11458e5e', 0, '2022-11-26 19:50:52'),
+(228, '16b9b4c7bec3706f', 0, '2022-11-26 20:53:43'),
+(229, 'cf8730e53b83194f', 0, '2022-11-26 21:58:53'),
+(230, 'dad58820f5d0372d', 0, '2022-11-27 01:56:19'),
+(231, '240af1d48d9a05f4', 0, '2022-11-27 01:56:56'),
+(232, 'c1939200c8fede2c', 0, '2022-11-27 02:47:22'),
+(233, '295f48703c3b4b0a', 0, '2022-11-27 02:47:39'),
+(234, 'a181ac200358e35b', 0, '2022-11-27 03:49:00'),
+(235, '4330998e9ce59721', 0, '2022-11-27 04:54:55'),
+(236, 'a63f0f1076e258a2', 0, '2022-11-27 05:28:25'),
+(237, '38933eb2eba2fe02', 0, '2022-11-27 05:30:09'),
+(238, '0f24a11a2bec2623', 0, '2022-11-27 05:33:09'),
+(239, '8bd4f28a5002a43a', 0, '2022-11-27 20:05:11'),
+(240, 'a5b2206a5f2a7e5d', 0, '2022-11-27 20:14:47'),
+(241, 'a049a5390c04336f', 0, '2022-11-27 21:17:37'),
+(242, '88e492b272ee16ef', 0, '2022-11-27 23:19:48'),
+(243, '26997f0e70ef64f3', 0, '2022-11-28 01:09:48'),
+(244, '2dc60473acf27b49', 0, '2022-11-28 01:54:17'),
+(245, '48f2c975584dd803', 0, '2022-11-28 01:54:47'),
+(246, '7acd173e42b58168', 0, '2022-11-28 02:22:35'),
+(247, '18a5839311d0bccf', 0, '2022-11-28 02:56:50'),
+(248, '64d3da52ee94b948', 0, '2022-11-28 03:57:10'),
+(249, 'd6fb99156d8f441d', 0, '2022-11-28 04:50:01'),
+(250, '4677d6e441558fd6', 0, '2022-11-28 04:58:47'),
+(251, '991d6650030622bc', 0, '2022-11-28 05:00:35'),
+(252, '632b7f05c79107f8', 0, '2022-11-28 05:00:59'),
+(253, 'fcba5ad03494e8e6', 0, '2022-11-28 05:20:01'),
+(254, 'e50edef6fcaeb81b', 0, '2022-11-30 00:04:28');
 
 -- --------------------------------------------------------
 
@@ -369,67 +470,121 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (121, '192.168.1.25', 'akmalmf007@gmail.com', 7, '2022-11-02 04:14:06', 1),
 (122, '192.168.1.25', 'akmalmf007@gmail.com', 7, '2022-11-02 04:14:22', 1),
 (123, '192.168.1.25', 'akmalmf007@gmail.com', 7, '2022-11-02 04:16:16', 1),
-(124, '192.168.1.25', 'akmalmf007@gmail.com', 7, '2022-11-02 04:16:34', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_permissions`
---
-
-CREATE TABLE `auth_permissions` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `auth_permissions`
---
-
-INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
-(1, 'manage-users', 'Admin can manage users'),
-(2, 'manage-profile', 'Manage user\'s profile');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_reset_attempts`
---
-
-CREATE TABLE `auth_reset_attempts` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `ip_address` varchar(255) NOT NULL,
-  `user_agent` varchar(255) NOT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_tokens`
---
-
-CREATE TABLE `auth_tokens` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `selector` varchar(255) NOT NULL,
-  `hashedValidator` varchar(255) NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `expires` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_users_permissions`
---
-
-CREATE TABLE `auth_users_permissions` (
-  `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(124, '192.168.1.25', 'akmalmf007@gmail.com', 7, '2022-11-02 04:16:34', 1),
+(125, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 01:22:55', 1),
+(126, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 02:16:17', 1),
+(127, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 02:26:03', 1),
+(128, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 02:26:23', 1),
+(129, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 02:45:08', 1),
+(130, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 03:37:38', 1),
+(131, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 05:06:52', 1),
+(132, '::1', 'akmalmf007@gmail.com', NULL, '2022-11-05 05:21:16', 0),
+(133, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 06:09:19', 1),
+(134, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 07:10:01', 1),
+(135, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 08:14:10', 1),
+(136, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 08:35:28', 1),
+(137, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 15:30:04', 1),
+(138, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 16:45:15', 1),
+(139, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 17:50:01', 1),
+(140, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 18:51:24', 1),
+(141, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 21:10:30', 1),
+(142, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-05 21:23:57', 1),
+(143, '::1', 'akmalmf007@gmail.com', 7, '2022-11-05 22:28:52', 1),
+(144, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-05 22:35:42', 1),
+(145, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-05 23:40:24', 1),
+(146, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-06 00:35:36', 1),
+(147, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-06 01:49:31', 1),
+(148, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-06 03:01:58', 1),
+(149, '::1', 'akmalmf007@gmail.com', 7, '2022-11-06 03:44:11', 1),
+(150, '::1', 'akmalmf007@gmail.com', 7, '2022-11-07 04:34:59', 1),
+(151, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 05:57:51', 1),
+(152, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 06:00:08', 1),
+(153, '::1', 'akmalmf007@gmail.com', 7, '2022-11-07 06:37:00', 1),
+(154, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 06:45:55', 1),
+(155, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 06:46:55', 1),
+(156, '192.168.1.12', 'coder.newbie04@gmail.com', 8, '2022-11-07 06:50:21', 1),
+(157, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 17:29:49', 1),
+(158, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 17:43:44', 1),
+(159, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 17:44:39', 1),
+(160, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 18:19:22', 1),
+(161, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-07 18:25:29', 1),
+(162, '::1', 'akmalmf007@gmail.com', 7, '2022-11-07 18:46:07', 1),
+(163, '::1', 'akmalmf007@gmail.com', 7, '2022-11-09 15:50:00', 1),
+(164, '::1', 'akmalmf007@gmail.com', 7, '2022-11-09 16:55:05', 1),
+(165, '::1', 'akmalmf007@gmail.com', 7, '2022-11-10 03:02:45', 1),
+(166, '::1', 'akmalmf007@gmail.com', 7, '2022-11-10 04:52:50', 1),
+(167, '::1', 'akmalmf007@gmail.com', 7, '2022-11-11 03:05:02', 1),
+(168, '::1', 'akmalmf007@gmail.com', 7, '2022-11-11 04:48:33', 1),
+(169, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-11 05:18:09', 1),
+(170, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-11 15:37:42', 1),
+(171, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-11 15:54:36', 1),
+(172, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-11 15:59:45', 1),
+(173, '192.168.1.12', 'akmalmf007@gmail.com', 7, '2022-11-11 16:17:45', 1),
+(174, '192.168.1.23', 'akmalmf007@gmail.com', 7, '2022-11-16 07:23:24', 1),
+(175, '::1', 'admin@admin.com', NULL, '2022-11-21 15:21:44', 0),
+(176, '::1', 'admin@admin.com', NULL, '2022-11-21 15:22:07', 0),
+(177, '::1', 'admin_123', NULL, '2022-11-21 15:31:06', 0),
+(178, '::1', 'admin_123', NULL, '2022-11-21 15:31:15', 0),
+(179, '::1', 'codernewbie04', NULL, '2022-11-21 15:31:19', 0),
+(180, '::1', 'admin@admin.com', NULL, '2022-11-21 15:43:44', 0),
+(181, '::1', 'admin@admin.com', NULL, '2022-11-21 15:44:21', 0),
+(182, '::1', 'admin@admin.com', 1, '2022-11-22 19:16:29', 1),
+(183, '::1', 'admin@admin.com', 1, '2022-11-22 19:27:57', 1),
+(184, '::1', 'admin@admin.com', 1, '2022-11-22 21:30:45', 1),
+(185, '::1', 'admin@admin.com', 1, '2022-11-22 21:32:01', 1),
+(186, '::1', 'admin@admin.com', 1, '2022-11-22 21:32:45', 1),
+(187, '::1', 'akmalmf007@gmail.com', 7, '2022-11-22 21:36:43', 1),
+(188, '::1', 'akmalmf007@gmail.com', 7, '2022-11-22 21:37:00', 1),
+(189, '::1', 'admin@admin.com', 1, '2022-11-22 21:46:41', 1),
+(190, '::1', 'admin@admin.com', 1, '2022-11-23 03:01:06', 1),
+(191, '::1', 'admin@admin.com', 1, '2022-11-23 03:05:29', 1),
+(192, '::1', 'admin@admin.com', 1, '2022-11-23 03:05:42', 1),
+(193, '::1', 'admin@admin.com', 1, '2022-11-23 03:08:21', 1),
+(194, '::1', 'admin@admin.com', 1, '2022-11-23 03:08:43', 1),
+(195, '::1', 'admin@admin.com', 1, '2022-11-25 01:57:55', 1),
+(196, '::1', 'admin@admin.com', 1, '2022-11-25 02:35:40', 1),
+(197, '::1', 'instansi@instansi.com', 2, '2022-11-25 02:35:57', 1),
+(198, '::1', 'admin@admin.com', 1, '2022-11-25 02:36:12', 1),
+(199, '::1', 'instansi@instansi.com', 2, '2022-11-25 02:49:08', 1),
+(200, '::1', 'admin@admin.com', 1, '2022-11-25 02:54:21', 1),
+(201, '::1', 'akmalmf007@gmail.com', 7, '2022-11-25 02:59:29', 1),
+(202, '::1', 'admin@admin.com', 1, '2022-11-25 03:00:47', 1),
+(203, '::1', 'instansi@instansi.com', 2, '2022-11-25 03:48:59', 1),
+(204, '::1', 'akmalmf007@gmail.com', 7, '2022-11-25 04:02:24', 1),
+(205, '::1', 'admin@admin.com', 1, '2022-11-25 16:01:28', 1),
+(206, '::1', 'instansi@instansi.com', 2, '2022-11-25 16:12:20', 1),
+(207, '::1', 'admin@admin.com', 1, '2022-11-25 16:37:34', 1),
+(208, '::1', 'instansi@instansi.com', 2, '2022-11-25 17:27:14', 1),
+(209, '::1', 'admin@admin.com', 1, '2022-11-25 17:27:35', 1),
+(210, '::1', 'admin@admin.com', 1, '2022-11-25 18:33:16', 1),
+(211, '::1', 'admin@admin.com', 1, '2022-11-26 19:50:52', 1),
+(212, '::1', 'admin@admin.com', 1, '2022-11-26 20:53:43', 1),
+(213, '::1', 'admin@admin.com', 1, '2022-11-26 21:58:53', 1),
+(214, '::1', 'admin@admin.com', 1, '2022-11-27 01:56:19', 1),
+(215, '::1', 'admin@admin.com', 1, '2022-11-27 01:56:56', 1),
+(216, '::1', 'instansi@instansi.com', 2, '2022-11-27 02:47:22', 1),
+(217, '::1', 'admin@admin.com', 1, '2022-11-27 02:47:39', 1),
+(218, '::1', 'admin@admin.com', 1, '2022-11-27 03:49:00', 1),
+(219, '::1', 'admin@admin.com', 1, '2022-11-27 04:54:55', 1),
+(220, '::1', 'instansi@instansi.com', 2, '2022-11-27 05:28:25', 1),
+(221, '::1', 'asd@gmail.com', 24, '2022-11-27 05:30:09', 1),
+(222, '::1', 'admin@admin.com', 1, '2022-11-27 05:33:09', 1),
+(223, '::1', 'admin@admin.com', 1, '2022-11-27 20:05:11', 1),
+(224, '::1', 'instansi@instansi.com', 2, '2022-11-27 20:14:47', 1),
+(225, '::1', 'instansi@instansi.com', 2, '2022-11-27 21:17:37', 1),
+(226, '::1', 'instansi@instansi.com', 2, '2022-11-27 23:19:48', 1),
+(227, '::1', 'instansi@instansi.com', 2, '2022-11-28 01:09:48', 1),
+(228, '::1', 'asd@gmail.com', 24, '2022-11-28 01:54:17', 1),
+(229, '::1', 'instansi@instansi.com', 2, '2022-11-28 01:54:47', 1),
+(230, '::1', 'akmalmf007@gmail.com', 7, '2022-11-28 02:22:35', 1),
+(231, '::1', 'instansi@instansi.com', 2, '2022-11-28 02:56:50', 1),
+(232, '::1', 'instansi@instansi.com', 2, '2022-11-28 03:57:10', 1),
+(233, '::1', 'akmalmf007@gmail.com', 7, '2022-11-28 04:50:01', 1),
+(234, '::1', 'instansi@instansi.com', 2, '2022-11-28 04:58:47', 1),
+(235, '::1', 'admin@admin.com', 1, '2022-11-28 05:00:35', 1),
+(236, '::1', 'instansi@instansi.com', 2, '2022-11-28 05:00:59', 1),
+(237, '::1', 'admin@admin.com', 1, '2022-11-28 05:20:01', 1),
+(238, '::1', 'instansi@instansi.com', 2, '2022-11-30 00:04:27', 1);
 
 -- --------------------------------------------------------
 
@@ -450,8 +605,34 @@ CREATE TABLE `balance` (
 
 INSERT INTO `balance` (`id`, `uid`, `balance`, `updated_at`) VALUES
 (4, 7, 200000, '2022-10-18 21:13:51'),
-(5, 8, 0, '2022-11-01 03:21:52'),
-(7, 10, 0, '2022-11-01 11:43:10');
+(5, 8, 100000, '2022-11-01 03:21:52'),
+(7, 10, 0, '2022-11-01 11:43:10'),
+(14, 17, 0, '2022-11-05 02:44:22'),
+(15, 27, 0, '2022-11-27 02:08:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `balance_tracker`
+--
+
+CREATE TABLE `balance_tracker` (
+  `id` int(11) NOT NULL,
+  `type` enum('in','out') NOT NULL DEFAULT 'out',
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `amount` int(11) NOT NULL,
+  `description` varchar(60) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `balance_tracker`
+--
+
+INSERT INTO `balance_tracker` (`id`, `type`, `user_id`, `amount`, `description`, `created_at`) VALUES
+(1, 'in', 7, 200000, 'Topup by Admin', '2022-11-27 02:20:52'),
+(2, 'in', 8, 20000, 'Topup by Admin', '2022-11-27 04:19:39'),
+(3, 'in', 8, 80000, 'Topup by Admin', '2022-11-27 04:20:21');
 
 -- --------------------------------------------------------
 
@@ -464,17 +645,23 @@ CREATE TABLE `dokter` (
   `instansi_id` int(11) UNSIGNED NOT NULL,
   `nama` varchar(255) NOT NULL,
   `profession` varchar(60) NOT NULL,
-  `image` varchar(50) NOT NULL DEFAULT 'dokter.png',
+  `image` varchar(50) NOT NULL DEFAULT 'dokter.jpg',
   `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dokter`
 --
 
-INSERT INTO `dokter` (`id`, `instansi_id`, `nama`, `profession`, `image`, `price`, `created_at`) VALUES
-(1, 2, 'Dr. Akmal Muhamad Firdaus', 'Dokter Cinta', 'dokter.png', 25000, '2022-11-01 12:42:24');
+INSERT INTO `dokter` (`id`, `instansi_id`, `nama`, `profession`, `image`, `price`, `created_at`, `deleted_at`) VALUES
+(1, 2, 'Dr. Akmal Muhamad Firdaus', 'Dokter Penyakit Dalam', 'dokter.jpg', 25000, '2022-11-01 12:42:24', NULL),
+(6, 2, 'Dr Ujang Surya', 'Dokter Ortopedi', '1669579482_d5112026bd340e6be298.jpeg', 200000, '2022-11-27 21:55:20', NULL),
+(8, 2, 'Dokter Gambar', 'Gambar', 'dokter.jpg', 200000, '2022-11-28 01:49:10', '2022-11-27 12:51:48'),
+(9, 24, 'Dokter Gambar', 'Gambar', 'dokter.jpg', 1, '2022-11-28 01:52:18', NULL),
+(10, 2, 'asd', 'asd', 'dokter.jpg', 1, '2022-11-28 03:03:22', '2022-11-27 14:03:31'),
+(11, 2, 'asd', 'asd', '1669579732_b22e98585163ba03455f.png', 12, '2022-11-28 03:05:50', '2022-11-27 15:49:52');
 
 -- --------------------------------------------------------
 
@@ -495,7 +682,8 @@ CREATE TABLE `fcm_token` (
 
 INSERT INTO `fcm_token` (`id`, `user_id`, `token`, `created_at`) VALUES
 (1, 7, '$2y$10$1FeJvB6Ov9Hc3408ZChmoOxgsw9q67YvO0WrRJzidG39dugjIg7bK', '2022-10-30 15:47:06'),
-(2, 7, '123', '2022-11-01 02:13:55');
+(2, 7, '123', '2022-11-01 02:13:55'),
+(3, 8, '123', '2022-11-07 06:50:21');
 
 -- --------------------------------------------------------
 
@@ -513,16 +701,30 @@ CREATE TABLE `invoice` (
   `total_price` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `registration_code` varchar(10) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `invoice`
 --
 
-INSERT INTO `invoice` (`id`, `no_invoice`, `user_id`, `dokter_id`, `price`, `discount`, `total_price`, `status`, `registration_code`, `created_at`) VALUES
-(1, 'MD-0111-001', 7, 1, 25000, 0, 25000, 0, 'OjTNG7aPYU', '2022-11-01 12:43:40'),
-(2, 'MD-0111-002', 7, 1, 25000, 4000, 21000, 0, 'OjTNG7a23s', '2022-11-01 19:11:46');
+INSERT INTO `invoice` (`id`, `no_invoice`, `user_id`, `dokter_id`, `price`, `discount`, `total_price`, `status`, `registration_code`, `created_at`, `updated_at`) VALUES
+(1, 'MD-0111-001', 7, 1, 25000, 0, 25000, 1, 'OjTNG7aPYU', '2022-11-05 12:43:40', '2022-11-05 16:47:37'),
+(2, 'MD-0111-002', 7, 1, 25000, 4000, 21000, 0, 'OjTNG7a23s', '2022-11-05 19:11:46', '2022-11-05 16:47:37'),
+(3, 'MD-0511-003', 7, 1, 25000, 0, 25000, 2, 'G1J1qCJKs2', '2022-11-05 04:53:10', '2022-11-05 04:53:10'),
+(4, 'MD-0511-004', 7, 1, 25000, 0, 25000, -1, 'K3p6GxIYva', '2022-11-05 06:26:22', '2022-11-05 06:26:22'),
+(5, 'MD-0911-001', 7, 1, 25000, 0, 25000, 3, 'CsqxLibsf0', '2022-11-09 15:52:56', '2022-11-09 15:52:56'),
+(6, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'p8k5CWstlo', '2022-11-09 16:16:37', '2022-11-09 16:16:37'),
+(7, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'R1e9QZVJaR', '2022-11-09 16:17:22', '2022-11-09 16:17:22'),
+(8, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'XYCI6dZz3J', '2022-11-09 16:18:17', '2022-11-09 16:18:17'),
+(9, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'yO1IMi8C0H', '2022-11-09 16:19:25', '2022-11-09 16:19:25'),
+(10, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'wDCOqR2oe5', '2022-11-10 14:05:22', '2022-11-10 14:05:22'),
+(11, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'nfoV6AlqGZ', '2022-11-10 15:34:07', '2022-11-10 15:34:07'),
+(12, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'LCeFxv61ro', '2022-11-10 15:36:35', '2022-11-10 15:36:35'),
+(13, 'MD-1111-001', 7, 1, 25000, 0, 25000, 0, '6UkxpYbDF9', '2022-11-11 02:38:14', '2022-11-11 02:38:14'),
+(14, 'MD-1111-002', 7, 1, 25000, 0, 25000, 0, 'g9aqbMS8qy', '2022-11-11 02:55:15', '2022-11-11 02:55:15'),
+(15, 'MD-1511-001', 7, 1, 25000, 0, 25000, 0, 'hJu8UVCUoi', '2022-11-15 18:24:07', '2022-11-15 18:24:07');
 
 -- --------------------------------------------------------
 
@@ -556,23 +758,105 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 CREATE TABLE `payment` (
   `id` int(11) NOT NULL,
   `invoice_id` int(11) NOT NULL,
-  `reference` varchar(20) NOT NULL,
-  `url` varchar(255) NOT NULL,
+  `reference` varchar(20) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `qr_code` varchar(255) DEFAULT NULL,
-  `vaNumber` varchar(60) NOT NULL,
-  `payment_method` varchar(10) NOT NULL,
-  `payment_name` varchar(60) NOT NULL,
+  `vaNumber` varchar(60) DEFAULT NULL,
+  `payment_method` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`id`, `invoice_id`, `reference`, `url`, `qr_code`, `vaNumber`, `payment_method`, `payment_name`, `amount`, `status`, `created_at`) VALUES
-(1, 1, 'D6195KK7NFYUPFP3GI1A', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=BCCMC8YIKQZ7ODFOE', NULL, '7007014004000306', 'BC', 'BCA VA', 25000, 0, '2022-11-01 11:40:26');
+INSERT INTO `payment` (`id`, `invoice_id`, `reference`, `url`, `qr_code`, `vaNumber`, `payment_method`, `amount`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'D6195KK7NFYUPFP3GI1A', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=BCCMC8YIKQZ7ODFOE', NULL, '7007014004000306', 1, 25000, 1, '2022-11-01 11:40:26', '2022-11-05 16:47:23'),
+(3, 3, 'DS138717GGME0RPLYIEJ', NULL, NULL, '782870139144685', 1, 25000, 0, '0000-00-00 00:00:00', '2022-11-05 16:53:10'),
+(4, 4, 'DS138718YN8BHW1QUCF8', NULL, NULL, '782870190553995', 1, 25000, -1, '2022-11-05 18:26:22', '2022-11-05 18:26:22'),
+(5, 5, 'DS1387170DEMQ6J1888T', NULL, NULL, '782870105965008', 1, 25000, 0, '2022-11-10 04:52:56', '2022-11-10 04:52:56'),
+(6, 6, 'DS13871Z83W0X31ES2W0', NULL, NULL, '782870156551150', 1, 25000, 0, '2022-11-10 05:16:37', '2022-11-10 05:16:37'),
+(7, 7, 'DS138714GNM3NOKJDALU', NULL, NULL, '782870164372437', 1, 25000, 0, '2022-11-10 05:17:22', '2022-11-10 05:17:22'),
+(8, 8, 'DS138714ZQFLU64JJ8CS', NULL, NULL, '782870142098475', 7, 25000, 0, '2022-11-10 05:18:17', '2022-11-10 05:18:17'),
+(9, 9, 'DS13871NLQVZONFM50DS', NULL, NULL, '782870154153241', 7, 25000, 0, '2022-11-10 05:19:25', '2022-11-10 05:19:25'),
+(10, 10, 'DS13871UH7TWFLPS7T5C', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=VAIBVKFW1PXGGQKG0', NULL, '782870133594964', 1, 25000, 0, '2022-11-11 03:05:22', '2022-11-11 03:05:22'),
+(11, 11, 'DS13871D606O58NH2QWT', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=VAFMS88Y8MIKCUI31', NULL, '782870182453020', 13, 25000, 0, '2022-11-11 04:34:07', '2022-11-11 04:34:07'),
+(12, 12, 'DS13871YRB57AN5N045C', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=SP51MYSJAE0ZX2O0B', '00020101021226560016ID.CO.SHOPEE.WWW011893600918000000025202032520303UMI520412345303360540825000.005802ID5906Duitku6015KOTA JAKARTA SE6101062210517SP51MYSJAE0ZX2O0B63040EAA', NULL, 13, 25000, 0, '2022-11-11 04:36:35', '2022-11-11 04:36:35'),
+(13, 13, 'DS13871V6PBF8D4GWW1W', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1CRQAKATGWMOS4JF', NULL, '9880024808519903', 7, 25000, 0, '2022-11-11 15:38:14', '2022-11-11 15:38:14'),
+(14, 14, 'DS138715GR8XQ04TX7DI', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1N1A8RJFMUCQIXK5', NULL, '9880024806999219', 7, 25000, 0, '2022-11-11 15:55:15', '2022-11-11 15:55:15'),
+(15, 15, 'DS138715ALH61WMD8CA0', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1CYFCSQ7K2CZGGTV', NULL, '9880024809231484', 7, 25000, 0, '2022-11-16 07:24:07', '2022-11-16 07:24:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_methods`
+--
+
+CREATE TABLE `payment_methods` (
+  `id` int(11) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `paymentName` varchar(60) NOT NULL,
+  `paymentImage` varchar(60) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_methods`
+--
+
+INSERT INTO `payment_methods` (`id`, `code`, `paymentName`, `paymentImage`, `created_at`, `updated_at`) VALUES
+(1, 'VA', 'MAYBANK VA', 'https://images.duitku.com/hotlink-ok/VA.PNG', '2022-11-05 07:43:36', '2022-11-05 16:47:08'),
+(2, 'FT', 'RETAIL', 'https://images.duitku.com/hotlink-ok/retail.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(3, 'VC', 'CREDIT CARD', 'https://images.duitku.com/hotlink-ok/VC.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(4, 'BT', 'PERMATA VA', 'https://images.duitku.com/hotlink-ok/PERMATA.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(5, 'B1', 'CIMB NIAGA VA', 'https://images.duitku.com/hotlink-ok/B1.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(6, 'A1', 'ATM BERSAMA VA', 'https://images.duitku.com/hotlink-ok/A1.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(7, 'I1', 'BNI VA', 'https://images.duitku.com/hotlink-ok/I1.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(8, 'OV', 'OVO', 'https://images.duitku.com/hotlink-ok/OV.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(9, 'M1', 'MANDIRI VA', 'https://images.duitku.com/hotlink-ok/MV.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(10, 'M2', 'MANDIRI VA H2H', 'https://images.duitku.com/hotlink-ok/MV.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(11, 'AG', 'ARTHA GRAHA VA', 'https://images.duitku.com/hotlink-ok/AG.JPG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(12, 'S1', 'SAMPOERNA VA', 'https://images.duitku.com/hotlink-ok/S1.JPG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(13, 'SP', 'SHOPEEPAY QRIS', 'https://images.duitku.com/hotlink-ok/SHOPEEPAY.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(14, 'DN', 'INDODANA PAYLATER', 'https://images.duitku.com/hotlink-ok/DN.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(15, 'LA', 'LINKAJA APP PCT', 'https://images.duitku.com/hotlink-ok/LINKAJA.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(16, 'SA', 'SHOPEEPAY APP', 'https://images.duitku.com/hotlink-ok/SHOPEEPAY.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(17, 'LQ', 'LINKAJA QRIS', 'https://images.duitku.com/hotlink-ok/LINKAJA.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(18, 'DA', 'DANA', 'https://images.duitku.com/hotlink-ok/DA.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(19, 'BC', 'BCA VA', 'https://images.duitku.com/hotlink-ok/BCA.SVG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(20, 'IR', 'INDOMARET', 'https://images.duitku.com/hotlink-ok/IR.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(21, 'SL', 'SHOPEEPAY LINK', 'https://images.duitku.com/hotlink-ok/SHOPEEPAY.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(22, 'BR', 'BRI VA', 'https://images.duitku.com/hotlink-ok/BR.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(23, 'NC', 'BNC VA', 'https://images.duitku.com/hotlink-ok/NC.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(24, 'NQ', 'NOBU QRIS', 'https://images.duitku.com/hotlink-ok/NQ.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(25, 'OL', 'OVO LINK', 'https://images.duitku.com/hotlink-ok/OV.PNG', '2022-11-05 18:11:11', '2022-11-05 18:11:11'),
+(26, 'SALDO', 'Saldo', '-', '2022-11-10 01:55:26', '2022-11-10 01:55:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `promo_code`
+--
+
+CREATE TABLE `promo_code` (
+  `id` int(11) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `type` enum('cut','percent') NOT NULL DEFAULT 'cut',
+  `amount` int(11) NOT NULL,
+  `expired` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `promo_code`
+--
+
+INSERT INTO `promo_code` (`id`, `code`, `type`, `amount`, `expired`, `created_at`) VALUES
+(1, 'MyDocOPEN', 'cut', 10000, '2022-12-31 04:49:31', '2022-11-27 04:49:31');
 
 -- --------------------------------------------------------
 
@@ -594,7 +878,37 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `invoice_id`, `reviewed_by`, `star`, `description`, `created_at`) VALUES
-(1, 1, 7, 5, 'Jospar jos genk!', '2022-11-01 19:00:04');
+(1, 1, 7, 5, 'Jospar jos genk!', '2022-11-05 06:30:26'),
+(2, 2, 8, 1, 'Test', '2022-11-05 06:37:34'),
+(3, 4, 7, 5, 'Boljug', '2022-11-05 18:44:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `id` int(11) NOT NULL,
+  `dokter_id` int(11) NOT NULL,
+  `day` varchar(6) NOT NULL,
+  `time_start` varchar(5) NOT NULL,
+  `time_end` varchar(5) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `dokter_id`, `day`, `time_start`, `time_end`, `created_at`) VALUES
+(1, 1, 'Senin', '14:00', '16:00', '2022-11-09 16:12:30'),
+(2, 1, 'Senin', '09:00', '12:00', '2022-11-09 17:17:19'),
+(3, 1, 'Selasa', '08:00', '12:00', '2022-11-28 03:55:42'),
+(5, 1, 'Rabu', '13:00', '15:00', '2022-11-28 04:47:12'),
+(6, 11, 'Senin', '08:00', '12:00', '2022-11-28 04:49:14'),
+(7, 11, 'Senin', '15:00', '19:00', '2022-11-28 04:49:28'),
+(8, 6, 'Sabtu', '12:00', '18:00', '2022-11-28 04:53:14');
 
 -- --------------------------------------------------------
 
@@ -607,6 +921,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
   `fullname` varchar(255) DEFAULT NULL,
+  `address` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL DEFAULT 'user.jpg',
   `password_hash` varchar(255) NOT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
@@ -617,6 +932,7 @@ CREATE TABLE `users` (
   `status_message` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 0,
   `force_pass_reset` tinyint(1) NOT NULL DEFAULT 0,
+  `birthday` date NOT NULL DEFAULT current_timestamp(),
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp(),
   `deleted_at` datetime DEFAULT NULL
@@ -626,35 +942,27 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `image`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin@admin.com', 'admin_123', 'Admin MyDoc', 'user.jpg', '$2y$10$kRPgGIwedIKVIvtwW8wp5.zwIHG0UxlfRpWF2JJ1QATv/T7Z0pWkO', NULL, NULL, NULL, NULL, '1', NULL, 1, 0, '2022-11-01 12:09:22', '2022-11-01 12:09:22', NULL),
-(2, 'instansi@instansi.com', 'instansi_kesehatan', 'Rs. Instansi Kesehatan', 'user.jpg', '$2y$10$kRPgGIwedIKVIvtwW8wp5.zwIHG0UxlfRpWF2JJ1QATv/T7Z0pWkO', NULL, NULL, NULL, NULL, '1', NULL, 1, 0, '2022-11-01 12:10:50', '2022-11-01 12:10:50', NULL),
-(7, 'akmalmf007@gmail.com', 'akmalmf007936', 'Akmal Muhamad Firdaus', 'user.jpg', '$2y$10$kRPgGIwedIKVIvtwW8wp5.zwIHG0UxlfRpWF2JJ1QATv/T7Z0pWkO', NULL, NULL, NULL, NULL, '1', NULL, 0, 0, '2022-10-18 21:13:51', '2022-10-18 21:13:51', NULL),
-(8, 'coder.newbie04@gmail.com', 'coder.newbie04398', 'Akmal Muhamad Firdaus', 'user.jpg', '$2y$10$kRPgGIwedIKVIvtwW8wp5.zwIHG0UxlfRpWF2JJ1QATv/T7Z0pWkO', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2022-11-01 03:21:52', '2022-11-01 03:21:52', NULL),
-(10, 'akmalmf0017@gmail.com', 'akmalmf0017883', 'Akmal Muhamad Firdaus', 'user.jpg', '$2y$10$ItIbCN4ldZuv0fE2b58TuO6f9B8icsQcmDItRLx0GoEOii/draijC', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2022-11-01 11:43:10', '2022-11-01 11:43:10', NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `address`, `image`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `birthday`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'admin@admin.com', 'admin_123', 'Super Admin', '', 'user.jpg', '$2y$10$LCEO4B.tOv3X8IsKqc99r.gZW9vOtW.HQ6huypbBgiKFicm9G/PHm', NULL, NULL, NULL, NULL, '1', NULL, 1, 0, '2022-11-05', '2022-11-01 12:09:22', '2022-11-01 12:09:22', NULL),
+(2, 'instansi@instansi.com', 'instansi_kesehatan', 'Rs. Instansi Kesehatan', '', 'user.jpg', '$2y$10$9FPszeWlQXnrohRNrhOR0.Vsp.ftw5Jx7YUviCi423AR8daB6u6H2', NULL, NULL, NULL, NULL, '1', NULL, 1, 0, '2022-11-05', '2022-11-01 12:10:50', '2022-11-01 12:10:50', NULL),
+(7, 'akmalmf007@gmail.com', 'akmalmf007936', 'Akmal MF', 'asd', 'user.jpg', '$2y$10$dDrpncD0.CEJIsPX/zdAjOn2S2by7u3p5Tjm/M4mYo.KPV.YT8Z92', NULL, NULL, NULL, NULL, '1', NULL, 1, 0, '2002-06-24', '2022-10-18 21:13:51', '2022-11-04 14:35:26', NULL),
+(8, 'coder.newbie04@gmail.com', 'coder.newbie04398', 'Coder Newbie', 'Jl. Guntur Sari', 'user.jpg', '$2y$10$kRPgGIwedIKVIvtwW8wp5.zwIHG0UxlfRpWF2JJ1QATv/T7Z0pWkO', NULL, NULL, NULL, NULL, '1', NULL, 0, 0, '2022-11-05', '2022-11-01 03:21:52', '2022-11-01 03:21:52', NULL),
+(10, 'akmalmf0017@gmail.com', 'akmalmf0017883', 'Akmal Muhamad Firdaus', '', 'user.jpg', '$2y$10$ItIbCN4ldZuv0fE2b58TuO6f9B8icsQcmDItRLx0GoEOii/draijC', NULL, NULL, NULL, NULL, '1', NULL, 0, 0, '2022-11-05', '2022-11-01 11:43:10', '2022-11-01 11:43:10', NULL),
+(17, 'ujang@gmail.com', 'ujang185', 'Ujang', 'Logam', 'user.jpg', '$2y$10$iAYsux83khPLVC.Tl.LfOenANQFQgVySAmFxlvjf2a1ge.tHsqK5W', NULL, NULL, NULL, NULL, '1', NULL, 0, 0, '2002-06-24', '2022-11-05 02:44:22', '2022-11-05 02:44:22', NULL),
+(23, 'akmalmasdasdf007@gmail.com', 'asdafqeg', NULL, '', 'user.jpg', '$2y$10$kAvE//nxWd4DJvm71YcMZOxv7Ci0B9M7uD4I6Vq6W8aKtOTwEgi32', NULL, NULL, NULL, '923799e94e97de2dfd50265cadec840b', NULL, NULL, 0, 0, '2022-11-22', '2022-11-22 04:46:20', '2022-11-22 04:46:20', NULL),
+(24, 'asd@gmail.com', 'intan_husada', 'Rs Intan Husada', 'address', 'user.jpg', '$2y$10$xM/SIx7jT6otRONP2IJHSeN2QccSAjiht0ASOi8hs2GNfYK7D9fFG', NULL, NULL, NULL, NULL, '1', NULL, 0, 0, '2004-06-09', '2022-11-26 20:28:41', '2022-11-26 20:28:41', NULL),
+(26, 'test@delete.com', 'test123', 'Test Delete', 'asd', 'user.jpg', '$2y$10$LCEO4B.tOv3X8IsKqc99r.gZW9vOtW.HQ6huypbBgiKFicm9G/PHm', NULL, NULL, NULL, NULL, '1', NULL, 1, 0, '2022-11-26', '2022-11-26 21:03:06', '2022-11-26 21:03:06', '2022-11-26 08:03:11'),
+(27, 'test2@delete.com', 'test2848', 'Akmal M Firdaus', 'Jl. Guntur Sari Kp. Mekar Jaya Rt 01 Rw 16 kec. Tarogong Kidul', 'user.jpg', '$2y$10$agjjZBAtS6BYM2QSkAehdu6WzUcD6TZTJpmH7TxmNThKG.IM/8ebi', NULL, NULL, NULL, NULL, '1', NULL, 0, 0, '2022-11-02', '2022-11-27 02:08:33', '2022-11-27 02:08:33', '2022-11-26 15:32:06');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `auth_activation_attempts`
---
-ALTER TABLE `auth_activation_attempts`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `auth_groups`
 --
 ALTER TABLE `auth_groups`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `auth_groups_permissions`
---
-ALTER TABLE `auth_groups_permissions`
-  ADD KEY `auth_groups_permissions_permission_id_foreign` (`permission_id`),
-  ADD KEY `group_id_permission_id` (`group_id`,`permission_id`);
 
 --
 -- Indexes for table `auth_groups_users`
@@ -678,33 +986,6 @@ ALTER TABLE `auth_logins`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `auth_permissions`
---
-ALTER TABLE `auth_permissions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `auth_reset_attempts`
---
-ALTER TABLE `auth_reset_attempts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `auth_tokens`
---
-ALTER TABLE `auth_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `auth_tokens_user_id_foreign` (`user_id`),
-  ADD KEY `selector` (`selector`);
-
---
--- Indexes for table `auth_users_permissions`
---
-ALTER TABLE `auth_users_permissions`
-  ADD KEY `auth_users_permissions_permission_id_foreign` (`permission_id`),
-  ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
-
---
 -- Indexes for table `balance`
 --
 ALTER TABLE `balance`
@@ -712,6 +993,13 @@ ALTER TABLE `balance`
   ADD UNIQUE KEY `uid_2` (`uid`),
   ADD UNIQUE KEY `uid_3` (`uid`),
   ADD KEY `uid` (`uid`);
+
+--
+-- Indexes for table `balance_tracker`
+--
+ALTER TABLE `balance_tracker`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `dokter`
@@ -746,7 +1034,20 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `invoice_id` (`invoice_id`);
+  ADD KEY `invoice_id` (`invoice_id`),
+  ADD KEY `payment_method` (`payment_method`);
+
+--
+-- Indexes for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `promo_code`
+--
+ALTER TABLE `promo_code`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `reviews`
@@ -755,6 +1056,13 @@ ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
   ADD KEY `invoice_id` (`invoice_id`),
   ADD KEY `reviewed_by` (`reviewed_by`);
+
+--
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dokter_id` (`dokter_id`);
 
 --
 -- Indexes for table `users`
@@ -769,12 +1077,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `auth_activation_attempts`
---
-ALTER TABLE `auth_activation_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `auth_groups`
 --
 ALTER TABLE `auth_groups`
@@ -784,55 +1086,43 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_jwt`
 --
 ALTER TABLE `auth_jwt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 
 --
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
-
---
--- AUTO_INCREMENT for table `auth_permissions`
---
-ALTER TABLE `auth_permissions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `auth_reset_attempts`
---
-ALTER TABLE `auth_reset_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `auth_tokens`
---
-ALTER TABLE `auth_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT for table `balance`
 --
 ALTER TABLE `balance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `balance_tracker`
+--
+ALTER TABLE `balance_tracker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `fcm_token`
 --
 ALTER TABLE `fcm_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -844,30 +1134,41 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `promo_code`
+--
+ALTER TABLE `promo_code`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `schedule`
+--
+ALTER TABLE `schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `auth_groups_permissions`
---
-ALTER TABLE `auth_groups_permissions`
-  ADD CONSTRAINT `auth_groups_permissions_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `auth_groups_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `auth_groups_users`
@@ -877,23 +1178,16 @@ ALTER TABLE `auth_groups_users`
   ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `auth_tokens`
---
-ALTER TABLE `auth_tokens`
-  ADD CONSTRAINT `auth_tokens_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `auth_users_permissions`
---
-ALTER TABLE `auth_users_permissions`
-  ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
 -- Constraints for table `balance`
 --
 ALTER TABLE `balance`
   ADD CONSTRAINT `balance_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `balance_tracker`
+--
+ALTER TABLE `balance_tracker`
+  ADD CONSTRAINT `balance_tracker_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `dokter`
@@ -918,7 +1212,8 @@ ALTER TABLE `invoice`
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`payment_method`) REFERENCES `payment_methods` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `reviews`
@@ -926,6 +1221,12 @@ ALTER TABLE `payment`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`reviewed_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`dokter_id`) REFERENCES `dokter` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

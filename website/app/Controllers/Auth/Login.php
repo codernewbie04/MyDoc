@@ -49,7 +49,7 @@ class Login extends BaseController
                     return redirect()->back()->withInput()->with('error', "Terjadi kesalahan pada database, coba lagi!");
                 $role = $model->getRole($user['id']);
                 if($role>=3)
-                return redirect()->back()->withInput()->with('error', "Role pasien tidak dapat login!");
+                    return redirect()->back()->withInput()->with('error', "Role pasien tidak dapat login!");
                 $payload = [
                     'jti' => $jti,
                     'iss' => getenv("app.baseURL"),
@@ -61,8 +61,7 @@ class Login extends BaseController
                 ];
                 $jwt = JWT::encode($payload, getenv("JWT_SECRET"), 'HS256');
                 session()->set([getenv("JWT_WEB_NAME") => $jwt]);
-                
-                return $jwt;
+                return redirect()->to('admin/dashboard');
             }
         }
         
@@ -70,5 +69,10 @@ class Login extends BaseController
         //session()->set([]);
 
         return "200";
+    }
+
+    public function logout() {
+        session()->remove(getenv("JWT_WEB_NAME"));
+        return redirect()->route('auth/login')->with('success', "Berhasil logout");
     }
 }

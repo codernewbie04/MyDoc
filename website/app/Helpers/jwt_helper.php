@@ -30,3 +30,11 @@ function getUserFromToken($header){
     
     return $userModel->getUser($decodedToken->uid);
 }
+
+function tokenToUser($token) {
+    $key = getenv('JWT_SECRET');
+    $decodedToken = JWT::decode($token, new Key($key, 'HS256'));
+    $userModel = new UserModel();
+    $user = $userModel->getAdmin($decodedToken->uid);
+    return $user;
+}
