@@ -23,9 +23,10 @@ public class ListDokterPresenter extends BasePresenter<ListDokterView> {
         ((MvpApp) view.getContext().getApplicationContext()).getMasterService().getListDokter().enqueue(new Callback<BaseApiResponse<List<ListDokterResponse>, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<List<ListDokterResponse>, Nullable>> call, Response<BaseApiResponse<List<ListDokterResponse>, Nullable>> response) {
-                if (response.isSuccessful()){
-                    view.dokterLoaded(response.body().getData());
-                }
+                if(view != null)
+                    if (response.isSuccessful()){
+                        view.dokterLoaded(response.body().getData());
+                    }
             }
 
             @Override

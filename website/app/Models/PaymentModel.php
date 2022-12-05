@@ -67,4 +67,32 @@ class PaymentModel extends Model
             $this->db->table("payment_methods")->insert($data);
         }
     }
+
+    public function setPaymentSuccess($reg) {
+        $inv_id = $this->db->table("invoice")->where(['registration_code' => $reg])->get()->getRowArray()['id'];
+        $this->db->transStart();
+        if($inv_id){
+            $this->db->table("invoice")->where(['id' => $inv_id])->update(['status' => 1]);  
+            $this->db->table("payment")->where(['invoice_id' => $inv_id])->update(['status' => 1]); 
+        } else {
+            $this->db->transRollback();
+        }
+        $this->db->transComplete();
+
+        return $this->db->transStatus();
+    }
+
+    public function setPaymentFailed($reg){
+        $inv_id = $this->db->table("invoice")->where(['registration_code' => $reg])->get()->getRowArray()['id'];
+        $this->db->transStart();
+        if($inv_id){
+            $this->db->table("invoice")->where(['id' => $inv_id])->update(['status' => -1]);  
+            $this->db->table("payment")->where(['invoice_id' => $inv_id])->update(['status' => -2]); 
+        } else {
+            $this->db->transRollback();
+        }
+        $this->db->transComplete();
+
+        return $this->db->transStatus();
+    }
 }

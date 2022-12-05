@@ -71,6 +71,7 @@ public class BookingDokterFragment extends BaseFragment<BookingDokterPresenter> 
         binding.btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showLoading();
                 presenter.checkout(1, "12:00", paymentCode);
             }
         });
@@ -109,6 +110,7 @@ public class BookingDokterFragment extends BaseFragment<BookingDokterPresenter> 
 
     @Override
     public void successCheckout(String msg, int invoice_id) {
+        hideLoading();
         showSuccessMessage(msg);
         Intent i = new Intent(getContext(), InvoiceAct.class);
         i.putExtra("invoice_id", invoice_id);

@@ -30,20 +30,22 @@ public class DashboardPresenter extends BasePresenter<DashboardView> {
         ((MvpApp) view.getContext().getApplicationContext()).getMasterService().getDashboard().enqueue(new Callback<BaseApiResponse<DashboardResponse, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<DashboardResponse, Nullable>> call, Response<BaseApiResponse<DashboardResponse, Nullable>> response) {
-                if(response.isSuccessful()){
-                    DashboardResponse data = response.body().getData();
-                    view.setUser(data.user);
-                    view.setHistory(data.history);
-                    view.setMyReview(data.my_review);
-                } else {
-                    BaseApiResponse<DashboardResponse, Nullable> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<DashboardResponse, Nullable>>() {}.getType());
-                    view.onError(errResponse.getMessage());
-                }
+                if(view != null)
+                    if(response.isSuccessful()){
+                        DashboardResponse data = response.body().getData();
+                        view.setUser(data.user);
+                        view.setHistory(data.history);
+                        view.setMyReview(data.my_review);
+                    } else {
+                        BaseApiResponse<DashboardResponse, Nullable> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<DashboardResponse, Nullable>>() {}.getType());
+                        view.onError(errResponse.getMessage());
+                    }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<DashboardResponse, Nullable>> call, Throwable t) {
-                view.onError(t.getMessage());
+                if(view != null)
+                    view.onError(t.getMessage());
             }
         });
     }

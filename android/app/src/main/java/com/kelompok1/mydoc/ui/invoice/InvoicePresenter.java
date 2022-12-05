@@ -21,16 +21,18 @@ public class InvoicePresenter extends BasePresenter<InvoiceView> {
         ((MvpApp) view.getContext().getApplicationContext()).getTransactionService().getDetailInvoice(id).enqueue(new Callback<BaseApiResponse<InvoiceResponse, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<InvoiceResponse, Nullable>> call, Response<BaseApiResponse<InvoiceResponse, Nullable>> response) {
-                if(response.isSuccessful()){
-                    view.loadInvoice(response.body().getData());
-                } else {
+                if(view != null)
+                    if(response.isSuccessful()){
+                        view.loadInvoice(response.body().getData());
+                    } else {
 
-                }
+                    }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<InvoiceResponse, Nullable>> call, Throwable t) {
-                view.onError(t.getMessage());
+                if(view != null)
+                    view.onError(t.getMessage());
             }
         });
     }

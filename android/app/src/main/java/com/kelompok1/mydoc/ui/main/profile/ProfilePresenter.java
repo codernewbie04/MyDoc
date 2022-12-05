@@ -21,13 +21,14 @@ public class ProfilePresenter extends BasePresenter<ProfileView> {
         ((MvpApp) view.getContext().getApplicationContext()).getProfileService().getUser().enqueue(new Callback<BaseApiResponse<UserResponse, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<UserResponse, Nullable>> call, Response<BaseApiResponse<UserResponse, Nullable>> response) {
-                if(response.isSuccessful()){
-                    if(response.body().getData() != null){
-                        ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData() );
-                        view.loadUser(response.body().getData() );
-                    }
 
-                }
+                if(view != null)
+                    if(response.isSuccessful()){
+                        if(response.body().getData() != null){
+                            ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData() );
+                            view.loadUser(response.body().getData() );
+                        }
+                    }
             }
 
             @Override
@@ -42,11 +43,13 @@ public class ProfilePresenter extends BasePresenter<ProfileView> {
         ((MvpApp) view.getContext().getApplicationContext()).getAuthService().logout().enqueue(new Callback<BaseApiResponse<Nullable, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<Nullable, Nullable>> call, Response<BaseApiResponse<Nullable, Nullable>> response) {
-                if(response.isSuccessful()){
-                    ((MvpApp) view.getContext().getApplicationContext()).getSession().goLogout();
-                    view.goLogout();
-                } else {
+                if(view != null){
+                    if(response.isSuccessful()){
+                        ((MvpApp) view.getContext().getApplicationContext()).getSession().goLogout();
+                        view.goLogout();
+                    } else {
 
+                    }
                 }
             }
 

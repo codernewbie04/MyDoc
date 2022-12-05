@@ -22,12 +22,12 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"http://192.168.1.24/mydoc/public/api/\""
+            buildConfigField "String", "BASE_URL", "\"https://codecreator.my.id/mydoc/api/\""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"http://192.168.1.24/mydoc/public/api/\""
+            buildConfigField "String", "BASE_URL", "\"https://codecreator.my.id/mydoc/api/\""
         }
     }
     compileOptions {

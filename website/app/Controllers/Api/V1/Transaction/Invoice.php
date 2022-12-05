@@ -64,7 +64,8 @@ class Invoice extends BaseResponse
         $invoiceModel = new InvoiceModel();
         $paymentModel = new PaymentModel();
         $paymentId = $paymentModel->getPaymentId($this->request->getVar("payment_method"));
-        $orderId = $invoiceModel->getLastOrderId() + 1;
+        helper('invoice');
+        $orderId = createRegistrationCode();
         try {
             $response = $client->request('POST', '/webapi/api/merchant/v2/inquiry', ['json' => 
                 [
@@ -76,24 +77,21 @@ class Invoice extends BaseResponse
                     'customerVaName' => $this->user['fullname'],
                     'email' => $this->user['email'],
                     'itemDetails' => [["name" => "1 Sesi konsultasi dengan ".$dokter['nama'], 'price' => $dokter['price'], "quantity"=>1]],
-                    'callbackUrl' => getenv("app.baseURL").'/api/v1/callback',
-                    'returnUrl' => getenv("app.baseURL").'/api/v1/return',
+                    'callbackUrl' => getenv("app.baseURL").'/duitku/callback',
                     'expiryPeriod' => getenv("PERIOD_CHECKOUT"),
                     'signature' => md5(getenv("MERCHANT_CODE").$orderId.$dokter['price'].getenv("DUITKU_APIKEY"))
                 ]
             ]);
             $json = json_decode($response->getBody(), true);
             if($json['statusCode'] == "00" || $json['statusMessage'] == "SUCCESS"){
-                helper('invoice');
                 $data = [
-                    'id' => $orderId,
                     'user_id' => $this->user['id'],
                     'dokter_id' => $this->request->getVar("dokter_id"),
                     'price' => $dokter['price'],
                     'discount' => 0,
                     'total_price' => $dokter['price'],
                     'status' => 0,
-                    'registration_code' => createRegistrationCode()
+                    'registration_code' => $orderId
                 ];
                 $invId = $invoiceModel->createInvoice($json, $data, $paymentId);
                 if(!$invId)

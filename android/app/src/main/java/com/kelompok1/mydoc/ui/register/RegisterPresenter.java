@@ -23,21 +23,23 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
         ((MvpApp) view.getContext().getApplicationContext()).getAuthService().register(new RegisterRequest(fullname, email, bday, address,p1,p2)).enqueue(new Callback<BaseApiResponse<RegisterResponse, RegisterErrorResponse>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<RegisterResponse, RegisterErrorResponse>> call, Response<BaseApiResponse<RegisterResponse, RegisterErrorResponse>> response) {
-                if(response.isSuccessful()){
-                    view.successRegister(response.body().getMessage());
-                } else {
-                    BaseApiResponse<RegisterResponse, RegisterErrorResponse> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<RegisterResponse, RegisterErrorResponse>>() {}.getType());
-                    if(errResponse.getForm_error() == null){
-                        view.toastMsg(errResponse.getMessage(), FancyToast.ERROR);
+                if(view != null)
+                    if(response.isSuccessful()){
+                        view.successRegister(response.body().getMessage());
                     } else {
-                        view.formError(errResponse.getForm_error());
+                        BaseApiResponse<RegisterResponse, RegisterErrorResponse> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<RegisterResponse, RegisterErrorResponse>>() {}.getType());
+                        if(errResponse.getForm_error() == null){
+                            view.toastMsg(errResponse.getMessage(), FancyToast.ERROR);
+                        } else {
+                            view.formError(errResponse.getForm_error());
+                        }
                     }
-                }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<RegisterResponse, RegisterErrorResponse>> call, Throwable t) {
-                view.toastMsg(t.getMessage(), FancyToast.ERROR);
+                if(view != null)
+                    view.toastMsg(t.getMessage(), FancyToast.ERROR);
             }
         });
     }
