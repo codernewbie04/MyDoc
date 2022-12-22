@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,9 +120,14 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
     @Override
     public void setUser(UserResponse user) {
         if(user != null){
-            String name = user.fullname.split(" ", -2)[0];
-            binding.txtHeading.setText("Hi "+name+", Selamat Datang di MyDoc!");
-            binding.txtSaldo.setText(CommonUtils.convertToRp(user.balance));
+            try {
+                String name = user.fullname.split(" ", -2)[0];
+                binding.txtHeading.setText("Hi "+name+", Selamat Datang di MyDoc!");
+                binding.txtSaldo.setText(CommonUtils.convertToRp(user.balance));
+            } catch (Exception e){
+                Log.d("error_view", e.getMessage());
+            }
+
         }
 
 
@@ -129,14 +135,19 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
 
     @Override
     public void setHistory(List<InvoiceResponse> history) {
-        binding.rvHistory.setHasFixedSize(true);
-        binding.rvHistory.setNestedScrollingEnabled(false);
-        binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        binding.rvHistory.setAdapter(new HistoryAdapter(history, getContext()));
-        binding.pbHistory.setVisibility(View.GONE);
-        if(history.size() <= 0){
-            binding.nodataHistory.setVisibility(View.VISIBLE);
+        try {
+            binding.rvHistory.setHasFixedSize(true);
+            binding.rvHistory.setNestedScrollingEnabled(false);
+            binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            binding.rvHistory.setAdapter(new HistoryAdapter(history, getContext()));
+            binding.pbHistory.setVisibility(View.GONE);
+            if(history.size() <= 0){
+                binding.nodataHistory.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception e){
+            Log.d("error_view", e.getMessage());
         }
+
     }
 
     @Override
@@ -150,22 +161,25 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
             max5Review.addAll(my_review);
         }
 
-
-        binding.rvReview.setHasFixedSize(true);
-        binding.rvReview.setNestedScrollingEnabled(false);
-        binding.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        binding.rvReview.setAdapter(new MyReviewAdapter(max5Review));
-        binding.pbRating.setVisibility(View.GONE);
-        binding.ratingCount.setText("("+ my_review.size() +" ulasan diberikan)");
-        binding.btnLihatSemua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new ListReviewsSheet(my_review).show(getActivity().getSupportFragmentManager(),"MyReview");
+        try {
+            binding.rvReview.setHasFixedSize(true);
+            binding.rvReview.setNestedScrollingEnabled(false);
+            binding.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            binding.rvReview.setAdapter(new MyReviewAdapter(max5Review));
+            binding.pbRating.setVisibility(View.GONE);
+            binding.ratingCount.setText("("+ my_review.size() +" ulasan diberikan)");
+            binding.btnLihatSemua.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new ListReviewsSheet(my_review).show(getActivity().getSupportFragmentManager(),"MyReview");
+                }
+            });
+            if(my_review.size() <= 0){
+                binding.nodataReview.setVisibility(View.VISIBLE);
             }
-        });
-        if(my_review.size() <= 0){
-            binding.nodataReview.setVisibility(View.VISIBLE);
+            binding.swipeToRefreshLayout.setRefreshing(false);
+        } catch (Exception e){
+            Log.d("error_view", e.getMessage());
         }
-        binding.swipeToRefreshLayout.setRefreshing(false);
     }
 }

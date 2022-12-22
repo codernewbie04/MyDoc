@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.adapter.MyReviewAdapter;
@@ -43,14 +44,25 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
 
     @Override
     public void initView() {
+
         showLoading();
-        presenter.getDokter(1);
+
         NavHostFragment navHostFragment =
                 (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        Bundle bundle = navHostFragment.getArguments();
+        int dokter_id = -1;
+        if (bundle != null) {
+            dokter_id = bundle.getInt("dokter_id");
+        }
+        presenter.getDokter(dokter_id);
         NavController navController = navHostFragment.getNavController();
+        int finalDokter_id = dokter_id;
         binding.buttonChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("dokter_id", finalDokter_id);
+                navHostFragment.setArguments(bundle);
                 navController.navigate(R.id.action_booking_dokter);
             }
         });

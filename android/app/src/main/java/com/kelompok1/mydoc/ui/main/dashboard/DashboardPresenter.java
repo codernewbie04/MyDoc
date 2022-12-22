@@ -3,6 +3,7 @@ package com.kelompok1.mydoc.ui.main.dashboard;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.gson.reflect.TypeToken;
@@ -21,7 +22,7 @@ import retrofit2.Response;
 
 public class DashboardPresenter extends BasePresenter<DashboardView> {
     Context mContext;
-    public DashboardPresenter(DashboardView view, Context context) {
+    public DashboardPresenter(@NonNull DashboardView view, Context context) {
         super(view);
         this.mContext = context;
     }
@@ -30,16 +31,18 @@ public class DashboardPresenter extends BasePresenter<DashboardView> {
         ((MvpApp) view.getContext().getApplicationContext()).getMasterService().getDashboard().enqueue(new Callback<BaseApiResponse<DashboardResponse, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<DashboardResponse, Nullable>> call, Response<BaseApiResponse<DashboardResponse, Nullable>> response) {
-                if(view != null)
-                    if(response.isSuccessful()){
-                        DashboardResponse data = response.body().getData();
+                if(response.isSuccessful()){
+                    DashboardResponse data = response.body().getData();
+                    if(view != null) {
                         view.setUser(data.user);
                         view.setHistory(data.history);
                         view.setMyReview(data.my_review);
-                    } else {
-                        BaseApiResponse<DashboardResponse, Nullable> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<DashboardResponse, Nullable>>() {}.getType());
-                        view.onError(errResponse.getMessage());
                     }
+                } else {
+                    BaseApiResponse<DashboardResponse, Nullable> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<DashboardResponse, Nullable>>() {}.getType());
+                    if(view != null)
+                        view.onError(errResponse.getMessage());
+                }
             }
 
             @Override

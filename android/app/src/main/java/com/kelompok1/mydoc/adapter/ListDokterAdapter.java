@@ -61,7 +61,9 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Vi
             itemView.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mContext.startActivity(new Intent(mContext, BookingOrderAct.class));
+                    Intent i = new Intent(mContext, BookingOrderAct.class);
+                    i.putExtra("dokter_id", data.id);
+                    mContext.startActivity(i);
                 }
             });
         }

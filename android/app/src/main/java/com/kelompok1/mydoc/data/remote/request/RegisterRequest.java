@@ -12,7 +12,7 @@ public class RegisterRequest {
     @Expose
     private String email;
 
-    @SerializedName("birthdate")
+    @SerializedName("birthday")
     @Expose
     private String birthdate;
 

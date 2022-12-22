@@ -1,5 +1,6 @@
 package com.kelompok1.mydoc.ui.main.list_dokter;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.kelompok1.mydoc.MvpApp;
@@ -14,7 +15,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListDokterPresenter extends BasePresenter<ListDokterView> {
-    protected ListDokterPresenter(ListDokterView view) {
+    protected ListDokterPresenter(@NonNull ListDokterView view) {
         super(view);
     }
 
@@ -23,9 +24,9 @@ public class ListDokterPresenter extends BasePresenter<ListDokterView> {
         ((MvpApp) view.getContext().getApplicationContext()).getMasterService().getListDokter().enqueue(new Callback<BaseApiResponse<List<ListDokterResponse>, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<List<ListDokterResponse>, Nullable>> call, Response<BaseApiResponse<List<ListDokterResponse>, Nullable>> response) {
-                if(view != null)
                     if (response.isSuccessful()){
-                        view.dokterLoaded(response.body().getData());
+                        if(view != null)
+                            view.dokterLoaded(response.body().getData());
                     }
             }
 

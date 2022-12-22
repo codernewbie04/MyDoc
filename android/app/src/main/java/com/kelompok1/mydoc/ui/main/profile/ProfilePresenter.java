@@ -1,5 +1,8 @@
 package com.kelompok1.mydoc.ui.main.profile;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.kelompok1.mydoc.MvpApp;
@@ -12,7 +15,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfilePresenter extends BasePresenter<ProfileView> {
-    protected ProfilePresenter(ProfileView view) {
+    protected ProfilePresenter(@NonNull ProfileView view) {
         super(view);
     }
 
@@ -21,14 +24,22 @@ public class ProfilePresenter extends BasePresenter<ProfileView> {
         ((MvpApp) view.getContext().getApplicationContext()).getProfileService().getUser().enqueue(new Callback<BaseApiResponse<UserResponse, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<UserResponse, Nullable>> call, Response<BaseApiResponse<UserResponse, Nullable>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getData() != null){
+                        if(view != null) {
+                            view.loadUser(response.body().getData());
+                            try {
+                                MvpApp app = (MvpApp) view.getContext().getApplicationContext();
+                                if(app != null)
+                                    app.getSession().saveUserData(response.body().getData());
+                            } catch (Exception e){
+                                Log.d("error_presenter", e.getMessage());
+                            }
 
-                if(view != null)
-                    if(response.isSuccessful()){
-                        if(response.body().getData() != null){
-                            ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData() );
-                            view.loadUser(response.body().getData() );
+
                         }
                     }
+                }
             }
 
             @Override
@@ -43,14 +54,15 @@ public class ProfilePresenter extends BasePresenter<ProfileView> {
         ((MvpApp) view.getContext().getApplicationContext()).getAuthService().logout().enqueue(new Callback<BaseApiResponse<Nullable, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<Nullable, Nullable>> call, Response<BaseApiResponse<Nullable, Nullable>> response) {
-                if(view != null){
-                    if(response.isSuccessful()){
+                if(response.isSuccessful()){
+                    if(view != null) {
                         ((MvpApp) view.getContext().getApplicationContext()).getSession().goLogout();
                         view.goLogout();
-                    } else {
-
                     }
+                } else {
+
                 }
+
             }
 
             @Override

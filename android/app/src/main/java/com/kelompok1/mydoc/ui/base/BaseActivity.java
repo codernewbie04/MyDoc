@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kelompok1.mydoc.utils.CommonUtils;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 public abstract class BaseActivity<Presenter extends BasePresenter> extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
@@ -38,11 +39,11 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
 
     public void showSuccessMessage(String msg)
     {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        FancyToast.makeText(this, msg, FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
     }
 
     public void showErrorMessage(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        FancyToast.makeText(this, msg, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
     }
 
 

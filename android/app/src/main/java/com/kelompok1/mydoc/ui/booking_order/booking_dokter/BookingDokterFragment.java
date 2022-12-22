@@ -57,22 +57,29 @@ public class BookingDokterFragment extends BaseFragment<BookingDokterPresenter> 
     @Override
     public void initView() {
         binding.include.txtTitle.setText("Pemesanan");
-        presenter.getDokter(1);
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
         NavHostFragment navHostFragment =
                 (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
+        Bundle bundle = navHostFragment.getArguments();
+        int dokter_id = -1;
+        if (bundle != null) {
+            dokter_id = bundle.getInt("dokter_id");
+        }
+        presenter.getDokter(dokter_id);
+
         binding.containerPaymentGateway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_payment_method);
             }
         });
+        int finalDokter_id = dokter_id;
         binding.btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showLoading();
-                presenter.checkout(1, "12:00", paymentCode);
+                presenter.checkout(finalDokter_id, "12:00", paymentCode);
             }
         });
     }
