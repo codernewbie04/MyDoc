@@ -200,4 +200,18 @@ class Dokter extends BaseController
             return redirect()->back()->withInput()->with('error', "Terjadi kesalahan pada database!"); 
         return redirect()->back()->with('success', "Berhasil menghapus jadwal dokter!"); 
     }
+
+    function detail_reviews($id = -1){
+        if($id == -1)
+            return redirect()->back()->withInput()->with('error', "Dokter tidak boleh kosong!");
+        $dokterModel = new DokterModel();
+        $reviews = $dokterModel->getDetailReviews($id);
+        if(!$reviews)
+            return redirect()->to(site_url("admin/dokter"))->with('error', 'Belum ada review!');
+        return view('master/reviews_dokter',[
+            'title' => "Detail Reviews",
+            'user' => $this->user,
+            'reviews' => $reviews
+        ]);
+    }
 }

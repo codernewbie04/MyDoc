@@ -72,6 +72,7 @@ $routes->get('/admin/dokter/detail_jadwal/(:num)', 'Master\Dokter::detail_jadwal
 $routes->post('/admin/dokter/add_jadwal', 'Master\Dokter::add_jadwal');
 $routes->post('/admin/dokter/edit_jadwal', 'Master\Dokter::edit_jadwal');
 $routes->get('/admin/dokter/jadwal_delete/(:num)/(:num)', 'Master\Dokter::jadwal_delete/$1/$2');
+$routes->get('/admin/dokter/reviews/(:num)', 'Master\Dokter::detail_reviews/$1');
 //end dokter
 //calback from duitku
 $routes->post('/duitku/callback', 'Callback::callback');

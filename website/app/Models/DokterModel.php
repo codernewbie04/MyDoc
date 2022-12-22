@@ -195,6 +195,18 @@ class DokterModel extends Model
         return $doctor;
     }
 
+    public function getDetailReviews($dokter_id = -1)
+    {
+        if($dokter_id == -1)
+            return null;
+        $reviews = $this->db->table("invoice")
+        ->select('users.fullname, reviews.star, reviews.description, reviews.created_at', false)
+        ->join("reviews", "reviews.invoice_id=invoice.id")
+        ->join("users", "users.id=reviews.reviewed_by")
+        ->where(["invoice.dokter_id" => $dokter_id]);
+        return $reviews->get()->getResultArray();
+    }
+
     public function addSchedule($did, $uid, $data) {
         if(count($this->where(['id' => $did, 'instansi_id' => $uid])->findAll()) <= 0)
             return false;
