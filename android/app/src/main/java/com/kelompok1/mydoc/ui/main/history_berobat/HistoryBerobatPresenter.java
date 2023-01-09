@@ -22,9 +22,11 @@ public class HistoryBerobatPresenter extends BasePresenter<HistoryBerobatView> {
         ((MvpApp) view.getContext().getApplicationContext()).getTransactionService().getInvoice().enqueue(new Callback<BaseApiResponse<List<InvoiceResponse>, Nullable>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<List<InvoiceResponse>, Nullable>> call, Response<BaseApiResponse<List<InvoiceResponse>, Nullable>> response) {
-                if(response.isSuccessful()){
-                    view.loadHistoryBerobat(response.body().getData());
-                }
+
+                    if(response.isSuccessful()){
+                        if(view != null)
+                            view.loadHistoryBerobat(response.body().getData());
+                    }
             }
 
             @Override

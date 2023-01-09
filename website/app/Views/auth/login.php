@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/styles.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/responsive.css">
     <!-- modernizr css -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/jq/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -86,7 +86,7 @@
     <!-- login area end -->
 
     <!-- jquery latest version -->
-    <script src="<?= base_url(); ?>/assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/jq/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
     <script src="<?= base_url(); ?>/assets/js/popper.min.js"></script>
     <script src="<?= base_url(); ?>/assets/js/bootstrap.min.js"></script>

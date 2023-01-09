@@ -13,7 +13,7 @@
     <ImageView
         android:layout_gravity="center"
         android:id="@+id/imageView"
-        android:layout_width="134dp"
+        android:layout_width="wrap_content"
         android:layout_height="172dp"
-        android:src="@drawable/logo_splash"/>
+        android:src="@drawable/mydoc_logo"/>
 </LinearLayout>

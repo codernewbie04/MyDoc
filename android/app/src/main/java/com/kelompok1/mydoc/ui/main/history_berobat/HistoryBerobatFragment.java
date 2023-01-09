@@ -1,6 +1,7 @@
 package com.kelompok1.mydoc.ui.main.history_berobat;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,36 +53,51 @@ public class HistoryBerobatFragment extends BaseFragment<HistoryBerobatPresenter
 
     @Override
     public void loadHistoryBerobat(List<InvoiceResponse> data) {
-        binding.rvHistory.setHasFixedSize(true);
-        binding.rvHistory.setNestedScrollingEnabled(false);
-        binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        binding.rvHistory.setAdapter(new HistoryAdapter(data, getContext()));
-        binding.pbHistory.setVisibility(View.GONE);
-        if(data.size() <= 0){
-            binding.nodataBerobat.setVisibility(View.VISIBLE);
+        try {
+            binding.rvHistory.setHasFixedSize(true);
+            binding.rvHistory.setNestedScrollingEnabled(false);
+            binding.rvHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            binding.rvHistory.setAdapter(new HistoryAdapter(data, getContext()));
+            binding.pbHistory.setVisibility(View.GONE);
+            if(data.size() <= 0){
+                binding.nodataBerobat.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception e){
+            Log.d("error_view", e.getMessage());
         }
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    @Override
     public void onError(String msg) {
-        KSnack kSnack = new KSnack(getActivity());
-        kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
-                    @Override
-                    public void onClick(View v) {
-                        kSnack.dismiss();
-                        if(max_retry <= 0){
-                            FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                        } else {
-                            max_retry--;
-                            presenter.getHistoryBerobat();
+        try {
+            KSnack kSnack = new KSnack(getActivity());
+            kSnack.setAction("Coba Ulang", new View.OnClickListener() { // name and clicklistener
+                        @Override
+                        public void onClick(View v) {
+                            kSnack.dismiss();
+                            if(max_retry <= 0){
+                                FancyToast.makeText(getContext(), "Oops! Sepertinya server kami sedang sibuk, coba beberapa saat lagi.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                            } else {
+                                max_retry--;
+                                presenter.getHistoryBerobat();
+                            }
                         }
-                    }
-                })
-                .setMessage("Error : "+msg) // message
-                .setTextColor(R.color.white) // message text color
-                .setBackColor(R.color.red_400) // background color
-                .setButtonTextColor(R.color.white) // action button text color
-                .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
-                .show();
+                    })
+                    .setMessage("Error : "+msg) // message
+                    .setTextColor(R.color.white) // message text color
+                    .setBackColor(R.color.red_400) // background color
+                    .setButtonTextColor(R.color.white) // action button text color
+                    .setAnimation(Slide.Up.getAnimation(kSnack.getSnackView()), Slide.Down.getAnimation(kSnack.getSnackView()))
+                    .show();
+        } catch (Exception e){
+            Log.d("error_view", e.getMessage());
+        }
+
     }
 }

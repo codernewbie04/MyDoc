@@ -2,7 +2,7 @@
 
 
 
-function form_error($msg = null, $open, $close) 
+function form_error($msg = null, $open=null, $close=null) 
 {
     if($msg)
         return $open.$msg.$close;

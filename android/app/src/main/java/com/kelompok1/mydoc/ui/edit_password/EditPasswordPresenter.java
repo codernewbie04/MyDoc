@@ -25,18 +25,21 @@ public class EditPasswordPresenter extends BasePresenter<EditPasswordView> {
         ((MvpApp) view.getContext().getApplicationContext()).getProfileService().editPassword(new EditPasswordRequest(oldPassword, newPassword, newPassword2)).enqueue(new Callback<BaseApiResponse<Nullable, EditPasswordRequest>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<Nullable, EditPasswordRequest>> call, Response<BaseApiResponse<Nullable, EditPasswordRequest>> response) {
-                if(response.isSuccessful()){
-                    view.successUpdate(response.body().getMessage());
-                } else {
-                    BaseApiResponse<Nullable, EditPasswordRequest> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<Nullable, EditPasswordRequest>>() {}.getType());
-                    view.onError(errResponse.getMessage());
-                    view.formError(errResponse.getForm_error());
-                }
+                if(view != null)
+                    if(response.isSuccessful()){
+                        view.successUpdate(response.body().getMessage());
+                    } else {
+                        BaseApiResponse<Nullable, EditPasswordRequest> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<Nullable, EditPasswordRequest>>() {}.getType());
+                        view.onError(errResponse.getMessage());
+                        view.formError(errResponse.getForm_error());
+                    }
+
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<Nullable, EditPasswordRequest>> call, Throwable t) {
-                view.onError(t.getMessage());
+                if(view != null)
+                    view.onError(t.getMessage());
             }
         });
     }

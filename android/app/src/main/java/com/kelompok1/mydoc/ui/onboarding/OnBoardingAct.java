@@ -28,7 +28,7 @@ public class OnBoardingAct extends BaseActivity<OnBoardingPresenter> implements 
     private int currentPage = 0;
     private Timer timer;
     private final long DELAY_MS = 500;//delay in milliseconds before task is to be executed
-    private final long PERIOD_MS = 3000;
+    private final long PERIOD_MS = 4000;
 
     @NonNull
     @Override

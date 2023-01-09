@@ -23,26 +23,28 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         ((MvpApp) view.getContext().getApplicationContext()).getAuthService().login(new LoginRequest(email, password, "123")).enqueue(new Callback<BaseApiResponse<LoginResponse, LoginErrorResponse>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<LoginResponse, LoginErrorResponse>> call, Response<BaseApiResponse<LoginResponse, LoginErrorResponse>> response) {
-                if(response.isSuccessful()){
-                    assert response.body() != null;
-                    ((MvpApp) view.getContext().getApplicationContext()).getSession().saveToken(response.body().getData().token);
-                    ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData().user);
-                    view.successLogin();
-                } else {
-
-                    BaseApiResponse<LoginResponse, LoginErrorResponse> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<LoginResponse, LoginErrorResponse>>() {}.getType());
-                    if(errResponse.getForm_error() == null){
-                        view.toastMsg(errResponse.getMessage(), FancyToast.ERROR);
+                if(view != null)
+                    if(response.isSuccessful()){
+                        assert response.body() != null;
+                        ((MvpApp) view.getContext().getApplicationContext()).getSession().saveToken(response.body().getData().token);
+                        ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData().user);
+                        view.successLogin();
                     } else {
-                        view.formError(errResponse.getForm_error());
-                    }
 
-                }
+                        BaseApiResponse<LoginResponse, LoginErrorResponse> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<LoginResponse, LoginErrorResponse>>() {}.getType());
+                        if(errResponse.getForm_error() == null){
+                            view.toastMsg(errResponse.getMessage(), FancyToast.ERROR);
+                        } else {
+                            view.formError(errResponse.getForm_error());
+                        }
+
+                    }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<LoginResponse, LoginErrorResponse>> call, Throwable t) {
-                view.toastMsg(t.getMessage(), FancyToast.ERROR);
+                if(view != null)
+                    view.toastMsg(t.getMessage(), FancyToast.ERROR);
             }
         });
     }

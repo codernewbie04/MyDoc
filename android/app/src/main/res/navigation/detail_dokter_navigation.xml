@@ -12,6 +12,10 @@
         <action
             android:id="@+id/action_booking_dokter"
             app:destination="@id/booking_dokter" />
+        <argument
+            android:name="dokter_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 
     <fragment
@@ -22,6 +26,10 @@
         <action
             android:id="@+id/action_payment_method"
             app:destination="@id/payment_method" />
+        <argument
+            android:name="dokter_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 
     <dialog

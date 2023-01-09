@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.adapter.MyReviewAdapter;
@@ -18,6 +19,7 @@ import com.kelompok1.mydoc.data.remote.entities.DetailDokterResponse;
 import com.kelompok1.mydoc.databinding.FragmentDetailDokterBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
 import com.kelompok1.mydoc.utils.CommonUtils;
+import com.kelompok1.mydoc.utils.PicassoTrustAll;
 
 public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> implements DetailDokterView {
     FragmentDetailDokterBinding binding;
@@ -43,14 +45,25 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
 
     @Override
     public void initView() {
+
         showLoading();
-        presenter.getDokter(1);
+
         NavHostFragment navHostFragment =
                 (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        Bundle bundle = navHostFragment.getArguments();
+        int dokter_id = -1;
+        if (bundle != null) {
+            dokter_id = bundle.getInt("dokter_id");
+        }
+        presenter.getDokter(dokter_id);
         NavController navController = navHostFragment.getNavController();
+        int finalDokter_id = dokter_id;
         binding.buttonChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("dokter_id", finalDokter_id);
+                navHostFragment.setArguments(bundle);
                 navController.navigate(R.id.action_booking_dokter);
             }
         });
@@ -64,6 +77,8 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
 
     @Override
     public void loadDetailDokter(DetailDokterResponse dokter) {
+        binding.include.txtTitle.setText(dokter.instansi);
+        PicassoTrustAll.getInstance(getContext()).load(dokter.image).resize(500,500).placeholder(R.drawable.image_placeholder).centerInside().into(binding.includeProfileDokter.imgDokter);
         binding.includeProfileDokter.txtNamaDokter.setText(dokter.nama);
         binding.includeProfileDokter.txtProfession.setText(dokter.profession);
         binding.includeProfileDokter.txtPrice.setText(CommonUtils.convertToRp(dokter.price));
@@ -74,7 +89,7 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
             binding.includeReview.rvReview.setHasFixedSize(true);
             binding.includeReview.rvReview.setNestedScrollingEnabled(false);
             binding.includeReview.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            binding.includeReview.rvReview.setAdapter(new MyReviewAdapter(dokter.review.ratings));
+            binding.includeReview.rvReview.setAdapter(new MyReviewAdapter(dokter.review.ratings, getContext()));
             binding.includeReview.rating.setRating(dokter.review.rating_average);
             binding.includeReview.txtCountRating.setText("("+ String.valueOf(dokter.review.rating_count) +" ulasan)");
             binding.includeReview.txtAvgRating.setText(String.valueOf(dokter.review.rating_average));

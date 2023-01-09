@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.data.remote.entities.ListDokterResponse;
 import com.kelompok1.mydoc.databinding.ItemListDokterBinding;
 import com.kelompok1.mydoc.ui.booking_order.BookingOrderAct;
 import com.kelompok1.mydoc.utils.CommonUtils;
+import com.kelompok1.mydoc.utils.PicassoTrustAll;
 
 import java.util.List;
 
@@ -51,6 +53,7 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Vi
         }
 
         public void bind(ListDokterResponse data) {
+            PicassoTrustAll.getInstance(mContext).load(data.image).resize(500,500).placeholder(R.drawable.image_placeholder).centerInside().into(itemView.imgDokter);
             itemView.txtNamaDokter.setText(data.nama);
             itemView.txtProfession.setText(data.profession);
             itemView.txtInstansi.setText(data.instansi);
@@ -61,7 +64,9 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Vi
             itemView.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mContext.startActivity(new Intent(mContext, BookingOrderAct.class));
+                    Intent i = new Intent(mContext, BookingOrderAct.class);
+                    i.putExtra("dokter_id", data.id);
+                    mContext.startActivity(i);
                 }
             });
         }

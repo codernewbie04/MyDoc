@@ -24,7 +24,18 @@ public class BookingOrderAct extends BaseActivity<DetailDokterPresenter> impleme
         setContentView(R.layout.activity_detail_dokter);
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+
+        Bundle extras = getIntent().getExtras();
+        int dokter_id = -1;
+        if (extras != null) {
+            dokter_id = extras.getInt("dokter_id");
+            //The key argument here must match that used in the other activity
+        }
+        Bundle bundle = new Bundle();
+        bundle.putInt("dokter_id", dokter_id);
+        navHostFragment.setArguments(bundle);
         NavController navController = navHostFragment.getNavController();
+
     }
 
     @Override

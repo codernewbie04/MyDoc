@@ -15,6 +15,7 @@ import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.databinding.ItemHistoryBinding;
 import com.kelompok1.mydoc.ui.invoice.InvoiceAct;
+import com.kelompok1.mydoc.utils.PicassoTrustAll;
 
 import java.util.List;
 
@@ -55,6 +56,7 @@ public class HistoryAdapter  extends RecyclerView.Adapter<HistoryAdapter.ViewHol
 
         @SuppressLint({"SetTextI18n", "UseCompatLoadingForColorStateLists"})
         public void bind(InvoiceResponse data){
+            PicassoTrustAll.getInstance(mContext).load(data.dokter.image).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(itemView.dokterImage);
             itemView.txtTanggal.setText(data.created_at);
             if (data.dokter != null){
                 itemView.txtFullname.setText(data.dokter.nama);

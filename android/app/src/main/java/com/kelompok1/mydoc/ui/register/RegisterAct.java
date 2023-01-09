@@ -5,12 +5,16 @@ import androidx.annotation.NonNull;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
+import com.kelompok1.mydoc.utils.CommonUtils;
 import com.kelompok1.mydoc.utils.FieldValidator;
 import com.kelompok1.mydoc.data.remote.entities.RegisterErrorResponse;
 import com.kelompok1.mydoc.databinding.ActivityRegisterBinding;
 import com.kelompok1.mydoc.ui.base.BaseActivity;
 import com.shashank.sony.fancytoastlib.FancyToast;
+
+import java.text.ParseException;
 
 public class RegisterAct extends BaseActivity<RegisterPresenter> implements RegisterView {
     private ActivityRegisterBinding binding;
@@ -33,6 +37,18 @@ public class RegisterAct extends BaseActivity<RegisterPresenter> implements Regi
             }
         });
         mContext = this;
+
+
+        binding.etBirthday.getEditText().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    CommonUtils.showDateDialog(binding.etBirthday.getEditText(), mContext);
+                } catch (ParseException e) {
+                    Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override

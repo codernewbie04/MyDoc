@@ -69,6 +69,7 @@ public class InvoiceAct extends BaseActivity<InvoicePresenter> implements Invoic
     @Override
     public void loadInvoice(InvoiceResponse data) {
         hideLoading();
+        PicassoTrustAll.getInstance(mContext).load(data.dokter.image).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(binding.imgDokter);
         if(data.payment != null) {
             if (data.payment.payment_method != null) {
                 binding.txtPaymentMethod.setText(data.payment.payment_method.paymentName);

@@ -51,6 +51,8 @@ class ReviewModel extends Model
         foreach ($reviews as $rev) {
             $dId = (new InvoiceModel())->select("dokter_id", false)->where('id', $rev['invoice_id'])->first()['dokter_id'];
             $rev["dokter"] = (new DokterModel())->where('id', $dId)->first();
+            $img = $rev["dokter"]["image"];
+            $rev["dokter"]["image"] = base_url("assets/images/doctor/$img");
             $uid = $rev["reviewed_by"];
             $dataUser = (new UserModel())->getUser($uid);
             unset($dataUser["email"]);

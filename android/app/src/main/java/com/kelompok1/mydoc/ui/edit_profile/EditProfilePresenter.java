@@ -25,22 +25,24 @@ public class EditProfilePresenter extends BasePresenter<EditProfileView> {
         ((MvpApp) view.getContext().getApplicationContext()).getProfileService().editProfile(new EditProfileRequest(fullname, address, birthday)).enqueue(new Callback<BaseApiResponse<UserResponse, EditProfileRequest>>() {
             @Override
             public void onResponse(Call<BaseApiResponse<UserResponse, EditProfileRequest>> call, Response<BaseApiResponse<UserResponse, EditProfileRequest>> response) {
-                if(response.isSuccessful()){
-                    ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData());
-                    view.successUpdate(response.body().getMessage());
-                } else {
-                    BaseApiResponse<UserResponse, EditProfileRequest> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<UserResponse, EditProfileRequest>>() {}.getType());
-                    if(errResponse.getForm_error() == null){
-                        view.onError(errResponse.getMessage());
+                if(view != null)
+                    if(response.isSuccessful()){
+                        ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData());
+                        view.successUpdate(response.body().getMessage());
                     } else {
-                        view.formError(errResponse.getForm_error());
+                        BaseApiResponse<UserResponse, EditProfileRequest> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<UserResponse, EditProfileRequest>>() {}.getType());
+                        if(errResponse.getForm_error() == null){
+                            view.onError(errResponse.getMessage());
+                        } else {
+                            view.formError(errResponse.getForm_error());
+                        }
                     }
-                }
             }
 
             @Override
             public void onFailure(Call<BaseApiResponse<UserResponse, EditProfileRequest>> call, Throwable t) {
-                view.onError(t.getMessage());
+                if(view != null)
+                    view.onError(t.getMessage());
             }
         });
     }

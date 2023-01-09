@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="15dp">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user_image"
+        android:id="@+id/dokter_image"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:src="@drawable/image_placeholder" />
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@+id/user_image">
+        android:layout_toRightOf="@+id/dokter_image">
         <TextView
             android:id="@+id/txt_name"
             style="@style/main_txt_regular"
