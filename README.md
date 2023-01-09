@@ -24,6 +24,7 @@
 MyDoc is divided into two applications: a mobile application (Project Location: /android) and a web application (Project Location: /website). The mobile application is used by patients to find hospitals or clinics, make appointments with doctors, pay for services, and so on. The web application, on the other hand, is used by health agencies and their administrators. The super admin can use the web application to add health agencies and monitor patients, while health agencies can use it to add doctors and confirm queues
 
 ### Built With
+* ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
 * ![Code-Igniter](https://img.shields.io/badge/CodeIgniter-%23EF4223.svg?style=for-the-badge&logo=codeIgniter&logoColor=white)
 * ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 * ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
