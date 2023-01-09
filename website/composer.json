@@ -8,7 +8,8 @@
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
         "myth/auth": "^1.2",
-        "firebase/php-jwt": "^6.3"
+        "firebase/php-jwt": "^6.3",
+        "nesbot/carbon": "^2.65"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

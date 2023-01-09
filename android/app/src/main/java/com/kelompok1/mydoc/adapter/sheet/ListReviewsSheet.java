@@ -34,7 +34,7 @@ public class ListReviewsSheet extends BottomSheetDialogFragment {
         binding.rvReview.setHasFixedSize(true);
         binding.rvReview.setNestedScrollingEnabled(false);
         binding.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        binding.rvReview.setAdapter(new MyReviewAdapter(dataList));
+        binding.rvReview.setAdapter(new MyReviewAdapter(dataList, getContext()));
         return root;
     }
 }

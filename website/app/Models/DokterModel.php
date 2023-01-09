@@ -48,6 +48,8 @@ class DokterModel extends Model
         $dr=array();
         $inv_model = new InvoiceModel();
         foreach($doctor as $dct){
+            $img = $dct['image'];
+            $dct["image"] = base_url("assets/images/doctor/$img"); 
             $dct["review"] = $inv_model->getReview($dct['id']);
             array_push($dr, $dct);
         }
@@ -100,6 +102,9 @@ class DokterModel extends Model
         ];
         $jadwal = array_values($this->sorting_day($jadwal, "day", $prio));
         $doctor["schedule"] = $jadwal;
+
+        $img = $doctor['image'];
+        $doctor["image"] = base_url("assets/images/doctor/$img");
         
 
         return $doctor;

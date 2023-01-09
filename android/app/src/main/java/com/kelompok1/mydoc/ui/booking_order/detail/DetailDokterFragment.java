@@ -19,6 +19,7 @@ import com.kelompok1.mydoc.data.remote.entities.DetailDokterResponse;
 import com.kelompok1.mydoc.databinding.FragmentDetailDokterBinding;
 import com.kelompok1.mydoc.ui.base.BaseFragment;
 import com.kelompok1.mydoc.utils.CommonUtils;
+import com.kelompok1.mydoc.utils.PicassoTrustAll;
 
 public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> implements DetailDokterView {
     FragmentDetailDokterBinding binding;
@@ -76,6 +77,8 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
 
     @Override
     public void loadDetailDokter(DetailDokterResponse dokter) {
+        binding.include.txtTitle.setText(dokter.instansi);
+        PicassoTrustAll.getInstance(getContext()).load(dokter.image).resize(500,500).placeholder(R.drawable.image_placeholder).centerInside().into(binding.includeProfileDokter.imgDokter);
         binding.includeProfileDokter.txtNamaDokter.setText(dokter.nama);
         binding.includeProfileDokter.txtProfession.setText(dokter.profession);
         binding.includeProfileDokter.txtPrice.setText(CommonUtils.convertToRp(dokter.price));
@@ -86,7 +89,7 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
             binding.includeReview.rvReview.setHasFixedSize(true);
             binding.includeReview.rvReview.setNestedScrollingEnabled(false);
             binding.includeReview.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            binding.includeReview.rvReview.setAdapter(new MyReviewAdapter(dokter.review.ratings));
+            binding.includeReview.rvReview.setAdapter(new MyReviewAdapter(dokter.review.ratings, getContext()));
             binding.includeReview.rating.setRating(dokter.review.rating_average);
             binding.includeReview.txtCountRating.setText("("+ String.valueOf(dokter.review.rating_count) +" ulasan)");
             binding.includeReview.txtAvgRating.setText(String.valueOf(dokter.review.rating_average));

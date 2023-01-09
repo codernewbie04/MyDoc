@@ -165,7 +165,7 @@ public class DashboardFragment extends BaseFragment<DashboardPresenter> implemen
             binding.rvReview.setHasFixedSize(true);
             binding.rvReview.setNestedScrollingEnabled(false);
             binding.rvReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            binding.rvReview.setAdapter(new MyReviewAdapter(max5Review));
+            binding.rvReview.setAdapter(new MyReviewAdapter(max5Review, getContext()));
             binding.pbRating.setVisibility(View.GONE);
             binding.ratingCount.setText("("+ my_review.size() +" ulasan diberikan)");
             binding.btnLihatSemua.setOnClickListener(new View.OnClickListener() {

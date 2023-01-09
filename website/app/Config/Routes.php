@@ -74,6 +74,14 @@ $routes->post('/admin/dokter/edit_jadwal', 'Master\Dokter::edit_jadwal');
 $routes->get('/admin/dokter/jadwal_delete/(:num)/(:num)', 'Master\Dokter::jadwal_delete/$1/$2');
 $routes->get('/admin/dokter/reviews/(:num)', 'Master\Dokter::detail_reviews/$1');
 //end dokter
+
+//start verifikasi antrian
+$routes->get('/admin/verifikasi_antrian', 'Master\VerifikasiAntrian::index');
+$routes->post('/admin/verifikasi_antrian/confirm', 'Master\VerifikasiAntrian::confirm');
+$routes->get('/admin/verifikasi_antrian/refund/(:num)', 'Master\VerifikasiAntrian::refund/$1');
+//end verifikasi antrian
+
+
 //calback from duitku
 $routes->post('/duitku/callback', 'Callback::callback');
 
@@ -81,6 +89,7 @@ $routes->post('/duitku/callback', 'Callback::callback');
 //Routes for API
 //routes for auth
 $routes->post('/api/v1/auth/login', 'Api\V1\Auth\Login::index');
+$routes->post('/api/v1/auth/test', 'Api\V1\Auth\Test::index');
 $routes->delete('/api/v1/auth/logout', 'Api\V1\Auth\Login::logout');
 $routes->post('/api/v1/auth/refresh', 'Api\V1\Auth\Login::refresh');
 $routes->post('/api/v1/auth/register', 'Api\V1\Auth\Register::index');

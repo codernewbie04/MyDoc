@@ -3,7 +3,7 @@
 <!-- footer area start-->
 <footer>
     <div class="footer-area">
-        Copyright &copy; By MyDoc 2022<br>Template by : <span>Lupa</span>
+        Copyright &copy; By MyDoc 2022</span>
     </div>
 </footer>
 <!-- footer area end-->
@@ -152,6 +152,19 @@
                     $('#payment_status').attr("class", 'alert alert-danger');
                 }
                 
+            }
+        });
+        $('.modal-confirm').click(function() {
+            var code = $(this).data('code');
+        
+            if (code != '') {
+                $('#registration_code').val(code);
+            }
+        });
+        $('.refund').click(function() {
+            var url = $(this).data('url');
+            if (url != '') {
+                $("#haps").attr("href", "<?php echo base_url(); ?>" + url);
             }
         });
         $('.modal-balance').click(function() {

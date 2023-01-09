@@ -48,7 +48,7 @@ class InvoiceModel extends Model
 
     public function getInvoiceUser($id, $limit = 0){
         //->select("id, no_invoice, price, discount, total_price, status, registration_code, created_at", false)
-        $invoices = $this->where("user_id", $id)->findAll($limit);
+        $invoices = $this->where("user_id", $id)->orderBy('id', 'DESC')->findAll($limit);
         $clearInvoice = array();
         $paymentModel = new PaymentModel();
         foreach ($invoices as $inv) {
@@ -57,7 +57,9 @@ class InvoiceModel extends Model
                 if($inv["payment"]['payment_method']){
                     $inv["payment"]['payment_method'] = $paymentModel->getPaymentById($inv["payment"]['payment_method']);
                 }
-            $inv["dokter"] = (new DokterModel())->where('id', $inv['dokter_id'])->first();            
+            $inv["dokter"] = (new DokterModel())->where('id', $inv['dokter_id'])->first();
+            $img = $inv["dokter"]['image'];
+            $inv["dokter"]['image'] = base_url("assets/images/doctor/$img");            
             array_push($clearInvoice, $inv);
         }
         
@@ -69,14 +71,16 @@ class InvoiceModel extends Model
         $invoice = $this->where(["user_id" => $uid, 'id' => $id])->first();
         if($invoice){
             $paymentModel = new PaymentModel();
-            $invoice["payment"] = $paymentModel->where('id', $invoice['id'])->first();
+            $invoice["payment"] = $paymentModel->where('invoice_id', $invoice['id'])->first();
             
             if(isset($invoice["payment"]))
                 if($invoice["payment"]['payment_method']){
                     $invoice["payment"]['payment_method'] = $paymentModel->getPaymentById($invoice["payment"]['payment_method']);
                 }
-
+            
             $invoice["dokter"] = (new DokterModel())->where('id', $invoice['dokter_id'])->first();  
+            $img = $invoice["dokter"]['image'];
+            $invoice["dokter"]['image'] = base_url("assets/images/doctor/$img");
         }
               
         return $invoice;
@@ -187,7 +191,7 @@ class InvoiceModel extends Model
         $invoices = $this->protect(false)
         ->join("users",'users.id=invoice.user_id')
         ->join("dokter",'invoice.dokter_id=dokter.id')
-        ->select("invoice.*, users.fullname", false);
+        ->select("invoice.*, users.fullname,users.image as users_image", false);
         if($instansi != -1)
             $invoices->where(['dokter.instansi_id' => $instansi]);
         
@@ -200,10 +204,40 @@ class InvoiceModel extends Model
                 if($inv["payment"]['payment_method']){
                     $inv["payment"]['payment_method'] = $paymentModel->getPaymentById($inv["payment"]['payment_method']);
                 }
-            $inv["dokter"] = (new DokterModel())->where('id', $inv['dokter_id'])->first();            
+            $inv["dokter"] = (new DokterModel())->where('id', $inv['dokter_id'])->first();  
+            $img = $inv["dokter"]['image'];
+            $inv["dokter"]["image"] = base_url("assets/images/dokter/$img");          
             array_push($clearInvoice, $inv);
         }
         
         return $clearInvoice;
+    }
+
+    public function confirmInvoice($reg_code) {
+        return $this->protect(false)->whereIn('registration_code', [$reg_code])
+        ->set(['status' => 2])
+        ->update();
+    }
+
+    public function refundInvoice($id){
+        $this->db->transStart();
+        $this->protect(false)->whereIn('id', [$id])
+        ->set(['status' => -1])
+        ->update();
+        $invoice= $this->where('id', $id)->first();
+
+        $old_balance = $this->db->table('balance')->where(['uid' => $invoice['user_id']])->get()->getRowArray()['balance'];
+        $refundTotal = $invoice['total_price'];
+        
+        $this->db->table('balance')->where(['uid' => $invoice['user_id']])->update(['balance' =>$old_balance + $refundTotal]);
+        $this->db->table('balance_tracker')->insert([
+            'type' => 'in',
+            'user_id' => $invoice['user_id'],
+            'amount' => $refundTotal,
+            'description' => 'Refund from transaction #'.$invoice['no_invoice'],
+        ]);
+        $this->db->transComplete();
+
+        return $this->db->transStatus();
     }
 }

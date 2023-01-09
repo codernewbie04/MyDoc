@@ -60,7 +60,7 @@
                                 <li class="<?=link_active($title, 'List Pasien');?>"><a href="<?=base_url('admin/pasien') ;?>"><i class="fa fa-user"></i> <span>List Pasien</span></a></li>
                             <?php elseif($user['role'] == 2):?>
                                 <li class="<?=link_active($title, 'List Dokter');?>"><a href="<?=base_url('admin/dokter') ;?>"><i class="fa fa-stethoscope"></i> <span>List Dokter</span></a></li>
-                                <li class="<?=link_active($title, 'Pendaftaran Berobat');?>"><a href="<?=base_url('admin/pendaftaran_berobat') ;?>"><i class="fa fa-list"></i> <span>Verifikasi Antrian</span></a></li>
+                                <li class="<?=link_active($title, 'Verifikasi Antrian');?>"><a href="<?=base_url('admin/verifikasi_antrian') ;?>"><i class="fa fa-list"></i> <span>Verifikasi Antrian</span></a></li>
                             <?php endif;?>
                             <li class="<?=link_active($title, 'Riwayat Berobat');?>"><a href="<?=base_url('admin/riwayat_berobat') ;?>"><i class="fa fa-heartbeat"></i> <span>Riwayat Berobat</span></a></li>
                         </ul>

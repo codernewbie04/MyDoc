@@ -103,6 +103,8 @@ public class BookingDokterFragment extends BaseFragment<BookingDokterPresenter> 
     @Override
     public void loadDetailDokter(DetailDokterResponse dokter) {
         hideLoading();
+
+        PicassoTrustAll.getInstance(getContext()).load(dokter.image).resize(500,500).placeholder(R.drawable.image_placeholder).centerInside().into(binding.includeOrderInformation.imgDokter);
         binding.includeOrderInformation.txtDokter.setText(dokter.nama);
         binding.includeOrderInformation.txtProfession.setText(dokter.profession);
         binding.includeOrderInformation.txtLokasi.setText(dokter.instansi);

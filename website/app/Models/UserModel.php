@@ -89,6 +89,9 @@ class UserModel extends Model
         foreach($this->exceptFields as $key){
             unset($user[$key]);
         }
+
+        $img = $user['image'];
+        $user['image'] = base_url("assets/images/users/$img"); 
         return $user;
     }
 

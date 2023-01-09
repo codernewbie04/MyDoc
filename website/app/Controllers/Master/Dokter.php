@@ -46,7 +46,7 @@ class Dokter extends BaseController
 
         if(!$this->validate($rules))
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        if($img->isValid()){
+        if($img != null && $img->isValid()){
             $fileName = $img->getRandomName();
             $img->move('assets/images/doctor/', $fileName);
         }
