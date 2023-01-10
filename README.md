@@ -72,6 +72,13 @@ Installed  `composer`, `Android Studio`, and `Web Server`
 </div>
 
 
+## Learn More
+
+To learn more about Android Studio and Codeigniter 4, take a look at the following resources:
+
+- [Android Studio Documentation](https://developer.android.com/docs) - learn about Android Studio.
+- [Codeigniter 4 Documentation](https://codeigniter.com/user_guide/intro/index.html) - learn about Codeigniter 4.
+
 
 
 
