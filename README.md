@@ -62,6 +62,15 @@ Installed  `composer`, `Android Studio`, and `Web Server`
 3. Edit BASE_URL in your build.gradle (Inside app folder) to your local IP web server
 
 
+## Example Account
+Username | Password | Role 
+--- | --- | ---
+admin_123 | 12345678 | Super Admin 
+instansi_kesehatan | 12345678 | Instansi Kesehatan
+
+For the pasien role, you can make it yourself
+
+
 ## Preview
 <div align="center">
 <img src="documents/UI/Onboarding .png" alt="UI" width="124" height="249">
