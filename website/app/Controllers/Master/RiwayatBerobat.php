@@ -21,4 +21,34 @@ class RiwayatBerobat extends BaseController
             'list_riwayat' => $invoiceModel->getInvoices($uid)
         ]);
     }
+
+    public function edit(){
+        $rules = [
+            'id' => 'required|numeric',
+            'status' => 'required|numeric'
+        ];
+
+        if(!$this->validate($rules))
+            return redirect()->back()->withInput()->with('error', "Gagal menyimpan kedatabase");
+        
+        $model = new InvoiceModel();
+        $success = $model->update($this->request->getVar('id'),[
+            'status' => $this->request->getVar('status')
+        ]);
+
+        if(!$success)
+            return redirect()->back()->withInput()->with('error', "Gagal menyimpan kedatabase");
+        return redirect()->back()->withInput()->with('success', "Berhasil merubah data");
+    }
+
+    public function delete($id = -1){
+        if($id == -1)
+            return redirect()->back()->withInput()->with('error', "ID tidak ditemukan");
+        $model = new InvoiceModel();
+        $success = $model->delete($id);
+        if(!$success)
+            return redirect()->back()->withInput()->with('error', "Gagal menghapus data");
+        return redirect()->back()->withInput()->with('success', "Berhasil menghapus data");
+
+    }
 }

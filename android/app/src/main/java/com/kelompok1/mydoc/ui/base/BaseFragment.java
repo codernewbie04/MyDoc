@@ -74,23 +74,6 @@ public abstract class BaseFragment<Presenter extends BasePresenter> extends Frag
                     }
                 })
                 .show();
-
-//        new iOSDialogBuilder(getActivity())
-//                .setTitle("Ooops...")
-//                .setSubtitle("Sesi telah habis, silakan login ulang.")
-//                .setBoldPositiveLabel(true)
-//                .setCancelable(false)
-//                .setPositiveListener("OK",new iOSDialogClickListener() {
-//                    @Override
-//                    public void onClick(iOSDialog dialog) {
-//                        new PrefManager(mContext).logOut();
-//                        startActivity(new Intent(mContext, OnBoardingAct.class)
-//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-//                        getActivity().finish();
-//
-//                    }
-//                }).build().show();
-
     }
 
 

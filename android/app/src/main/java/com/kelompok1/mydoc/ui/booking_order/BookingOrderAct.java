@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.ui.base.BaseActivity;

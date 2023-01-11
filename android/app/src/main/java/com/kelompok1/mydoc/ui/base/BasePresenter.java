@@ -2,7 +2,7 @@ package com.kelompok1.mydoc.ui.base;
 
 import androidx.annotation.NonNull;
 
-public abstract class BasePresenter<View extends BaseView> {
+public class BasePresenter<View extends BaseView> {
 
     protected View view;
 

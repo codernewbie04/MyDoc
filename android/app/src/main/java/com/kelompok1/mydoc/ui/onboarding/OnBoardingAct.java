@@ -4,11 +4,8 @@ import androidx.annotation.NonNull;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Handler;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.adapter.OnBoardingAdapter;

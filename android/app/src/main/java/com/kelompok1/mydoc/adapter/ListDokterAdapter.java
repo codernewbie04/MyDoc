@@ -61,6 +61,14 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Vi
             itemView.rating.setRating(data.review.rating_average);
             itemView.txtAvgRating.setText(String.valueOf(data.review.rating_average));
             itemView.txtCountRating.setText("( "+ data.review.rating_count +" ulasan)");
+            itemView.btnBooking.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(mContext, BookingOrderAct.class);
+                    i.putExtra("dokter_id", data.id);
+                    mContext.startActivity(i);
+                }
+            });
             itemView.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -30,14 +30,12 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                         ((MvpApp) view.getContext().getApplicationContext()).getSession().saveUserData(response.body().getData().user);
                         view.successLogin();
                     } else {
-
                         BaseApiResponse<LoginResponse, LoginErrorResponse> errResponse = CommonUtils.parseError(response, new TypeToken<BaseApiResponse<LoginResponse, LoginErrorResponse>>() {}.getType());
                         if(errResponse.getForm_error() == null){
                             view.toastMsg(errResponse.getMessage(), FancyToast.ERROR);
                         } else {
                             view.formError(errResponse.getForm_error());
                         }
-
                     }
             }
 

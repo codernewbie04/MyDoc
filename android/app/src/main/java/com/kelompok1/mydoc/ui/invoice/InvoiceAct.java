@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -17,6 +18,8 @@ import com.kelompok1.mydoc.R;
 import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.databinding.ActivityInvoiceBinding;
 import com.kelompok1.mydoc.ui.base.BaseActivity;
+import com.kelompok1.mydoc.ui.give_rating.GiveRatingAct;
+import com.kelompok1.mydoc.ui.register.RegisterAct;
 import com.kelompok1.mydoc.utils.CommonUtils;
 import com.kelompok1.mydoc.utils.PicassoTrustAll;
 
@@ -69,7 +72,7 @@ public class InvoiceAct extends BaseActivity<InvoicePresenter> implements Invoic
     @Override
     public void loadInvoice(InvoiceResponse data) {
         hideLoading();
-        PicassoTrustAll.getInstance(mContext).load(data.dokter.image).resize(100,100).placeholder(R.drawable.image_placeholder).centerInside().into(binding.imgDokter);
+        PicassoTrustAll.getInstance(mContext).load(data.dokter.image).resize(500,500).placeholder(R.drawable.image_placeholder).centerInside().into(binding.imgDokter);
         if(data.payment != null) {
             if (data.payment.payment_method != null) {
                 binding.txtPaymentMethod.setText(data.payment.payment_method.paymentName);
@@ -173,5 +176,14 @@ public class InvoiceAct extends BaseActivity<InvoicePresenter> implements Invoic
         binding.txtPrice.setText(CommonUtils.convertToRp(data.price));
         binding.txtDiskon.setText(CommonUtils.convertToRp(data.discount));
         binding.txtTotal.setText(CommonUtils.convertToRp(data.total_price));
+
+        if(!data.is_rated && data.status == 2){
+            Intent i = new Intent(mContext,  GiveRatingAct.class);
+            i.putExtra("invoice_id", data.id);
+            i.putExtra("img",data.dokter.image);
+            i.putExtra("dokter", data.dokter.nama);
+            i.putExtra("profession", data.dokter.profession);
+            startActivity(i);
+        }
     }
 }
