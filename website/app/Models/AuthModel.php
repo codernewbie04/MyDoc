@@ -59,7 +59,7 @@ class AuthModel extends Model
         return $ipaddress;
     }
 
-    public function setLoginLog($email, $uid = null, $status=0){
+    public function setLoginLog($email, $uid, $status=0){
         $data = [
             'ip_address' => $this->get_client_ip(), 
             'email' => $email,
@@ -77,7 +77,7 @@ class AuthModel extends Model
         return $this->db->table('auth_jwt')->where('jti', $jti)->where('blacklist', 1)->countAllResults();
     }
 
-    public function login($user=null, $jti, $fcm){
+    public function login($user, $jti, $fcm){
         if($user){
             $this->setLoginLog($user['email'], $user['id'], 1);
             $fcm_data = [
@@ -96,7 +96,7 @@ class AuthModel extends Model
         return $this->db->table('auth_jwt')->insert($data);
     }
 
-    public function admin_login($user=null, $jti){
+    public function admin_login($user, $jti){
         if($user){
             $this->setLoginLog($user['email'], $user['id'], 1);
         }
