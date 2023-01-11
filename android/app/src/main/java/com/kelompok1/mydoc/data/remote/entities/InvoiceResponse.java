@@ -40,6 +40,10 @@ public class InvoiceResponse {
     @Expose
     public String registration_code;
 
+    @SerializedName("is_rated")
+    @Expose
+    public Boolean is_rated;
+
     @SerializedName("created_at")
     @Expose
     public String created_at;

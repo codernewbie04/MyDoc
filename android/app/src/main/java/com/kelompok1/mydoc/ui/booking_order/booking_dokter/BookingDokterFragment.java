@@ -57,6 +57,12 @@ public class BookingDokterFragment extends BaseFragment<BookingDokterPresenter> 
     @Override
     public void initView() {
         binding.include.txtTitle.setText("Pemesanan");
+        binding.include.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStackImmediate();
+            }
+        });
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
         NavHostFragment navHostFragment =
                 (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);

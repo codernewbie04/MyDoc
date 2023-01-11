@@ -73,8 +73,8 @@
                                         <td class="text-center">
                                             <?php
                                             if($user['role'] == 2){?>
-                                                <button class="btn btn-success btn-xs modal-edit-pasien" data-target="#modal-edit-pasien" data-toggle="modal" data-nama="<?=$riwayat['fullname']; ?>" data-id="<?=$riwayat['id']; ?>" data-username="<?=$riwayat['fullname']; ?>" data-email="<?=$riwayat['fullname']; ?>" data-active="<?=$riwayat['fullname']; ?>" data-status="<?=$riwayat['fullname']; ?>" data-balance="<?=$riwayat['fullname']; ?>"><i class="fa fa-pencil"></i></button>
-                                                <button class="btn btn-danger btn-xs hapus-button" data-target="#hapus" data-toggle="modal" data-url="admin/pasien/delete_pasien/<?=$riwayat['id']; ?>"><i class="fa fa-trash"></i></button>
+                                                <button class="btn btn-success btn-xs modal-edit-invoice" data-target="#modal-edit-invoice" data-toggle="modal" data-status="<?=$riwayat['status']?>" data-id="<?=$riwayat['id']?>"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-danger btn-xs hapus-button" data-target="#hapus" data-toggle="modal" data-url="/admin/riwayat_berobat/delete/<?=$riwayat['id']; ?>"><i class="fa fa-trash"></i></button>
                                             <?php } else {
                                                  echo "-";
                                             }?>
@@ -140,7 +140,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
-        <h5 class="modal-title mb-5" id="hapus-title" align="center">Yakin ingin menghapus pasien?</h5>
+        <h5 class="modal-title mb-5" id="hapus-title" align="center">Yakin ingin menghapus invoice?</h5>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
         <a href="" class="btn btn-danger" id="haps"><i class="fa fa-trash"></i> Hapus</a>
       </div>
@@ -148,47 +148,27 @@
   </div>
 </div>
 
-<div class="modal fade" id="modal-edit-pasien">
+<div class="modal fade" id="modal-edit-invoice">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <form id="form-edit" action="<?php echo base_url('pasien/editProses') ;?>" method="post">
+            <form id="form-edit" action="<?php echo base_url('admin/riwayat_berobat/edit') ;?>" method="post">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Pasien</h4>
+                <h4 class="modal-title">Edit Invoice</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="edit_floor" class="form-control-label">Nama</label>
-                    <input name="nama" type="text" class="form-control" value="" id="nama_pasien">
-                </div>
-                <div class="form-group">
-                    <label for="edit_floor" class="form-control-label">Email</label>
-                    <input name="email" type="text" class="form-control" value="" id="email_pasien" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="edit_floor" class="form-control-label">Username</label>
-                    <input name="username" type="text" class="form-control" value="" id="username_pasien" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="edit_floor" class="form-control-label">Balance</label>
-                    <input name="username" type="number" class="form-control" value="" id="balance_pasien" disabled>
-                </div>
-                <div class="form-group">
                     <label for="edit_floor" class="form-control-label">Status</label>
-                    <input name="status" type="number" class="form-control" value="" id="status_pasien">
-                </div>
-                <div class="form-group">
-                    <label for="edit_floor" class="form-control-label">Konfirm Password</label>
-                    <input name="active" type="number" class="form-control" value="" id="active_pasien">
+                    <input name="status" type="number" class="form-control" value="" id="status">
                 </div>
             </div>
             <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal">Tidak</button>
                     <button class="btn btn-success" type="submit"><i class="fa fa-edit"></i> Ubah</button>
             </div>
-            <input name="id" type="hidden" class="form-control" value="" id="id_pasien">
+            <input name="id" type="hidden" class="form-control" value="" id="invoice_id">
             </form>
         </div>
     </div>

@@ -243,6 +243,14 @@
                 $('#dokter_price').val(price);
             }
         });
+        $('.modal-edit-invoice').click(function() {
+            var id = $(this).data('id');
+            var status = $(this).data('status');
+            if (id != '') {
+                $('#invoice_id').val(id);
+                $('#status').val(status);
+            }
+        });
         $('.modal-edit-jadwal').click(function() {
             var id = $(this).data('id');
             var hari = $(this).data('hari');
@@ -265,62 +273,8 @@
 
     var data_bulan = [];
     var data_jumlah = [];
-    $.post("<?= base_url('dashboard/getKunjungan') ?>",
-        function(data) {
-            var obj = JSON.parse(data);
-            $.each(obj, function(test, item) {
-                data_bulan.push(item.bulan);
-                data_jumlah.push(item.jumlah);
-            });
-
-            var ctx = $("#myKunjungan")[0].getContext('2d');
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'bar',
-
-                // The data for our dataset
-                data: {
-                    labels: data_bulan,
-                    datasets: [{
-                        label: 'Kunjungan',
-                        backgroundColor: window.chartColors.green,
-                        data: data_jumlah
-                    }]
-                },
-
-                // Configuration options go here
-                options: {}
-            });
-        });
     var data_bulan2 = [];
     var data_jumlah2 = [];
-    $.post("<?= base_url('dashboard/getObat') ?>",
-        function(data) {
-            var obj = JSON.parse(data);
-            $.each(obj, function(test, item) {
-                data_bulan2.push(item.bulan);
-                data_jumlah2.push(item.jumlah);
-            });
-
-            var ctx = $("#myObat")[0].getContext('2d');
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'bar',
-
-                // The data for our dataset
-                data: {
-                    labels: data_bulan2,
-                    datasets: [{
-                        label: 'Pemberian Obat',
-                        backgroundColor: window.chartColors.orange,
-                        data: data_jumlah2
-                    }]
-                },
-
-                // Configuration options go here
-                options: {}
-            });
-        });
 </script>
 </body>
 

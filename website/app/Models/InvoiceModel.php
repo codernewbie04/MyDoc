@@ -15,9 +15,9 @@ class InvoiceModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['status'];
 
     // Dates
     protected $useTimestamps = true;
@@ -70,6 +70,7 @@ class InvoiceModel extends Model
     {
         $invoice = $this->where(["user_id" => $uid, 'id' => $id])->first();
         if($invoice){
+            $invoice['is_rated'] = $this->db->table("reviews")->where(['invoice_id' => $invoice['id'], 'reviewed_by' => $uid])->countAllResults() > 0;
             $paymentModel = new PaymentModel();
             $invoice["payment"] = $paymentModel->where('invoice_id', $invoice['id'])->first();
             

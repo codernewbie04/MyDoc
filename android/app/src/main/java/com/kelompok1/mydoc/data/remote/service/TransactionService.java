@@ -6,6 +6,7 @@ import com.kelompok1.mydoc.data.remote.entities.BaseApiResponse;
 import com.kelompok1.mydoc.data.remote.entities.InvoiceResponse;
 import com.kelompok1.mydoc.data.remote.entities.PaymentMethodResponse;
 import com.kelompok1.mydoc.data.remote.request.CheckoutRequest;
+import com.kelompok1.mydoc.data.remote.request.RatingRequest;
 
 
 import java.util.List;
@@ -28,4 +29,7 @@ public interface TransactionService {
 
     @POST("v1/transaction/checkout")
     Call<BaseApiResponse<Integer, CheckoutRequest>> checkout(@Body CheckoutRequest checkout);
+
+    @POST("v1/transaction/give_rating")
+    Call<BaseApiResponse<Nullable, RatingRequest>> giveRating(@Body RatingRequest ratingRequest);
 }

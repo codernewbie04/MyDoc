@@ -16,10 +16,9 @@ function getJWTFromRequest($authenticationHeader): string
 
 function validateJWTFromRequest(string $encodedToken)
 {
+    
     $key = getenv('JWT_SECRET');
     $decodedToken = JWT::decode($encodedToken, new Key($key, 'HS256'));
-    $userModel = new UserModel();
-    $userModel->getUser($decodedToken->uid);
     return $decodedToken;
 }
 

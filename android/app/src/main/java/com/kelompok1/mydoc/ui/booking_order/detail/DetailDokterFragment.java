@@ -55,6 +55,12 @@ public class DetailDokterFragment extends BaseFragment<DetailDokterPresenter> im
         if (bundle != null) {
             dokter_id = bundle.getInt("dokter_id");
         }
+        binding.include.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
         presenter.getDokter(dokter_id);
         NavController navController = navHostFragment.getNavController();
         int finalDokter_id = dokter_id;

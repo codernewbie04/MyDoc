@@ -61,6 +61,9 @@ $routes->post('/admin/pasien/edit', 'Master\Pasien::edit');
 $routes->get('/admin/pasien/delete/(:num)', 'Master\Pasien::delete/$1');
 //end pasien
 $routes->get('/admin/riwayat_berobat', 'Master\RiwayatBerobat::index');
+$routes->post('/admin/riwayat_berobat/edit', 'Master\RiwayatBerobat::edit');
+$routes->get('/admin/riwayat_berobat/delete/(:num)', 'Master\RiwayatBerobat::delete/$1');
+
 
 //start dokter
 $routes->get('/admin/dokter', 'Master\Dokter::index');
