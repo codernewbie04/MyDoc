@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2022 at 06:38 PM
+-- Generation Time: Jan 11, 2023 at 04:51 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -340,7 +340,83 @@ INSERT INTO `auth_jwt` (`id`, `jti`, `blacklist`, `created_at`) VALUES
 (251, '991d6650030622bc', 0, '2022-11-28 05:00:35'),
 (252, '632b7f05c79107f8', 0, '2022-11-28 05:00:59'),
 (253, 'fcba5ad03494e8e6', 0, '2022-11-28 05:20:01'),
-(254, 'e50edef6fcaeb81b', 0, '2022-11-30 00:04:28');
+(254, 'e50edef6fcaeb81b', 0, '2022-11-30 00:04:28'),
+(255, 'cb44778efb2b1ccc', 0, '2022-12-04 11:14:20'),
+(256, '7c1a966cae09a5fa', 0, '2022-12-04 11:53:36'),
+(257, '6569acdddf531e65', 0, '2022-12-04 11:53:46'),
+(258, '824d391a0bef2410', 0, '2022-12-04 12:03:06'),
+(259, 'dd568eb8e4af61eb', 0, '2022-12-04 12:15:33'),
+(260, '4e64a07baa5a9a53', 0, '2022-12-04 12:25:08'),
+(261, '4715f4bbcd81b849', 0, '2022-12-04 22:36:00'),
+(262, '95d64cfbdd31e784', 0, '2022-12-04 23:06:31'),
+(263, 'd6294f8046db2f2f', 0, '2022-12-05 02:12:33'),
+(264, 'fa0473616bd974bd', 0, '2022-12-06 00:41:04'),
+(265, 'b3f5f75a4bdfd39d', 0, '2022-12-06 01:38:13'),
+(266, '3246f9f2081174b3', 1, '2022-12-06 02:50:51'),
+(267, 'ee9ac59f5e8ba288', 1, '2022-12-06 11:05:13'),
+(268, 'e0b38e67579af6cd', 0, '2022-12-06 11:50:17'),
+(269, '07e2f2cad4fa6ab5', 0, '2022-12-06 12:06:44'),
+(270, 'a7fd30363f3612f8', 0, '2022-12-06 12:31:16'),
+(271, 'c3cedc466aac8a73', 0, '2022-12-22 21:59:08'),
+(272, 'feb1a43e74d5c239', 0, '2022-12-22 22:00:09'),
+(273, '7955e0e203ad5337', 0, '2023-01-02 16:26:28'),
+(274, 'd439bf622fb1d1c2', 0, '2023-01-02 16:37:06'),
+(275, '537eb6b40d362395', 0, '2023-01-02 16:51:30'),
+(276, 'd213e089ca1f3713', 0, '2023-01-02 17:06:01'),
+(277, '2b5bbf95b7f87717', 0, '2023-01-02 17:46:01'),
+(278, 'c64c23c9f87327ac', 0, '2023-01-02 17:47:26'),
+(279, '95255bfdc2bba43e', 0, '2023-01-02 17:48:08'),
+(280, 'a58ce58043444de6', 0, '2023-01-02 17:48:40'),
+(281, '7655b8280d3cfe24', 0, '2023-01-02 17:49:04'),
+(282, '0e5b4d4a42493f3c', 0, '2023-01-02 17:50:06'),
+(283, 'c229f45518cf4fea', 0, '2023-01-02 17:50:15'),
+(284, '4a0d8d7bcd258b4b', 0, '2023-01-02 17:52:30'),
+(285, '899accdb232970a3', 0, '2023-01-02 17:52:38'),
+(286, 'a46bafd441a3ad03', 0, '2023-01-02 17:53:22'),
+(287, '248d2ba24bd0bd58', 0, '2023-01-02 19:16:21'),
+(288, 'ae3b4751bfcf33ae', 0, '2023-01-02 19:19:05'),
+(289, 'ae3b4751bfcf33ae', 0, '2023-01-02 19:19:05'),
+(290, '7cc7b6184048ac67', 0, '2023-01-02 19:19:38'),
+(291, '7cc7b6184048ac67', 0, '2023-01-02 19:19:38'),
+(292, 'f915f4c954dbccb4', 0, '2023-01-02 19:21:17'),
+(293, 'f915f4c954dbccb4', 0, '2023-01-02 19:21:17'),
+(294, 'd4b986707549d609', 0, '2023-01-02 19:22:24'),
+(295, 'd4b986707549d609', 0, '2023-01-02 19:22:25'),
+(296, 'f81d0751b1a3a122', 0, '2023-01-02 19:23:23'),
+(297, '2aef3e32afa55f21', 0, '2023-01-02 19:23:24'),
+(298, '7c0a71f05147f0aa', 0, '2023-01-02 19:23:37'),
+(299, '7c0a71f05147f0aa', 0, '2023-01-02 19:23:37'),
+(300, '09bf639cd20191ed', 0, '2023-01-02 19:25:01'),
+(301, '09bf639cd20191ed', 0, '2023-01-02 19:25:01'),
+(302, '9798eac0904330b7', 0, '2023-01-02 19:26:16'),
+(303, '9798eac0904330b7', 0, '2023-01-02 19:26:16'),
+(304, '32dc221db802f695', 0, '2023-01-02 19:27:19'),
+(305, '32dc221db802f695', 0, '2023-01-02 19:27:19'),
+(306, '32dc221db802f695', 0, '2023-01-02 19:27:19'),
+(307, '97cc6581173c3d4f', 0, '2023-01-02 19:27:26'),
+(308, 'cdd311312e4bf241', 0, '2023-01-02 19:29:41'),
+(309, '397ef9dc48743108', 0, '2023-01-02 19:30:08'),
+(310, 'a96cf179b81153ec', 0, '2023-01-02 19:30:36'),
+(311, 'd59a9ddbfc0a0e6c', 0, '2023-01-02 19:31:45'),
+(312, 'd59a9ddbfc0a0e6c', 0, '2023-01-02 19:31:45'),
+(313, 'cac00a3ff1e24276', 0, '2023-01-02 19:31:51'),
+(314, 'cac00a3ff1e24276', 0, '2023-01-02 19:31:51'),
+(315, 'b67d16bfcb612ee8', 0, '2023-01-02 19:43:07'),
+(316, 'a1a5dea6013ed225', 0, '2023-01-02 19:49:20'),
+(317, 'a1a5dea6013ed225', 0, '2023-01-02 19:49:20'),
+(318, 'c1bd7f69b127c4bb', 0, '2023-01-02 19:51:47'),
+(319, 'c1bd7f69b127c4bb', 0, '2023-01-02 19:51:47'),
+(320, '838dcde85494d13f', 0, '2023-01-02 19:53:13'),
+(321, '838dcde85494d13f', 0, '2023-01-02 19:53:13'),
+(322, '3565c2f5cfe58275', 0, '2023-01-02 19:56:36'),
+(323, '3565c2f5cfe58275', 0, '2023-01-02 19:56:36'),
+(324, '140783a85a1e434b', 0, '2023-01-02 19:57:14'),
+(325, 'd8d50214002a33ef', 0, '2023-01-02 19:57:15'),
+(326, 'f9658cdcc6ee1a3b', 0, '2023-01-02 19:57:49'),
+(327, 'f9658cdcc6ee1a3b', 0, '2023-01-02 19:57:49'),
+(328, '8a98a3be6d2d134e', 0, '2023-01-02 19:57:56'),
+(329, '8a98a3be6d2d134e', 0, '2023-01-02 19:57:56'),
+(330, '817d06ffd011f55a', 0, '2023-01-11 22:26:24');
 
 -- --------------------------------------------------------
 
@@ -584,7 +660,81 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (235, '::1', 'admin@admin.com', 1, '2022-11-28 05:00:35', 1),
 (236, '::1', 'instansi@instansi.com', 2, '2022-11-28 05:00:59', 1),
 (237, '::1', 'admin@admin.com', 1, '2022-11-28 05:20:01', 1),
-(238, '::1', 'instansi@instansi.com', 2, '2022-11-30 00:04:27', 1);
+(238, '::1', 'instansi@instansi.com', 2, '2022-11-30 00:04:27', 1),
+(239, '::1', 'admin@admin.com', 1, '2022-12-04 11:14:20', 1),
+(240, '::1', 'admin@admin.com', 1, '2022-12-04 11:53:36', 1),
+(241, '::1', 'instansi@instansi.com', 2, '2022-12-04 11:53:46', 1),
+(242, '192.168.1.24', 'akmalmf007@gmail.com', 7, '2022-12-04 12:03:06', 1),
+(243, '::1', 'akmalmf007@gmail.com', 7, '2022-12-04 12:15:33', 1),
+(244, '::1', 'instansi@instansi.com', 2, '2022-12-04 12:25:08', 1),
+(245, '::1', 'instansi@instansi.com', 2, '2022-12-04 22:36:00', 1),
+(246, '::1', 'admin@admin.com', 1, '2022-12-04 23:06:31', 1),
+(247, '::1', 'admin@admin.com', 1, '2022-12-05 02:12:33', 1),
+(248, '::1', 'admin@admin.com', 1, '2022-12-06 00:41:04', 1),
+(249, '::1', 'akmalmf007@gmail.com', 7, '2022-12-06 01:38:13', 1),
+(250, '::1', 'akmalmf007@gmail.com', 7, '2022-12-06 02:50:51', 1),
+(251, '::1', 'admin@admin.com', 1, '2022-12-06 11:50:17', 1),
+(252, '::1', 'asd@gmail.com', 24, '2022-12-06 12:06:44', 1),
+(253, '::1', 'admin@admin.com', 1, '2022-12-22 21:59:08', 1),
+(254, '::1', 'instansi@instansi.com', 2, '2022-12-22 22:00:09', 1),
+(255, '::1', 'akmalmf007@gmail.com', 7, '2023-01-02 16:26:28', 1),
+(256, '::1', 'akmalmf007@gmail.com', 7, '2023-01-02 16:37:06', 1),
+(257, '::1', 'akmalmf007@gmail.com', 7, '2023-01-02 16:51:30', 1),
+(258, '::1', 'akmalmf007@gmail.com', 7, '2023-01-02 17:06:01', 1),
+(259, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:46:01', 1),
+(260, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:47:26', 1),
+(261, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:48:08', 1),
+(262, '::1', 'akmalmf007@gmail.com', 7, '2023-01-02 17:48:40', 1),
+(263, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:49:04', 1),
+(264, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:50:06', 1),
+(265, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:50:15', 1),
+(266, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:52:30', 1),
+(267, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:52:38', 1),
+(268, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 17:53:22', 1),
+(269, '::1', 'admin@admin.com', 1, '2023-01-02 19:16:21', 1),
+(270, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:19:05', 1),
+(271, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:19:05', 1),
+(272, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:19:38', 1),
+(273, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:19:38', 1),
+(274, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:21:17', 1),
+(275, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:21:17', 1),
+(276, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:22:24', 1),
+(277, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:22:24', 1),
+(278, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:23:23', 1),
+(279, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:23:24', 1),
+(280, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:23:37', 1),
+(281, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:23:37', 1),
+(282, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:25:01', 1),
+(283, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:25:01', 1),
+(284, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:26:16', 1),
+(285, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:26:16', 1),
+(286, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:27:19', 1),
+(287, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:27:19', 1),
+(288, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:27:19', 1),
+(289, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:27:26', 1),
+(290, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:29:41', 1),
+(291, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:30:08', 1),
+(292, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:30:36', 1),
+(293, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:31:45', 1),
+(294, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:31:45', 1),
+(295, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:31:51', 1),
+(296, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:31:51', 1),
+(297, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:43:07', 1),
+(298, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:49:20', 1),
+(299, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:49:20', 1),
+(300, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:51:47', 1),
+(301, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:51:47', 1),
+(302, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:53:13', 1),
+(303, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:53:13', 1),
+(304, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:56:36', 1),
+(305, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:56:36', 1),
+(306, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:57:14', 1),
+(307, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:57:15', 1),
+(308, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:57:49', 1),
+(309, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:57:49', 1),
+(310, 'UNKNOWN', 'akmalmf007@gmail.com', 7, '2023-01-02 19:57:56', 1),
+(311, 'UNKNOWN', 'admin@admin.com', 1, '2023-01-02 19:57:56', 1),
+(312, '::1', 'instansi@instansi.com', 2, '2023-01-11 22:26:24', 1);
 
 -- --------------------------------------------------------
 
@@ -604,7 +754,7 @@ CREATE TABLE `balance` (
 --
 
 INSERT INTO `balance` (`id`, `uid`, `balance`, `updated_at`) VALUES
-(4, 7, 200000, '2022-10-18 21:13:51'),
+(4, 7, 210000, '2022-10-18 21:13:51'),
 (5, 8, 100000, '2022-11-01 03:21:52'),
 (7, 10, 0, '2022-11-01 11:43:10'),
 (14, 17, 0, '2022-11-05 02:44:22'),
@@ -632,7 +782,8 @@ CREATE TABLE `balance_tracker` (
 INSERT INTO `balance_tracker` (`id`, `type`, `user_id`, `amount`, `description`, `created_at`) VALUES
 (1, 'in', 7, 200000, 'Topup by Admin', '2022-11-27 02:20:52'),
 (2, 'in', 8, 20000, 'Topup by Admin', '2022-11-27 04:19:39'),
-(3, 'in', 8, 80000, 'Topup by Admin', '2022-11-27 04:20:21');
+(3, 'in', 8, 80000, 'Topup by Admin', '2022-11-27 04:20:21'),
+(4, 'in', 7, 10000, 'Topup by Admin', '2022-12-22 21:59:39');
 
 -- --------------------------------------------------------
 
@@ -683,7 +834,10 @@ CREATE TABLE `fcm_token` (
 INSERT INTO `fcm_token` (`id`, `user_id`, `token`, `created_at`) VALUES
 (1, 7, '$2y$10$1FeJvB6Ov9Hc3408ZChmoOxgsw9q67YvO0WrRJzidG39dugjIg7bK', '2022-10-30 15:47:06'),
 (2, 7, '123', '2022-11-01 02:13:55'),
-(3, 8, '123', '2022-11-07 06:50:21');
+(3, 8, '123', '2022-11-07 06:50:21'),
+(4, 7, 'asfhwrh', '2023-01-02 16:37:06'),
+(5, 7, 'gwqegqeas', '2023-01-02 16:51:30'),
+(6, 7, 'AnyToken', '2023-01-02 17:46:01');
 
 -- --------------------------------------------------------
 
@@ -702,29 +856,34 @@ CREATE TABLE `invoice` (
   `status` int(11) NOT NULL DEFAULT 0,
   `registration_code` varchar(10) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `invoice`
 --
 
-INSERT INTO `invoice` (`id`, `no_invoice`, `user_id`, `dokter_id`, `price`, `discount`, `total_price`, `status`, `registration_code`, `created_at`, `updated_at`) VALUES
-(1, 'MD-0111-001', 7, 1, 25000, 0, 25000, 1, 'OjTNG7aPYU', '2022-11-05 12:43:40', '2022-11-05 16:47:37'),
-(2, 'MD-0111-002', 7, 1, 25000, 4000, 21000, 0, 'OjTNG7a23s', '2022-11-05 19:11:46', '2022-11-05 16:47:37'),
-(3, 'MD-0511-003', 7, 1, 25000, 0, 25000, 2, 'G1J1qCJKs2', '2022-11-05 04:53:10', '2022-11-05 04:53:10'),
-(4, 'MD-0511-004', 7, 1, 25000, 0, 25000, -1, 'K3p6GxIYva', '2022-11-05 06:26:22', '2022-11-05 06:26:22'),
-(5, 'MD-0911-001', 7, 1, 25000, 0, 25000, 3, 'CsqxLibsf0', '2022-11-09 15:52:56', '2022-11-09 15:52:56'),
-(6, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'p8k5CWstlo', '2022-11-09 16:16:37', '2022-11-09 16:16:37'),
-(7, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'R1e9QZVJaR', '2022-11-09 16:17:22', '2022-11-09 16:17:22'),
-(8, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'XYCI6dZz3J', '2022-11-09 16:18:17', '2022-11-09 16:18:17'),
-(9, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'yO1IMi8C0H', '2022-11-09 16:19:25', '2022-11-09 16:19:25'),
-(10, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'wDCOqR2oe5', '2022-11-10 14:05:22', '2022-11-10 14:05:22'),
-(11, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'nfoV6AlqGZ', '2022-11-10 15:34:07', '2022-11-10 15:34:07'),
-(12, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'LCeFxv61ro', '2022-11-10 15:36:35', '2022-11-10 15:36:35'),
-(13, 'MD-1111-001', 7, 1, 25000, 0, 25000, 0, '6UkxpYbDF9', '2022-11-11 02:38:14', '2022-11-11 02:38:14'),
-(14, 'MD-1111-002', 7, 1, 25000, 0, 25000, 0, 'g9aqbMS8qy', '2022-11-11 02:55:15', '2022-11-11 02:55:15'),
-(15, 'MD-1511-001', 7, 1, 25000, 0, 25000, 0, 'hJu8UVCUoi', '2022-11-15 18:24:07', '2022-11-15 18:24:07');
+INSERT INTO `invoice` (`id`, `no_invoice`, `user_id`, `dokter_id`, `price`, `discount`, `total_price`, `status`, `registration_code`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'MD-0111-001', 7, 1, 25000, 0, 25000, 1, 'OjTNG7aPYU', '2022-11-05 12:43:40', '2023-01-11 09:23:52', '2023-01-11 09:23:52'),
+(2, 'MD-0111-002', 7, 1, 25000, 4000, 21000, 1, 'OjTNG7a23s', '2022-11-05 19:11:46', '2023-01-11 09:19:39', NULL),
+(3, 'MD-0511-003', 7, 1, 25000, 0, 25000, 2, 'G1J1qCJKs2', '2022-11-05 04:53:10', '2023-01-11 09:20:08', NULL),
+(4, 'MD-0511-004', 7, 1, 25000, 0, 25000, -1, 'K3p6GxIYva', '2022-11-05 06:26:22', '2022-11-05 06:26:22', NULL),
+(5, 'MD-0911-001', 7, 1, 25000, 0, 25000, 3, 'CsqxLibsf0', '2022-11-09 15:52:56', '2023-01-11 09:25:22', '2023-01-11 09:25:22'),
+(6, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'p8k5CWstlo', '2022-11-09 16:16:37', '2022-11-09 16:16:37', NULL),
+(7, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'R1e9QZVJaR', '2022-11-09 16:17:22', '2022-11-09 16:17:22', NULL),
+(8, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'XYCI6dZz3J', '2022-11-09 16:18:17', '2022-11-09 16:18:17', NULL),
+(9, 'MD-0911-001', 7, 1, 25000, 0, 25000, 0, 'yO1IMi8C0H', '2022-11-09 16:19:25', '2022-11-09 16:19:25', NULL),
+(10, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'wDCOqR2oe5', '2022-11-10 14:05:22', '2022-11-10 14:05:22', NULL),
+(11, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'nfoV6AlqGZ', '2022-11-10 15:34:07', '2022-11-10 15:34:07', NULL),
+(12, 'MD-1011-001', 7, 1, 25000, 0, 25000, 0, 'LCeFxv61ro', '2022-11-10 15:36:35', '2022-11-10 15:36:35', NULL),
+(13, 'MD-1111-001', 7, 1, 25000, 0, 25000, 0, '6UkxpYbDF9', '2022-11-11 02:38:14', '2022-11-11 02:38:14', NULL),
+(14, 'MD-1111-002', 7, 1, 25000, 0, 25000, 0, 'g9aqbMS8qy', '2022-11-11 02:55:15', '2022-11-11 02:55:15', NULL),
+(15, 'MD-1511-001', 7, 1, 25000, 0, 25000, 0, 'hJu8UVCUoi', '2022-11-15 18:24:07', '2022-11-15 18:24:07', NULL),
+(16, 'MD-0512-001', 7, 1, 25000, 0, 25000, 1, 'R8IMyMuUOV', '2022-12-05 12:38:40', '2022-12-05 12:38:40', NULL),
+(27, 'MD-0512-001', 7, 1, 25000, 0, 25000, 0, 'fTMlPhsigv', '2022-12-05 13:53:57', '2022-12-05 13:53:57', NULL),
+(28, 'MD-0512-001', 7, 1, 25000, 0, 25000, 0, 'ufdgqYx0dL', '2022-12-05 13:54:14', '2022-12-05 13:54:14', NULL),
+(29, 'MD-0512-001', 7, 1, 25000, 0, 25000, 0, '362wSSX7bZ', '2022-12-05 14:01:01', '2022-12-05 14:01:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -787,7 +946,11 @@ INSERT INTO `payment` (`id`, `invoice_id`, `reference`, `url`, `qr_code`, `vaNum
 (12, 12, 'DS13871YRB57AN5N045C', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=SP51MYSJAE0ZX2O0B', '00020101021226560016ID.CO.SHOPEE.WWW011893600918000000025202032520303UMI520412345303360540825000.005802ID5906Duitku6015KOTA JAKARTA SE6101062210517SP51MYSJAE0ZX2O0B63040EAA', NULL, 13, 25000, 0, '2022-11-11 04:36:35', '2022-11-11 04:36:35'),
 (13, 13, 'DS13871V6PBF8D4GWW1W', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1CRQAKATGWMOS4JF', NULL, '9880024808519903', 7, 25000, 0, '2022-11-11 15:38:14', '2022-11-11 15:38:14'),
 (14, 14, 'DS138715GR8XQ04TX7DI', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1N1A8RJFMUCQIXK5', NULL, '9880024806999219', 7, 25000, 0, '2022-11-11 15:55:15', '2022-11-11 15:55:15'),
-(15, 15, 'DS138715ALH61WMD8CA0', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1CYFCSQ7K2CZGGTV', NULL, '9880024809231484', 7, 25000, 0, '2022-11-16 07:24:07', '2022-11-16 07:24:07');
+(15, 15, 'DS138715ALH61WMD8CA0', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=I1CYFCSQ7K2CZGGTV', NULL, '9880024809231484', 7, 25000, 0, '2022-11-16 07:24:07', '2022-11-16 07:24:07'),
+(16, 16, 'DS13871J00TRBJHRVK34', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=VAVZYRFQEBMAHWG2U', NULL, '782870157207978', 1, 25000, 1, '2022-12-06 01:38:40', '2022-12-06 01:38:40'),
+(17, 27, 'DS13871KP1DG18N3NDR8', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=VA0NJ4AP0X1LM0OBY', NULL, '782870103788123', 1, 25000, 0, '2022-12-06 02:53:57', '2022-12-06 02:53:57'),
+(18, 28, 'DS138718V84ZCZESZFO8', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=VABZLR0DG26Q0O63A', NULL, '782870106444867', 1, 25000, 0, '2022-12-06 02:54:14', '2022-12-06 02:54:14'),
+(19, 29, 'DS13871R1I1ZK4MKQXEM', 'https://sandbox.duitku.com/topup/topupdirectv2.aspx?ref=VA07IJOZ5GIGVVY0P', NULL, '782870160415044', 1, 25000, 0, '2022-12-06 03:01:01', '2022-12-06 03:01:01');
 
 -- --------------------------------------------------------
 
@@ -1086,13 +1249,13 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_jwt`
 --
 ALTER TABLE `auth_jwt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 
 --
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
 
 --
 -- AUTO_INCREMENT for table `balance`
@@ -1104,7 +1267,7 @@ ALTER TABLE `balance`
 -- AUTO_INCREMENT for table `balance_tracker`
 --
 ALTER TABLE `balance_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `dokter`
@@ -1116,13 +1279,13 @@ ALTER TABLE `dokter`
 -- AUTO_INCREMENT for table `fcm_token`
 --
 ALTER TABLE `fcm_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1134,7 +1297,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`
@@ -1164,7 +1327,7 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
