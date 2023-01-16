@@ -17,7 +17,13 @@ class Invoice extends BaseResponse
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         parent::initController($request, $response, $logger);
-        $this->user = getUserFromToken($this->request->getServer('HTTP_AUTHORIZATION'));
+
+        if(strtolower(getenv("ON_TESTING")) == "true" && $this->request->getVar('test_token')){
+            $this->user = getUserFromToken($this->request->getVar('test_token'));
+        } else {
+            $this->user = getUserFromToken($this->request->getServer('HTTP_AUTHORIZATION'));
+        }
+        
     }
 
     public function index()

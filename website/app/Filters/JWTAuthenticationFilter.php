@@ -16,8 +16,11 @@ class JWTAuthenticationFilter implements FilterInterface
 
     public function before(RequestInterface $request, $arguments = null)
     {
-        $authenticationHeader = $request->getServer('HTTP_AUTHORIZATION');
-
+        if(strtolower(getenv("ON_TESTING")) == "true" && $request->getVar('test_token')){
+            $authenticationHeader = $request->getVar('test_token');
+        } else {
+            $authenticationHeader = $request->getServer('HTTP_AUTHORIZATION');
+        }
         try {
 
             helper('jwt');
