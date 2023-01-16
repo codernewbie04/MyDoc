@@ -16,13 +16,15 @@
 
 CI_ENVIRONMENT = development
 
+# Jika tidak sedang dalam testing, maka akan berikan nilai false, karena lebih rentan!
+ON_TESTING = false #true or false
 
 JWT_WEB_NAME = jwt_mydoc
-JWT_SECRET = SECRET
+JWT_SECRET = SecretHere
 JWT_TIME_TO_LIVE = 3600
 
-MERCHANT_CODE = MERCHANT_CODE_DUITKU
-DUITKU_APIKEY = THIS_IS_API_KEY
+MERCHANT_CODE = MERCHANT_CODE
+DUITKU_APIKEY = API_KEY_HERE
 PERIOD_CHECKOUT = 30 #x menit batas waktu pembayaran
 
 #--------------------------------------------------------------------
@@ -56,13 +58,13 @@ database.default.DBDriver = MySQLi
 database.default.DBPrefix =
 database.default.port = 3306
 
-# database.tests.hostname = localhost
-# database.tests.database = ci4_test
-# database.tests.username = root
-# database.tests.password = root
-# database.tests.DBDriver = MySQLi
-# database.tests.DBPrefix =
-# database.tests.port = 3306
+#database.tests.hostname = localhost
+#database.tests.database = mydoc_testing
+#database.tests.username = root
+#database.tests.password = 
+#database.tests.DBDriver = MySQLi
+#database.tests.DBPrefix =
+#database.tests.port = 3306
 
 #--------------------------------------------------------------------
 # CONTENT SECURITY POLICY
